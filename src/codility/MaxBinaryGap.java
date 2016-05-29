@@ -1,3 +1,4 @@
+package codility;
 
 public class MaxBinaryGap {
 
