@@ -1,5 +1,12 @@
 package codility;
 
+/**
+ * 
+ * @author Harshali
+ * Question: https://codility.com/programmers/task/binary_gap/
+ *
+ */
+
 public class MaxBinaryGap {
 
 	public int solution(int N) {
