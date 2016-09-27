@@ -19,29 +19,23 @@ public class IncrementInteger {
 		}
 	}
 	
-	public static int[] plusOne(int[] A){
+	public static int[] plusOne(int[] digits){
 	    
-	    int n = A.length - 1;
-	    A[n] = A[n] + 1;
-	    
-	    for(int i = n; i > 0 && A[i] == 10; --i){
-	        
-	        A[i] = 0;
-	        A[i-1] = A[i-1] + 1;
-	    }
-	    
-	    if(A[0] == 10){
-	        
-	    	A[0] = 0;
-	        int[] B = new int[A.length + 1];
-	        System.arraycopy(A, 0, B, 0, A.length);
+		int n = digits.length - 1;
+        digits[n] = digits[n] + 1;
+        for(int i = n; i > 0 && digits[i] == 10; --i){
+            digits[i] = 0;
+            digits[i-1] = digits[i-1] + 1;
+        }
+        
+        if(digits[0] == 10){
+            digits[0] = 0;
+            int[] B = new int[digits.length + 1];
 	        B[0] = 1;
-	        
 	        return B;
-	    } else {
-		    return A;	    	
-	    }
-	    
+	        } else {
+	        	return digits;
+            }     
+        }
 	}
 
-}
