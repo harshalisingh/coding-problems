@@ -4,9 +4,9 @@ public class ReverseWordInSentence {
 	
 	public static void main(String[] args){
 		
-		char[] input = "a cat and dog".toCharArray();
+		char[] input = "a  cat    and  dog".toCharArray();
 		reverseWords(input);
-		assert "dog and cat a".equals(new String(input));
+		System.out.println(input);
 	}
 
 	private static void reverseWords(char[] input) {		
@@ -14,7 +14,7 @@ public class ReverseWordInSentence {
 		reverse(input, 0, input.length);
 		
 		int start = 0, end;
-		while((end = find(input, ' ', start)) != 1){		
+		while((end = find(input, ' ', start)) != -1){		
 			//Reverse each word
 			reverse(input, start, end);
 			start = end + 1;
