@@ -1,21 +1,23 @@
 package leetcode;
 
-import java.util.HashMap;
+import java.util.Arrays;
 
 public class LongestNonRepeatingSubstring {
-	
-	public int lengthOfLongestSubstring(String s) {
-        if (s.length()==0) return 0;
-        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-        int max=0;
-        for (int i=0, j=0; i < s.length(); ++i){
-            if (map.containsKey(s.charAt(i))){
-                j = Math.max(j,map.get(s.charAt(i)));
+	public static void main(String[] args){
+		String s ="abbabc";
+		System.out.print(lengthOfLongestSubstring(s));
+	}
+	public static int lengthOfLongestSubstring(String s) {		
+        int[] charMap = new int[256];
+        Arrays.fill(charMap, -1);
+        int i=0, maxLen = 0;
+        for(int j=0; j<s.length(); j++){        
+            if(charMap[s.charAt(j)] >= i){      
+                i = charMap[s.charAt(j)] + 1;  
             }
-            map.put(s.charAt(i),i+1);
-            max = Math.max(max,i-j+1);
+            charMap[s.charAt(j)] = j;        
+            maxLen = Math.max(j-i+1, maxLen);  
         }
-        return max;
+        return maxLen;
     }
-
 }
