@@ -1,6 +1,10 @@
 package epi;
 
 public class IntegerToString {
+	public static void main(String[] args){
+		int a = 0;
+		System.out.print(intToString(a));
+	}
 	public static String intToString(int x){
 		boolean isNegative = false;
 		if(x < 0){
