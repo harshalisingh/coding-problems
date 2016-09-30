@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.LinkedList;
 
 import epi.LinkedList.ListNode;
 

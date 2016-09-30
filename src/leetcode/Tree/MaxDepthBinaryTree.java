@@ -1,6 +1,4 @@
-package leetcode;
-
-import leetcode.common.TreeNode;
+package leetcode.Tree;
 
 /**
  * 

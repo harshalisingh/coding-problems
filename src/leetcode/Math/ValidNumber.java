@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.Math;
 
 public class ValidNumber {
 	public boolean isNumber(String s) {

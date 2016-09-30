@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.Math;
 
 public class PalindromeNumber {
 	public static void main(String[] args){

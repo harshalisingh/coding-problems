@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.Strings;
 
 //LeetCode Solution
 public class ReverseWordInSentence {
