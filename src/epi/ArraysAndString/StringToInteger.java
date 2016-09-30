@@ -1,4 +1,4 @@
-package epi;
+package epi.ArraysAndString;
 
 public class StringToInteger {
 	public static int stringToInt(String s){

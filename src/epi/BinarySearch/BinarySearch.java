@@ -1,4 +1,4 @@
-package epi;
+package epi.BinarySearch;
 
 /**
  * Correct and bug-free implementation of Binary Search

@@ -1,4 +1,4 @@
-package epi;
+package epi.LinkedList;
 
 public class RemoveAllDuplicatesLinkedList {
 	public static void main(String[] args){

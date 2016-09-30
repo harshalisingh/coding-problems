@@ -1,4 +1,4 @@
-package epi;
+package epi.ArraysAndString;
 
 /**
  * Exercise 6.2

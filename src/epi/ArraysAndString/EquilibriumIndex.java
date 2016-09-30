@@ -1,4 +1,4 @@
-package epi;
+package epi.ArraysAndString;
 
 public class EquilibriumIndex {
 	

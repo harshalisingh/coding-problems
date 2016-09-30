@@ -1,4 +1,4 @@
-package epi;
+package epi.ArraysAndString;
 
 //EPI Solution
 public class ReverseWordInSentence {

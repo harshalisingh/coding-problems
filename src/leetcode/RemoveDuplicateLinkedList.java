@@ -1,6 +1,6 @@
 package leetcode;
 
-import epi.ListNode;
+import epi.LinkedList.ListNode;
 
 public class RemoveDuplicateLinkedList {
 	//LeetCode

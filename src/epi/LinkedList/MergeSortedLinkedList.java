@@ -1,4 +1,4 @@
-package epi;
+package epi.LinkedList;
 
 /*
  * Space Complexity: O(1)

@@ -1,4 +1,4 @@
-package epi;
+package epi.BinarySearch;
 
 import java.util.List;
 

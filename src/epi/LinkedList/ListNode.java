@@ -1,4 +1,4 @@
-package epi;
+package epi.LinkedList;
 
 public class ListNode<T> {
 	public T data;
@@ -14,6 +14,16 @@ public class ListNode<T> {
 		this.data = data;
 		this.next = next;
 		this.prev = prev;
+	}
+	
+	public void printList(ListNode<Integer> L) {
+		while (L != null) {
+			System.out.print(L.data);
+			System.out.print("--->");
+			L = L.next;
+		}
+		System.out.print("null");
+		System.out.println();
 	}
 	
 }

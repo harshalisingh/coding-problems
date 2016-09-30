@@ -1,4 +1,4 @@
-package epi;
+package epi.ArraysAndString;
 
 import java.util.ArrayList;
 import java.util.List;
