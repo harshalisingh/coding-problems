@@ -7,7 +7,7 @@ class ListNode {
 	void displayNode(){ 
 		System.out.print("[" + data + "]"); 
 	}
-}
+} 
 class LinkedList{
 	private ListNode first;
 	private ListNode last;

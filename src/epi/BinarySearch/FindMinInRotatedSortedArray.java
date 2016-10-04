@@ -2,7 +2,7 @@ package epi.BinarySearch;
 
 import java.util.List;
 
-public class SearchCyclicallySortedArray {
+public class FindMinInRotatedSortedArray {
 	
 	public static int searchSmallest(List<Integer> A){
 		
@@ -23,7 +23,7 @@ public class SearchCyclicallySortedArray {
 			}
 		}
 		
-		return low;
+		return A.get(low);
 	}
 
 }
