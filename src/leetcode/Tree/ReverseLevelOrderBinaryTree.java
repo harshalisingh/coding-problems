@@ -28,26 +28,27 @@ public class ReverseLevelOrderBinaryTree {
         return nodes;
     }
 	
+	//This one!
 	public void reverseLevelOrderTraversal(TreeNode root){
         if(root == null){
             return;
         }
-        Deque<TreeNode> q = new LinkedList<>();
-        Deque<TreeNode> s = new LinkedList<>();
+        Deque<TreeNode> queue = new ArrayDeque<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
         
-        q.offer(root);
-        while(!q.isEmpty()){
-            root = q.poll();
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            root = queue.poll();
             if(root.right != null){
-                q.offer(root.right);
+            	queue.offer(root.right);
             }
             if(root.left != null){
-                q.offer(root.left);
+            	queue.offer(root.left);
             }
-            s.push(root);
+            stack.push(root);
         }
-        while(!s.isEmpty()){
-            System.out.print(s.pop().data + " ");
+        while(!stack.isEmpty()){
+            System.out.print(stack.pop().data + " ");
         }
     }
 }

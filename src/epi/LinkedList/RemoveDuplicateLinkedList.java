@@ -1,7 +1,7 @@
 package epi.LinkedList;
 
 public class RemoveDuplicateLinkedList {
-	//EPI Solution
+	//EPI Solution (leetcode one is easy)
 	public static ListNode<Integer> removeDuplicates(ListNode<Integer> L){
 		ListNode<Integer> iter = L;
 		while(iter != null){
