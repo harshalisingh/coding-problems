@@ -1,8 +1,8 @@
 package leetcode.LinkedList;
 
 /*
- * p->q->r->s
- * q->p->s->r
+ * dH(prev)->head(p)->q->r->s
+ * dH -> q -> p(prev) -> r (p) -> s
  */
 public class SwapNodePairs {
 	public ListNode swapPairs(ListNode head) {

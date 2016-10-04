@@ -1,15 +1,16 @@
 package leetcode.Tree;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class PostOrderBinaryTreeTraversal {
 	void iterativePostOrder(TreeNode root){
 		if(root == null) return;
-		Stack<TreeNode> s1 = new Stack<TreeNode>();
-		Stack<TreeNode> s2 = new Stack<TreeNode>();
+		Deque<TreeNode> s1 = new ArrayDeque<>();
+		Deque<TreeNode> s2 = new ArrayDeque<>();
 		
 		s1.push(root);
-		while(!s1.empty()){
+		while(!s1.isEmpty()){
 			root = s1.pop();
 			s2.push(root);
 			if(root.left != null) s1.push(root.left);

@@ -1,5 +1,6 @@
 package leetcode.Tree;
 
+import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,5 +26,28 @@ public class ReverseLevelOrderBinaryTree {
             nodes.add(0, layer);
         }
         return nodes;
+    }
+	
+	public void reverseLevelOrderTraversal(TreeNode root){
+        if(root == null){
+            return;
+        }
+        Deque<TreeNode> q = new LinkedList<>();
+        Deque<TreeNode> s = new LinkedList<>();
+        
+        q.offer(root);
+        while(!q.isEmpty()){
+            root = q.poll();
+            if(root.right != null){
+                q.offer(root.right);
+            }
+            if(root.left != null){
+                q.offer(root.left);
+            }
+            s.push(root);
+        }
+        while(!s.isEmpty()){
+            System.out.print(s.pop().data + " ");
+        }
     }
 }
