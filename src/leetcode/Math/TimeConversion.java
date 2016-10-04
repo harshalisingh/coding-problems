@@ -26,7 +26,7 @@ public class TimeConversion {
 
 	/*
 	 * A single string containing a time in 12-hour clock format (i.e. hh:mm:ssAM or hh:mm:ssPM)
-	 * Convert and print the given time in -hour format, where .
+	 * Convert and print the given time in 24-hour format, where .
 	 */
 	static String convertTimeFormat(String time){
 		String suffix = time.substring(8);
