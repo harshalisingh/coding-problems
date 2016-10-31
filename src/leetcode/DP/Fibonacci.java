@@ -3,6 +3,7 @@ package leetcode.DP;
 public class Fibonacci {
 	public static void main(String[] args){
 		System.out.println(fibTopDown(7));
+		System.out.println('a' - '0');
 	}
 	
 	//Top-Down
