@@ -1,8 +1,9 @@
-package leetcode.Arrays;
+package leetcode.Design;
 
 import java.util.HashMap;
 import java.util.Map;
 
+//http://www.programcreek.com/2014/03/two-sum-iii-data-structure-design-java/
 public class TwoSumIII {
 	private Map<Integer, Integer> map = new HashMap<>();
 	public void add(int input) {

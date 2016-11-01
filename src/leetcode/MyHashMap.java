@@ -1,6 +1,11 @@
 package leetcode;
 
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.Set;
 
 public class MyHashMap<K, T> {
 
@@ -29,7 +34,7 @@ public class MyHashMap<K, T> {
 	}
 
 	int size = 10;
-	LinkedList buckets[] = new LinkedList[size];
+	LinkedList<Pair> buckets[] = new LinkedList[size];
 
 	int hash(K key) {
 		return key.hashCode() % size;
@@ -47,7 +52,7 @@ public class MyHashMap<K, T> {
 				return;
 			}
 		}
-		buckets[index].add(new Pair(key, value));
+		buckets[index].add(new Pair<K, T>(key, value));
 	}
 
 	T get(K key) {
@@ -58,6 +63,28 @@ public class MyHashMap<K, T> {
 			Pair<K, T> pair = (Pair<K, T>) p;
 			if (pair.key.equals(key))
 				return pair.value;
+		}
+		return null;
+	}
+
+	//If your data structure has many-to-one mapping between keys and values,
+	//you should iterate over entries and pick all suitable keys:
+	public static <K, T> Set<K> getKeysByValue(Map<K, T> map, T value) {
+		Set<K> keys = new HashSet<K>();
+		for (Entry<K, T> entry : map.entrySet()) {
+			if (Objects.equals(value, entry.getValue())) {
+				keys.add(entry.getKey());
+			}
+		}
+		return keys;
+	}
+
+	//In case of one-to-one relationship, you can return the first matched key:
+	public static <K, T> K getKeyByValue(Map<K, T> map, T value) {
+		for (Entry<K, T> entry : map.entrySet()) {
+			if (Objects.equals(value, entry.getValue())) {
+				return entry.getKey();
+			}
 		}
 		return null;
 	}
