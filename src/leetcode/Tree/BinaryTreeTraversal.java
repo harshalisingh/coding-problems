@@ -43,14 +43,14 @@ public class BinaryTreeTraversal {
         TreeNode node = root;
         while(true){
             if(node != null){
-                stack.addFirst(node);
+                stack.push(node);
                 node = node.left;
             }
             else{
                 if(stack.isEmpty()){
                     break;
                 }
-                node = stack.pollFirst();
+                node = stack.pop();
                 System.out.println(node.data);
                 node = node.right;
             }
@@ -60,15 +60,15 @@ public class BinaryTreeTraversal {
     //Iterative Preorder Traversal
     public void preOrderItr(TreeNode root){
         Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
-        stack.addFirst(root);
+        stack.push(root);
         while(!stack.isEmpty()){
-            root = stack.pollFirst();
+            root = stack.pop();
             System.out.print(root.data + " ");
             if(root.right != null){
-                stack.addFirst(root.right);
+                stack.push(root.right);
             }
             if(root.left!= null){
-                stack.addFirst(root.left);
+                stack.push(root.left);
             }
         }
     }
@@ -77,19 +77,19 @@ public class BinaryTreeTraversal {
     public void postOrderItr(TreeNode root){
         Deque<TreeNode> stack1 = new ArrayDeque<TreeNode>();
         Deque<TreeNode> stack2 = new ArrayDeque<TreeNode>();
-        stack1.addFirst(root);
+        stack1.push(root);
         while(!stack1.isEmpty()){
-            root = stack1.pollFirst();
+            root = stack1.pop();
             if(root.left != null){
-                stack1.addFirst(root.left);
+                stack1.push(root.left);
             }
             if(root.right != null){
-                stack1.addFirst(root.right);
+                stack1.push(root.right);
             }
-            stack2.addFirst(root);
+            stack2.push(root);
         }
         while(!stack2.isEmpty()){
-            System.out.print(stack2.pollFirst().data + " ");
+            System.out.print(stack2.pop().data + " ");
         }
     }
     

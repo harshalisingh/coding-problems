@@ -1,6 +1,9 @@
 package epi.ArraysAndString;
 
 public class StringToInteger {
+	public static void main(String[] args){
+		System.out.println(stringToInt("-34843"));
+	}
 	public static int stringToInt(String s){
 		boolean isNegative = s.charAt(0) == '-';
 		int result = 0;

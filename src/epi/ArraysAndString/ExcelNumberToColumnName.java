@@ -4,7 +4,7 @@ public class ExcelNumberToColumnName {
 	
 	public static void main (String[] args) throws java.lang.Exception
 	{
-		String result = getExcelColumnName(4);
+		String result = getExcelColumnName(28);
 		System.out.print(result);
 	}
 	

@@ -3,6 +3,7 @@ package leetcode.Tree;
 import java.util.Deque;
 import java.util.LinkedList;
 
+//Serialize and Deserialize a Tree - PreOrder Traversal
 public class CodecBinaryTree {
 	// Encodes a tree to a single string.
 	public static String serialize(TreeNode root) {

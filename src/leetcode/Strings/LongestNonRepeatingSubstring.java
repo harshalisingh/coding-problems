@@ -1,6 +1,8 @@
 package leetcode.Strings;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LongestNonRepeatingSubstring {
 	public static void main(String[] args){
@@ -19,5 +21,26 @@ public class LongestNonRepeatingSubstring {
             maxLen = Math.max(j-i+1, maxLen);  
         }
         return maxLen;
+    }
+	
+	public int lengthOfLongestSubstringFaster(String s) {
+        Set<Character> uniqueSet = new HashSet<>();
+        int maxSize = 0;
+        int start = 0;
+        for(int i = 0; i < s.length(); i++) {
+            if(!uniqueSet.contains(s.charAt(i))) {
+                uniqueSet.add(s.charAt(i));
+                if(uniqueSet.size() > maxSize) {
+                    maxSize = uniqueSet.size();
+                }
+            } else {
+                while (s.charAt(start) != s.charAt(i)) {
+                    uniqueSet.remove(s.charAt(start));
+                    start++;
+                }
+                start++;
+            }
+        }
+        return maxSize;
     }
 }

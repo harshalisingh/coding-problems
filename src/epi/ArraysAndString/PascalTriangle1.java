@@ -20,7 +20,6 @@ public class PascalTriangle1 {
                     currRow.add(1);
                 }
             }
-            
             pascalTriangle.add(currRow);
         }
         
