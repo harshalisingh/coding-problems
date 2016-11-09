@@ -1,7 +1,7 @@
 package leetcode.LinkedList;
 
 public class ListNode {
-	int data;
+	int val;
 	ListNode next;
-	ListNode(int x) { data = x; }
+	ListNode(int x) { val = x; }
 }

@@ -24,7 +24,7 @@ public class BTPathSumIII {
             return;
         }
         
-        sum += root.data;
+        sum += root.val;
 
         if (preSum.containsKey(sum - target)) {      //See if there is a subarray sum equals to target
             count += preSum.get(sum - target);

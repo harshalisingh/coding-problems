@@ -5,8 +5,8 @@ package leetcode.Sorting;
 public class KthSmallestElement {
 
 	public int findkthSmallestElement(int[] arrA, int k) {
-		//k = k - 1;           // Kth element from start (Kth smallest)
-		k = arrA.length - k;   //Kth element from end    (Kth largest)
+		k = k - 1;           // Kth element from start (Kth smallest)
+		//k = arrA.length - k;   //Kth element from end    (Kth largest)
 		return getKth(arrA, 0, arrA.length - 1, k);
 	}
 

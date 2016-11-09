@@ -13,7 +13,7 @@ public class MergeSortedLinkedList {
 		ListNode<Integer> current = dummyHead;	
 		ListNode<Integer> p1 = L1, p2 = L2;
 		
-		while(p1!= null && p2 != null){
+		while(p1 != null && p2 != null){
 			if(p1.data <= p2.data){
 				current.next = p1;
 				p1 = p1.next;

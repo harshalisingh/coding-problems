@@ -19,7 +19,7 @@ public class PostOrderBinaryTreeTraversal {
 		
 		while(!s2.isEmpty()){
 			root = s2.pop();
-			System.out.print(root.data);
+			System.out.print(root.val);
 		}
 	}
 	
@@ -27,7 +27,7 @@ public class PostOrderBinaryTreeTraversal {
 		if(root == null) return;
 		recursivePostOrder(root.left);
 		recursivePostOrder(root.right);
-		System.out.println(root.data);
+		System.out.println(root.val);
 
 	}
 }

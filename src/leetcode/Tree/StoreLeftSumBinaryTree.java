@@ -11,16 +11,16 @@ public class StoreLeftSumBinaryTree {
 	        return 0;
 	    
 	    if (root.left == null && root.right == null)
-	        return root.data;
+	        return root.val;
 	 
 	    // Update left and right subtrees
 	    int leftsum  = updatetree(root.left);
 	    int rightsum = updatetree(root.right);
 	 
 	    //Add leftsum to current node
-	    root.data += leftsum;
+	    root.val += leftsum;
 	 
 	    // Return sum of values under root
-	    return root.data + rightsum;
+	    return root.val + rightsum;
 	}
 }

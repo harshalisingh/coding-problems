@@ -6,9 +6,9 @@ package epi.BinarySearch;
  *
  */
 public class BinarySearch {
-	
+
 	public static int bsearch(int t, int[] A){
-		
+
 		int low = 0, high = A.length - 1;
 		while(low <= high){
 			int mid = low + (high - low)/2;
@@ -20,7 +20,7 @@ public class BinarySearch {
 				high = mid - 1;
 			}
 		}
-		
+
 		return -1;
 	}
 

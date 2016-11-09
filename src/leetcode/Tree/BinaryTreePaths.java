@@ -17,7 +17,7 @@ public class BinaryTreePaths {
             return;
         }
         int len = sb.length();
-        sb.append(root.data);
+        sb.append(root.val);
         if(root.left == null && root.right == null) {
             res.add(sb.toString());
         } else {

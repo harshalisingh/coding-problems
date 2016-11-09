@@ -3,6 +3,21 @@ package leetcode.Strings;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * Given two words, determine if the first word, or any anagram of it, 
+ * appears in consecutive characters of the second word. For instance, tea appears as an anagram 
+ * in the last three letters of slate, but let does not appear as an anagram in slate even though 
+ * all the letters of let appear in slate. 
+	Return the anagram of the first word that has appeared in the second word.
+	https://www.careercup.com/question?id=5761560760811520
+	Sample Input 1           Sample Output1
+	tea                                 ate
+	slate 
+	
+	Sample Input 2           Sample Output2 
+	let                                  None
+	slate  
+ */
 public class FindAnagramInWord {
 	public static void findWord(String part, String full) {
 		char c;

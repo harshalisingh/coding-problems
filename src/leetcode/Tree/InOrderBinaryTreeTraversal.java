@@ -18,7 +18,7 @@ public class InOrderBinaryTreeTraversal {
 					break;
 				}
 				root = s1.pop();
-				System.out.println(root.data);
+				System.out.println(root.val);
 				root = root.right;
 			}
 		}
@@ -27,7 +27,7 @@ public class InOrderBinaryTreeTraversal {
 	void recursiveInOrder(TreeNode root){
 		if(root == null) return;
 		recursiveInOrder(root.left);
-		System.out.println(root.data);
+		System.out.println(root.val);
 		recursiveInOrder(root.right);		
 	}
 }

@@ -1,8 +1,8 @@
 package leetcode.Tree;
 
 public class TreeNode {
-	int data;
+	int val;
 	TreeNode left;
 	TreeNode right;
-	TreeNode(int x) { data = x; }
+	TreeNode(int x) { val = x; }
 }

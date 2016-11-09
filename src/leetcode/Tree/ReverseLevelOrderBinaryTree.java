@@ -18,7 +18,7 @@ public class ReverseLevelOrderBinaryTree {
             List<Integer> layer = new LinkedList<Integer>();
             for(int i=0; i<levelNum; i++) {
                 root = queue.poll();
-                layer.add(root.data);
+                layer.add(root.val);
                 if(root.left != null) queue.add(root.left);
                 if(root.right != null) queue.add(root.right);
                 
@@ -48,7 +48,7 @@ public class ReverseLevelOrderBinaryTree {
             stack.push(root);
         }
         while(!stack.isEmpty()){
-            System.out.print(stack.pop().data + " ");
+            System.out.print(stack.pop().val + " ");
         }
     }
 }

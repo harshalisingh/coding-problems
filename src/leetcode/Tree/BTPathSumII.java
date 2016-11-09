@@ -9,11 +9,11 @@ import java.util.List;
  */
 public class BTPathSumII {
 	public static void pathSumInner(TreeNode root, int sum, List<Integer>path, List<List<Integer>> result) {
-	    path.add(root.data);
+	    path.add(root.val);
 	    if(root.left == null && root.right == null)
-	        if(sum == root.data) result.add(new ArrayList<Integer>(path));
-	    if(root.left!=null) pathSumInner(root.left, sum-root.data, path, result);
-	    if(root.right!=null)pathSumInner(root.right, sum-root.data, path, result);
+	        if(sum == root.val) result.add(new ArrayList<Integer>(path));
+	    if(root.left!=null) pathSumInner(root.left, sum-root.val, path, result);
+	    if(root.right!=null)pathSumInner(root.right, sum-root.val, path, result);
 	    path.remove(path.size()-1);
 	}
 

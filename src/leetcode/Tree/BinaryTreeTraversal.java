@@ -15,7 +15,7 @@ public class BinaryTreeTraversal {
             return;
         }
         inOrder(root.left);
-        System.out.print(root.data + " ");
+        System.out.print(root.val + " ");
         inOrder(root.right);
     }
     
@@ -23,7 +23,7 @@ public class BinaryTreeTraversal {
         if(root == null){
             return;
         }
-        System.out.print(root.data + " ");
+        System.out.print(root.val + " ");
         preOrder(root.left);
         preOrder(root.right);
     }
@@ -34,7 +34,7 @@ public class BinaryTreeTraversal {
         }
         postOrder(root.left);
         postOrder(root.right);
-        System.out.print(root.data + " ");
+        System.out.print(root.val + " ");
     }
 
     //Iterative Inorder Traversal
@@ -51,7 +51,7 @@ public class BinaryTreeTraversal {
                     break;
                 }
                 node = stack.pop();
-                System.out.println(node.data);
+                System.out.println(node.val);
                 node = node.right;
             }
         }
@@ -63,7 +63,7 @@ public class BinaryTreeTraversal {
         stack.push(root);
         while(!stack.isEmpty()){
             root = stack.pop();
-            System.out.print(root.data + " ");
+            System.out.print(root.val + " ");
             if(root.right != null){
                 stack.push(root.right);
             }
@@ -89,7 +89,7 @@ public class BinaryTreeTraversal {
             stack2.push(root);
         }
         while(!stack2.isEmpty()){
-            System.out.print(stack2.pop().data + " ");
+            System.out.print(stack2.pop().val + " ");
         }
     }
     
@@ -105,10 +105,10 @@ public class BinaryTreeTraversal {
             	TreeNode temp = stack.peek().right;
                 if (temp == null) {
                     temp = stack.poll();
-                    System.out.print(temp.data + " ");
+                    System.out.print(temp.val + " ");
                     while (!stack.isEmpty() && temp == stack.peek().right) {
                         temp = stack.poll();
-                        System.out.print(temp.data + " ");
+                        System.out.print(temp.val + " ");
                     }
                 } else {
                     current = temp;

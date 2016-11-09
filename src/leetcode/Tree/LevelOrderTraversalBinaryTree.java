@@ -33,8 +33,8 @@ public class LevelOrderTraversalBinaryTree {
 			List<Integer> layer = new ArrayList<Integer>();
 			for(int i=0; i < size; i++) {
 				root = queue.poll();
-				layer.add(root.data);
-				System.out.print(root.data + " ");
+				layer.add(root.val);
+				System.out.print(root.val + " ");
 				if(root.left != null) queue.offer(root.left);
 				if(root.right != null) queue.offer(root.right);
 			}

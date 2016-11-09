@@ -19,7 +19,7 @@ public class CodecBinaryTree {
 	    while(!queue.isEmpty()){
 	        TreeNode t = queue.poll();
 	        if(t!=null){
-	            sb.append(String.valueOf(t.data) + ",");
+	            sb.append(String.valueOf(t.val) + ",");
 	            queue.add(t.left);
 	            queue.add(t.right);
 	        }else{

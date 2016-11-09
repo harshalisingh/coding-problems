@@ -6,6 +6,23 @@ public class ArrangeCoins {
 		long[] coins = {2,5,8,3,6};
 		//arrangeCoinsPrinted(coins);
 		arrangeCoins(coins);
+	}	
+	/*public int arrangeCoins(int n) {
+		return (int) ((Math.sqrt(1 + 8.0 * n) - 1) / 2);
+	}*/
+	public int arrangeCoins(int n) {
+		int start = 0;
+		int end = n;
+		int mid = 0;
+		while (start <= end){
+			mid = (start + end) >>> 1;
+			if ((0.5 * mid * mid + 0.5 * mid ) <= n){
+				start = mid + 1;
+			}else{
+				end = mid - 1;
+			}
+		}
+		return start - 1;
 	}
 	static void arrangeCoinsPrinted(long[] n){
 		for(int k=0;k<n.length;k++){
@@ -44,23 +61,23 @@ public class ArrangeCoins {
 			System.out.println(count-1);
 		}
 	}
-	
+
 	static void myArrangeCoins(long[] coins){
 		for(int i = 0; i < coins.length;i++){
-            long coin = coins[i];
-            int row = 1;
-            for(long j = coin; j > 0; row++){
-                if(row < j){
-                    j = j - row;
-                } else if (row == j){
-                    System.out.println(row);
-                    break;
-                } else {
-                    System.out.println(row - 1);
-                    break;
-                }
-            }
-        }
+			long coin = coins[i];
+			int row = 1;
+			for(long j = coin; j > 0; row++){
+				if(row < j){
+					j = j - row;
+				} else if (row == j){
+					System.out.println(row);
+					break;
+				} else {
+					System.out.println(row - 1);
+					break;
+				}
+			}
+		}
 	}
 
 }

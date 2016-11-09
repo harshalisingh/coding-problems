@@ -21,14 +21,14 @@ public class LongestCommonPrefix {
 		StringBuilder result = new StringBuilder(); // Our resultant string
 		char current;  // The current character
 
-		for (int i=0; i<minlen; i++)
+		for (int i=0; i < minlen; i++)
 		{
 			// Current character (must be same
 			// in all strings to be a part of
 			// result)
 			current = arr[0].charAt(i);
 
-			for (int j=1 ; j<n; j++)
+			for (int j=1 ; j < n; j++)
 				if (arr[j].charAt(i) != current)
 					return result.toString();
 

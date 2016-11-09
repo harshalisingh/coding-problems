@@ -17,12 +17,12 @@ public class ClosestBST {
         if(root==null)
             return;
  
-        if(Math.abs(root.data - target) < min){
-            min = Math.abs(root.data - target);
-            goal = root.data;
+        if(Math.abs(root.val - target) < min){
+            min = Math.abs(root.val - target);
+            goal = root.val;
         } 
  
-        if(target < root.data){
+        if(target < root.val){
             helper(root.left, target);
         }else{
             helper(root.right, target);
@@ -31,27 +31,27 @@ public class ClosestBST {
     
     public int closestValueIterative(TreeNode root, double target) {
         double min=Double.MAX_VALUE;
-        int result = root.data;
+        int result = root.val;
      
         while(root!=null){
-            if(target > root.data){
+            if(target > root.val){
      
-                double diff = Math.abs(root.data - target);
+                double diff = Math.abs(root.val - target);
                 if(diff<min){
                     min = Math.min(min, diff);
-                    result = root.data;
+                    result = root.val;
                 }
                 root = root.right;
-            }else if(target < root.data){
+            }else if(target < root.val){
      
-                double diff = Math.abs(root.data - target);
+                double diff = Math.abs(root.val - target);
                 if(diff<min){
                     min = Math.min(min, diff);
-                    result = root.data;
+                    result = root.val;
                 }
                 root = root.left;
             }else{
-                return root.data;
+                return root.val;
             }
         }    
         return result;

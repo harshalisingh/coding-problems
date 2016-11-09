@@ -10,10 +10,10 @@ import java.util.LinkedList;
 public class BTPathSum {
 	public boolean hasPathSumRecursive(TreeNode root, int sum) {
         if(root == null) return false;
-        if(root.left == null && root.right == null) return sum == root.data;
+        if(root.left == null && root.right == null) return sum == root.val;
 
-        return hasPathSumRecursive(root.left, sum - root.data) 
-        		|| hasPathSumRecursive(root.right, sum - root.data);
+        return hasPathSumRecursive(root.left, sum - root.val) 
+        		|| hasPathSumRecursive(root.right, sum - root.val);
     }
 	
 	public boolean hasPathSum(TreeNode root, int sum) {
@@ -23,7 +23,7 @@ public class BTPathSum {
         Deque<Integer> values = new LinkedList<Integer>();
  
         nodes.add(root);
-        values.add(root.data);
+        values.add(root.val);
  
         while(!nodes.isEmpty()){
             TreeNode curr = nodes.poll();
@@ -35,12 +35,12 @@ public class BTPathSum {
  
             if(curr.left != null){
                 nodes.add(curr.left);
-                values.add(sumValue+curr.left.data);
+                values.add(sumValue+curr.left.val);
             }
  
             if(curr.right != null){
                 nodes.add(curr.right);
-                values.add(sumValue+curr.right.data);
+                values.add(sumValue+curr.right.val);
             }
         }
  

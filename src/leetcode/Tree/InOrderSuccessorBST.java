@@ -4,7 +4,7 @@ public class InOrderSuccessorBST {
 	public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
 	    TreeNode succ = null;
 	    while (root != null) {
-	        if (p.data < root.data) {
+	        if (p.val < root.val) {
 	            succ = root;
 	            root = root.left;
 	        }

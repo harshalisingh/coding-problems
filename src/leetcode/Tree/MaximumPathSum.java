@@ -13,8 +13,8 @@ public class MaximumPathSum {
 	        return Integer.MIN_VALUE;
 	    int left = Math.max(0, helper(root.left));
 	    int right = Math.max(0, helper(root.right));
-	    max = Math.max(max, root.data + left + right);
-	    return root.data + Math.max(left, right);
+	    max = Math.max(max, root.val + left + right);
+	    return root.val + Math.max(left, right);
 	}
 
 }
