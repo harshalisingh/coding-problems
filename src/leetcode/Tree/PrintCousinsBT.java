@@ -1,6 +1,17 @@
 package leetcode.Tree;
 
 public class PrintCousinsBT {
+
+	// This function prints cousins of a given node
+	static void printCousins(TreeNode root, TreeNode node)
+	{
+		// Get level of given node
+		int level = getLevel(root, node, 1);
+
+		// Print nodes of given level.
+		printGivenLevel(root, node, level);
+	}
+	
 	/* It returns level of the node if it is present
 	   in tree, otherwise returns 0.*/
 	static int getLevel(TreeNode root, TreeNode node, int level)
@@ -46,16 +57,6 @@ public class PrintCousinsBT {
 			printGivenLevel(root.left, node, level-1);
 			printGivenLevel(root.right, node, level-1);
 		}
-	}
-
-	// This function prints cousins of a given node
-	static void printCousins(TreeNode root, TreeNode node)
-	{
-		// Get level of given node
-		int level = getLevel(root, node, 1);
-
-		// Print nodes of given level.
-		printGivenLevel(root, node, level);
 	}
 	
 	public static void main(String[] args){

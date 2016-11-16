@@ -12,11 +12,12 @@ import java.util.Deque;
 
 public class FindDepthBinaryTree {
 
+	//Find the Maximum Depth OR Height of a Binary Tree
 	public int maxDepth(TreeNode root) {
 		if (root == null)
 			return 0;
 		else{
-			return Math.max(maxDepth(root.left)+1, maxDepth(root.right)+1);
+			return  (1+ Math.max(maxDepth(root.left), maxDepth(root.right)));
 		}
 	}
 	

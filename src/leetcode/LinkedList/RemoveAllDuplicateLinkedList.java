@@ -1,7 +1,7 @@
 package leetcode.LinkedList;
 
 public class RemoveAllDuplicateLinkedList {
-	public ListNode deleteDuplicates(ListNode head) {
+	public static ListNode deleteDuplicates(ListNode head) {
 		//use two pointers, slow - track the node before the dup nodes, 
 		// fast - to find the last node of dups.
 		ListNode dummy = new ListNode(0), fast = head, slow = dummy;
