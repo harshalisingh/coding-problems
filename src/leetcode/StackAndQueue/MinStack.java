@@ -3,6 +3,9 @@ package leetcode.StackAndQueue;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+/*
+ * https://leetcode.com/problems/min-stack/
+ */
 class MinStack {
     int min=Integer.MAX_VALUE;
     Deque<Integer> stack = new ArrayDeque<Integer>();

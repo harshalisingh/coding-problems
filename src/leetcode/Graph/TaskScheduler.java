@@ -48,7 +48,7 @@ public class TaskScheduler {
 					if (map.get(dependency[i][1]) == 0) {
 						// If indegree is zero, then add the course to the order.
 						order[index++] = dependency[i][1];
-						queue.offer(dependency[i][1]);
+						queue.offer(dependency[i][1]); 
 					}
 				} 
 			}

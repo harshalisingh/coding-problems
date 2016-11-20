@@ -1,4 +1,4 @@
-package leetcode.Tree;
+package leetcode.BST;
 
 /*
  * Given a non-empty binary search tree and a target value, 

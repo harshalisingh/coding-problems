@@ -1,4 +1,4 @@
-package leetcode.Tree;
+package leetcode.BST;
 
 /*
  * Given an array of numbers, verify whether it is the correct 

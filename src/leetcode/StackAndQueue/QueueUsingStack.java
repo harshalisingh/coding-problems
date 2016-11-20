@@ -16,12 +16,12 @@ public class QueueUsingStack {
 	}
 
 	// Push element x to the back of queue.
-	public void push(int x) {
+	public void add(int x) {
 		s1.push(x);
 	}
 
 	// Removes the element from in front of queue.
-	public void pop() {
+	public void remove() {
 		peek();
 		s2.pop();
 	}

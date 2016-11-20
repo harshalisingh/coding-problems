@@ -1,4 +1,6 @@
-package leetcode.Tree;
+package leetcode.BST;
+
+import leetcode.Tree.TreeNode;
 
 public class SortedArrayToBST {
 	public TreeNode sortedArrayToBST(int[] num) {

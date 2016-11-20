@@ -1,4 +1,4 @@
-package leetcode.Tree;
+package leetcode.BST;
 
 public class LargestBST {
 	public int largestBST(Node root){

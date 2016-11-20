@@ -1,5 +1,6 @@
 package leetcode.Tree;
 
+
 /*
  * Given a binary tree, find the diameter of it.
  * Diameter of tree is defined as A longest path or route between any two nodes in a tree. 
@@ -8,14 +9,14 @@ package leetcode.Tree;
  * Longest path between two nodes which passes through the root.)
  */
 public class DiameterBinaryTree {
-	public int getHeight(Node root) {
+	public int getHeight(TreeNode root) {
 		if (root != null) {
 			return 1 + Math.max(getHeight(root.left), getHeight(root.right));
 		}
 		return 0;
 	}
 
-	public int Diameter(Node root) {
+	public int Diameter(TreeNode root) {
 		if (root != null) {
 			// get the left and right subtree height
 			int leftH = getHeight(root.left);

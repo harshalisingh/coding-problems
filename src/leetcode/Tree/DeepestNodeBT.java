@@ -7,16 +7,16 @@ public class DeepestNodeBT {
 	int deepestlevel;
 	int value;
 	
-	public int Deep(Node root) {
+	public int Deep(TreeNode root) {
 		find(root, 0);
 		return value;
 	}
 
-	public void find(Node root, int level) {
+	public void find(TreeNode root, int level) {
 		if (root != null) {
 			find(root.left, ++level);
 			if (level > deepestlevel) {
-				value = root.data;
+				value = root.val;
 				deepestlevel = level;
 			}
 			find(root.right, level);

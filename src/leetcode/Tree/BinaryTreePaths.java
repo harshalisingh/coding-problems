@@ -25,6 +25,7 @@ public class BinaryTreePaths {
             helper(res, root.left, sb);
             helper(res, root.right, sb);
         }
+        //System.out.println(sb.toString());
         sb.setLength(len);
     }
     
@@ -34,8 +35,8 @@ public class BinaryTreePaths {
 		root.right = new TreeNode(3);
 		root.left.left = new TreeNode(4);
 		root.left.right = new TreeNode(5);
-		root.right.left = new TreeNode(6);
-		root.right.right = new TreeNode(7);
+		//root.right.left = new TreeNode(6);
+		//root.right.right = new TreeNode(7);
 		List<String> string = binaryTreePaths(root);
 		for(String s : string){
 			System.out.println(s);

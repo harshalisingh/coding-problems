@@ -1,5 +1,4 @@
-package leetcode.Tree;
-
+package leetcode.BST;
 public class InOrderSuccessorBST {
 	public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
 	    TreeNode succ = null;

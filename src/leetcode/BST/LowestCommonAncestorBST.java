@@ -1,5 +1,8 @@
-package leetcode.Tree;
+package leetcode.BST;
 
+/*
+ * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
+ */
 public class LowestCommonAncestorBST {
 	public TreeNode lca(TreeNode root, TreeNode n1, TreeNode n2) {
         if (root.val > Math.max(n1.val, n2.val)) {

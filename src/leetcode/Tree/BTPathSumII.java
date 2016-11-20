@@ -8,23 +8,29 @@ import java.util.List;
  * 
  */
 public class BTPathSumII {
-	public static void pathSumInner(TreeNode root, int sum, List<Integer>path, List<List<Integer>> result) {
-	    path.add(root.val);
-	    if(root.left == null && root.right == null)
-	        if(sum == root.val) result.add(new ArrayList<Integer>(path));
-	    if(root.left!=null) pathSumInner(root.left, sum-root.val, path, result);
-	    if(root.right!=null)pathSumInner(root.right, sum-root.val, path, result);
+	public static List<List<Integer>> pathSum(TreeNode root, int sum) {
+		List<List<Integer>> resultList = new ArrayList<List<Integer>>();
+		List<Integer> currentPath = new ArrayList<>();
+		pathSumHelper(root, sum, currentPath, resultList);
+		return resultList;
+	}
+
+	public static void pathSumHelper(TreeNode root, int sum, List<Integer> path, List<List<Integer>> result) {
+		if (root == null){
+	        return; 
+	    }
+		path.add(root.val);
+	    if (root.left == null && root.right == null && root.val == sum){
+	    	result.add(new ArrayList<Integer>(path));
+	    }else{
+	    	pathSumHelper(root.left, sum - root.val, path, result);
+	    	pathSumHelper(root.right, sum - root.val, path, result);
+	    }
 	    path.remove(path.size()-1);
 	}
 
-	public static List<List<Integer>> pathSum(TreeNode root, int sum) {
-	    List<List<Integer>> resultList = new ArrayList<List<Integer>>();
-	    if(root==null) return resultList;
-	    List<Integer> currentPath = new ArrayList<Integer>();
-	    pathSumInner(root, sum, currentPath, resultList);
-	    return resultList;
-	}
-	
+
+
 	public static void main(String[] args){
 		TreeNode root = new TreeNode(1);
 		root.left = new TreeNode(2);
