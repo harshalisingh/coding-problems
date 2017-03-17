@@ -1,7 +1,8 @@
-package leetcode.Strings;
+package leetcode.PatternSearch;
 
 public class NeedleHaystack {
-	public int strStr(String haystack, String needle) {
+	//Pattern exists or not
+	public static int strStr(String haystack, String needle) {
         int l1 = haystack.length(), l2 = needle.length();
         if (l1 < l2) {
             return -1;
@@ -28,4 +29,11 @@ public class NeedleHaystack {
 			return false;
 		}
 	}
+	
+	public static void main(String[] args){
+		String text = "AABAACAADAABAAABAA";
+		String pattern = "AABA";
+		System.out.println(strStr(text, pattern));
+	}
+	
 }

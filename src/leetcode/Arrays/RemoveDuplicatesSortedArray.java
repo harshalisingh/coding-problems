@@ -19,4 +19,14 @@ public class RemoveDuplicatesSortedArray {
 				nums[i++] = n;
 		return i;
 	}
+
+	//Remove Element
+	//Given an array and a value, remove all instances of that value in place and return the new length.
+	public int removeElement(int[] nums, int val) {
+		int i = 0;
+		for(int n : nums)
+			if(n != val) 
+				nums[i++] = n;
+		return i;
+	}
 }

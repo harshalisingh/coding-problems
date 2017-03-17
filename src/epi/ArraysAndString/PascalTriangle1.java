@@ -19,7 +19,7 @@ public class PascalTriangle1 {
                 } else {
                     currRow.add(1);
                 }
-            }
+            } 
             pascalTriangle.add(currRow);
         }
         

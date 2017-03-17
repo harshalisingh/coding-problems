@@ -1,4 +1,4 @@
-package leetcode.Strings;
+package leetcode.PatternSearch;
 
 public class RabinKarp {
 

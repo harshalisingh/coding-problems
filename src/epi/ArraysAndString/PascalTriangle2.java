@@ -11,9 +11,15 @@ public class PascalTriangle2 {
         		res.add(1);
         		for(int j = i-1; j > 0; j--) {
         			res.set(j, res.get(j-1) + res.get(j));
+        			System.out.print(res.toString());
         		}
         }
         return res;
     }
+	
+	public static void main(String[] args){
+		PascalTriangle2 pt2 = new PascalTriangle2();
+		pt2.getRow(3);
+	}
 
 }
