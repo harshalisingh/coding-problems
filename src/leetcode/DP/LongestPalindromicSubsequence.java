@@ -1,5 +1,8 @@
 package leetcode.DP;
 
+/*
+ * Time Complexity of the above implementation is O(n^2)
+ */
 public class LongestPalindromicSubsequence {
 
 	//Bottom-Up

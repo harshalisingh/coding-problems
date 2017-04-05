@@ -6,7 +6,7 @@ public class RemoveDuplicatesSortedArray {
 	public int removeDuplicatesI(int[] nums) {
 		int i = 0;
 		for(int n : nums)
-			if(i < 1 || n > nums[i - 1]) 
+			if(i < 1 || n > nums[i - 1]) //if current is not equal to prev
 				nums[i++] = n;
 		return i;
 	}

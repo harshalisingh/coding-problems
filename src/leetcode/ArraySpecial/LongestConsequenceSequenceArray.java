@@ -1,4 +1,4 @@
-package leetcode.Arrays;
+package leetcode.ArraySpecial;
 
 import java.util.HashSet;
 import java.util.Set;

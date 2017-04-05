@@ -1,13 +1,13 @@
 package leetcode.DP;
 
-public class MaximumSubArray {
-	public int maxSumSubArray(int[] A) {
-		int res = Integer.MIN_VALUE, sum = 0;
-		for (int i = 0; i < A.length; i++) {
-			sum = Math.max(sum, 0) + A[i];
-			res = Math.max(res, sum);
+public class LargestSumContinguousSubArray {
+	public static int maxSubArray(int[] A) {
+		int maxSoFar=A[0], maxEndingHere=A[0];
+		for (int i=1;i<A.length;++i){
+			maxEndingHere= Math.max(maxEndingHere+A[i], A[i]);
+			maxSoFar=Math.max(maxSoFar, maxEndingHere);	
 		}
-		return res;
+		return maxSoFar;
 	}
 
 	public int maxProductSubArray(int[] A) {
@@ -26,5 +26,11 @@ public class MaximumSubArray {
 			res = Math.max(res, max);
 		}
 		return res;
+	}
+	
+	public static void main(String[] args){
+		LargestSumContinguousSubArray lcs = new LargestSumContinguousSubArray();
+		int[] input = {1, 101, 2, 3, 100, 4, 5};
+		System.out.println(lcs.maxSubArray(input));
 	}
 }

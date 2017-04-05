@@ -1,10 +1,10 @@
-package leetcode.Arrays;
+package leetcode.ArraySpecial;
 
 /*
- * Largest sum contiguous subarray (Kadane’s algorithm)
+ * Largest sum contiguous subarray (Kadane's algorithm)
  * DP: O(N) Time, O(1) Space
  */
-public class MaximumContinuousSubArray {
+public class MaximumSumContiguousSubArray {
 	public static void maxSubArray(int[] nums) {
 		int startIndex = 0, endIndex = 0;
 	    int currStartIndex = 0;

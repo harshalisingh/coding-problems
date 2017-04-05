@@ -11,7 +11,13 @@ public class ReverseLinkedList {
 		}
 		return prev;
 	}
-
+	
+	/*
+	 * Divide the list in 2 parts - first node and rest of the list.
+	 * Recursively call reverse for the rest of the linked list.
+	 * Link rest to first.
+	 * Fix head pointer
+	 */
 	public static ListNode<Integer> reverseRecursion(ListNode<Integer> head){
 		if (head == null || head.next == null) {
 			return head;

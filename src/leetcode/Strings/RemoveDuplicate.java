@@ -10,13 +10,14 @@ public class RemoveDuplicate {
 	}
 	//Remove duplicates and maintain order
 	public static String removeDuplicates(String str) {
-		boolean seen[] = new boolean[256];
+		boolean seen[] = new boolean[26];
 		StringBuilder sb = new StringBuilder(seen.length);
 
 		for (int i = 0; i < str.length(); i++) {
 			char ch = str.charAt(i);
-			if (!seen[ch]) {
-				seen[ch] = true;
+			int idx = ch - 'a' + 1;    //getting character's alphabet rank
+			if (!seen[idx]) {
+				seen[idx] = true;
 				sb.append(ch);
 			}
 		}

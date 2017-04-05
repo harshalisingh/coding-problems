@@ -1,4 +1,4 @@
-package leetcode.Recursion;
+package leetcode.Backtracking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import java.util.List;
  * The same repeated number may be chosen from C unlimited number of times.
  * https://leetcode.com/problems/combination-sum/
  */
-public class Combination {
+public class CombinationSum {
 	public List<List<Integer>> combinationSum(int[] nums, int target) {
 		List<List<Integer>> list = new ArrayList<>();
 		Arrays.sort(nums);

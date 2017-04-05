@@ -1,4 +1,4 @@
-package leetcode.Arrays;
+package leetcode.ArraySpecial;
 
 public class MaximumProductSubarray {
 	public int maxProduct(int[] A) {

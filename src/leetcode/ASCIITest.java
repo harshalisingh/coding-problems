@@ -11,5 +11,16 @@ public class ASCIITest {
 		
 		System.out.println('a' - '0');
 		System.out.println(x);
+		
+		
+		
+		String num = "123";
+		String abc = "abc";
+		String cap = "ABC";
+		
+		int i = num.charAt(1) - '0';
+		int ia = abc.charAt(1) - 'a';
+		char c = (char)(num.charAt(1) + 48);
+		System.out.println("'2' - '0' = " + i + ", 'b' - 'a' = " + ia + ", '2' + 48 = " + c);
 	}
 }
