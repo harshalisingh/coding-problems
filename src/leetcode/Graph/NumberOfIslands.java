@@ -1,5 +1,8 @@
 package leetcode.Graph;
 
+/*
+ * https://leetcode.com/problems/number-of-islands/#/description
+ */
 public class NumberOfIslands {
 	public static int numIslands(char[][] grid) {
 		int count = 0;

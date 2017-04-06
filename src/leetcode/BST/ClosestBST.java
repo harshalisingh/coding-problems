@@ -39,16 +39,16 @@ public class ClosestBST {
             if(target > root.val){
      
                 double diff = Math.abs(root.val - target);
-                if(diff<min){
-                    min = Math.min(min, diff);
+                if(diff < min){
+                    min = diff;
                     result = root.val;
                 }
                 root = root.right;
             }else if(target < root.val){
      
                 double diff = Math.abs(root.val - target);
-                if(diff<min){
-                    min = Math.min(min, diff);
+                if(diff < min){
+                    min = diff;
                     result = root.val;
                 }
                 root = root.left;

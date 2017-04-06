@@ -1,27 +1,22 @@
 package leetcode.Tree;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.Stack;
 
 public class InOrderBinaryTreeTraversal {
 	void iterativeInOrder(TreeNode root){
 		if(root == null) return;
-		Deque<TreeNode> s1 = new ArrayDeque<>();
+		Stack<TreeNode> stack = new Stack<>();
 
-		while(true){
-			if(root != null){
-				s1.push(root);
-				root = root.left;
-			} else {
-				if(s1.isEmpty()){
-					break;
-				}
-				root = s1.pop();
-				System.out.println(root.val);
-				root = root.right;
-			}
-		}
+		while(root != null || !stack.isEmpty()){
+	        while(root != null){
+	            stack.push(root);
+	            root = root.left;
+	        }
+	        root = stack.pop();
+	        System.out.println(root.val);
+	        root = root.right;
+	        
+	    }
 	}
 
 	void recursiveInOrder(TreeNode root){
