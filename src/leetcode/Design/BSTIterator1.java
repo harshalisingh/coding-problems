@@ -3,6 +3,11 @@ package leetcode.Design;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+/*
+ * Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
+ * Calling next() will return the next smallest number in the BST.
+ * average O(1) time and uses O(h) memory, where h is the height of the tree.
+ */
 class TreeNode {
 	int data;
 	TreeNode left;
@@ -16,7 +21,7 @@ public class BSTIterator1 {
 
 	public BSTIterator1(TreeNode root) {
 		stack = new ArrayDeque<TreeNode>();
-		traverseLeft(root);
+		traverse(root);
 	}
 
 	/** return whether we have a next smallest number */
@@ -27,11 +32,11 @@ public class BSTIterator1 {
 	/** return the next smallest number */
 	public int next() {
 		TreeNode node = stack.pop();
-		traverseLeft(node.right);
+		traverse(node.right);
 		return node.data;
 	}
 
-	private void traverseLeft(TreeNode node){
+	private void traverse(TreeNode node){
 		while (node != null) {
 			stack.push(node);
 			node = node.left;

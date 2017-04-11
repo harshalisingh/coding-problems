@@ -8,11 +8,11 @@ import leetcode.Tree.TreeNode;
  * (meaning their values are both smaller or both larger than root's).
  */
 public class LowestCommonAncestorBST {
-	public TreeNode lca(TreeNode root, TreeNode n1, TreeNode n2) {
-        if (root.val > Math.max(n1.val, n2.val)) {
-            return lca(root.left, n1, n2);
-        } else if (root.val < Math.min(n1.val, n2.val)) {
-            return lca(root.right, n1, n2);
+	public TreeNode lca(TreeNode root, TreeNode p, TreeNode q) {
+        if (root.val > Math.max(p.val, q.val)) {
+            return lca(root.left, p, q);
+        } else if (root.val < Math.min(p.val, q.val)) {
+            return lca(root.right, p, q);
         } else {
             return root;
         }

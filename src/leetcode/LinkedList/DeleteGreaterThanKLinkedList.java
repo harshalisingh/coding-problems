@@ -1,6 +1,8 @@
-package epi.LinkedList;
+package leetcode.LinkedList;
 
-public class DeleteGreaterLinkedList {
+import epi.LinkedList.ListNode;
+
+public class DeleteGreaterThanKLinkedList {
 	public static void main(String[] args){
 		ListNode<Integer> L1 = new ListNode<>(9, null);
 		ListNode<Integer> L2 = new ListNode<>(1, L1);
@@ -9,7 +11,7 @@ public class DeleteGreaterLinkedList {
 		ListNode<Integer> L5 = new ListNode<>(8, L4);
 		ListNode<Integer> L6 = new ListNode<>(3, L5);
 		//L1.printList(L6);
-		ListNode<Integer> res = removeNode(L3, 1);
+		ListNode<Integer> res = removeNode(L3, 2);
 		printList(res);
 	}
 	public static ListNode<Integer> removeNode(ListNode<Integer> head, int val){

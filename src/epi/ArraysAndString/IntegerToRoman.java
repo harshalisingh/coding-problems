@@ -11,7 +11,7 @@ public class IntegerToRoman {
 
 		StringBuilder sb = new StringBuilder();
 
-		for(int i=0;i<values.length;i++) {
+		for(int i=0; i < values.length; i++) {
 			while(num >= values[i]) {
 				num -= values[i];
 				sb.append(strs[i]);

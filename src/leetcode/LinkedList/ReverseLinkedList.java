@@ -1,4 +1,6 @@
-package epi.LinkedList;
+package leetcode.LinkedList;
+
+import epi.LinkedList.ListNode;
 
 public class ReverseLinkedList {
 	public static ListNode<Integer> reverseIterative(ListNode<Integer> head){

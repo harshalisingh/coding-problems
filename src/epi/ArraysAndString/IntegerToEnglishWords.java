@@ -8,7 +8,7 @@ package epi.ArraysAndString;
  * 1234567 -> "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"
  * 
  */
-public class IntegerToWords {
+public class IntegerToEnglishWords {
 	private final String[] LESS_THAN_20 = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
 	private final String[] TENS = {"", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
 	private final String[] THOUSANDS = {"", "Thousand", "Million", "Billion"};
@@ -41,7 +41,7 @@ public class IntegerToWords {
 	}
 	
 	public static void main(String[] args){
-		IntegerToWords it = new IntegerToWords();
+		IntegerToEnglishWords it = new IntegerToEnglishWords();
 		System.out.println(it.numberToWords(1234567));
 	}
 }

@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/*
+ * Given a number n, print all primes smaller than or equal to n. 
+ * Sieve of Eratosthenes
+ * Time Complexity: O(n)
+ */
 public class PrimeSieve {
 	public static List<Integer> generatePrimes(int n){
 		List<Integer> primes = new ArrayList<>();

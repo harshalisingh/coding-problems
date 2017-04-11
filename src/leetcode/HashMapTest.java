@@ -16,6 +16,8 @@ class Car{
 public class HashMapTest {
 	static HashMap<String, ArrayList<Car>> cars = new HashMap<String, ArrayList<Car>>();
 	
+	static HashMap<String, Car> carMap = new HashMap<String, Car>();
+	
 	public static void addToList(String mapKey, Car myCar) {
 		ArrayList<Car> carsList = cars.get(mapKey);
 	 
@@ -25,6 +27,14 @@ public class HashMapTest {
 	         cars.put(mapKey, carsList);
 	    }
         carsList.add(myCar);
+	}
+	
+	public static Car addToMap(String mapKey, Car myCar) {
+		if(!carMap.containsKey(mapKey))
+			carMap.put(mapKey, myCar);
+		
+		return carMap.get(mapKey);
+			
 	}
 	
 	public static void main(String[] args){

@@ -20,7 +20,7 @@ public class SearchInRotatedSortedArray {
 					R = M;
 				}
 
-			} else {
+			} else {  //A[M] > A[R]
 				if (target <= A[M] && target >= A[L]) {
 					R = M;
 				} else {

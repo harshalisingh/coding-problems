@@ -1,5 +1,9 @@
 package epi.ArraysAndString;
 
+/*
+ * Equilibrium index of an array is an index such that the sum of elements at lower indexes 
+ * is equal to the sum of elements at higher indexes.
+ */
 public class EquilibriumIndex {
 	
 	//Codility - Clean and Best
@@ -7,7 +11,8 @@ public class EquilibriumIndex {
 	    if (n==0) return -1; 
 	    long sum = 0;
 	    int i; 
-	    for(i=0;i<n;i++) sum+=(long) arr[i]; 
+	    for(i = 0; i < n; i++) 
+	    	sum += (long) arr[i]; 
 
 	    long sum_left = 0;    
 	    for(i=0;i<n;i++) {

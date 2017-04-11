@@ -7,13 +7,20 @@ import java.util.Deque;
  * 
  * @author Harshali
  * https://leetcode.com/problems/maximum-depth-of-binary-tree/
+ * The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+ * 
+ * There are two conventions to define height of Binary Tree
+ * 1) Number of nodes on longest path from root to the deepest node.
+ * 2) Number of edges on longest path from root to the deepest node.
+ * 
+ * In this post, the first convention is followed
  *
  */
 
 public class FindDepthBinaryTree {
 
 	//Find the Maximum Depth OR Height of a Binary Tree
-	public int maxDepth(TreeNode root) {
+	public static int maxDepth(TreeNode root) {
 		if (root == null)
 			return 0;
 		else{
@@ -21,15 +28,18 @@ public class FindDepthBinaryTree {
 		}
 	}
 	
-	public int minDepth(TreeNode root) {
-        if (root == null)	return 0;
-        if (root.left == null)	return minDepth(root.right) + 1;
-        if (root.right == null) return minDepth(root.left) + 1;
-        return Math.min(minDepth(root.left),minDepth(root.right)) + 1;
-    }
+	//Height of a Binary Tree
+	public static int height(TreeNode root) {
+		if (root == null)
+			return 0;
+		else{
+			return  (1+ Math.max(height(root.left), height(root.right)));
+		}
+	}
 	
+
 	//Using Level Order Traversal (BFS)
-	public int maxDepthItr(TreeNode root) {
+	public static int maxDepthItr(TreeNode root) {
 	    if (root == null){
 	        return 0;
 	    }
@@ -47,6 +57,14 @@ public class FindDepthBinaryTree {
 	    }
 	    return count;
 	}
+	
+	//Min Depth of a Binary Tree
+	public static int minDepth(TreeNode root) {
+        if (root == null)	return 0;
+        if (root.left == null)	return minDepth(root.right) + 1;
+        if (root.right == null) return minDepth(root.left) + 1;
+        return Math.min(minDepth(root.left),minDepth(root.right)) + 1;
+    }
 	
 	//Using Level Order Traversal (BFS)
 	public int minDepthItr(TreeNode root) {
@@ -71,6 +89,11 @@ public class FindDepthBinaryTree {
 	    return depth;
 	}
 	
-	
+	public static void main(String[] args){
+		TreeNode root = new TreeNode(1);
+		root.left = new TreeNode(2);
+		root.right = new TreeNode(3);
+		System.out.println(maxDepthItr(root));
+	}
 
 }
