@@ -7,7 +7,7 @@ package epi.BinarySearch;
  */
 public class BinarySearch {
 
-	public static int bsearch(int t, int[] A){
+	public static int bsearch(int[] A, int t){
 
 		int low = 0, high = A.length - 1;
 		while(low <= high){
@@ -22,6 +22,11 @@ public class BinarySearch {
 		}
 
 		return -1;
+	}
+	
+	public static void main(String[] args){
+		int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+		System.out.println(bsearch(arr, 8));
 	}
 
 }

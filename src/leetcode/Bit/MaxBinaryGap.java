@@ -1,4 +1,4 @@
-package codility;
+package leetcode.Bit;
 
 /**
  * 

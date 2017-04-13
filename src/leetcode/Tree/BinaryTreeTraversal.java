@@ -2,6 +2,7 @@ package leetcode.Tree;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Stack;
 
 /**
  * http://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/
@@ -38,24 +39,21 @@ public class BinaryTreeTraversal {
     }
 
     //Iterative Inorder Traversal
-    public void inorderItr(TreeNode root){
-        Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
-        TreeNode node = root;
-        while(true){
-            if(node != null){
-                stack.push(node);
-                node = node.left;
-            }
-            else{
-                if(stack.isEmpty()){
-                    break;
-                }
-                node = stack.pop();
-                System.out.println(node.val);
-                node = node.right;
-            }
-        }
-    }
+    void inOrderItr(TreeNode root){
+		if(root == null) return;
+		Stack<TreeNode> stack = new Stack<>();
+
+		while(root != null || !stack.isEmpty()){
+	        while(root != null){
+	            stack.push(root);
+	            root = root.left;
+	        }
+	        root = stack.pop();
+	        System.out.println(root.val);
+	        root = root.right;
+	        
+	    }
+	}
     
     //Iterative Preorder Traversal
     public void preOrderItr(TreeNode root){

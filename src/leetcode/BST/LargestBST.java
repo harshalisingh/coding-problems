@@ -1,5 +1,21 @@
 package leetcode.BST;
 
+/*
+ *  * Given a binary tree, find size of largest binary search subtree in this
+ * binary tree.
+ * 
+ * Traverse tree in post order fashion. Left and right nodes return 4 piece
+ * of information to root which isBST, size of max BST, min and max in those
+ * subtree. 
+ * If both left and right subtree are BST and this node data is greater than max
+ * of left and less than min of right then it returns to above level left size +
+ * right size + 1 and new min will be min of left side and new max will be max of
+ * right side.
+ * 
+ * References:
+ * http://www.geeksforgeeks.org/find-the-largest-subtree-in-a-tree-that-is-also-a-bst/
+ * https://leetcode.com/problems/largest-bst-subtree/
+ */
 public class LargestBST {
 	public int largestBST(Node root){
 		MinMax m = largest(root);

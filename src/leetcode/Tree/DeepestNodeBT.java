@@ -1,7 +1,7 @@
 package leetcode.Tree;
 
 /*
- * Given a binary tree, Find the deep­est node in it.
+ * Given a binary tree, Find the deepest node in it.
  */
 public class DeepestNodeBT {
 	int deepestlevel;

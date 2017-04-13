@@ -3,7 +3,7 @@ package leetcode.Design;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LFUCache {
+public class LFUCacheLinkedHashMap {
 
 	class CacheEntry
 	{
@@ -37,9 +37,9 @@ public class LFUCache {
 	 * Thus, we can get an entry in O(1) and also, we can iterate over it easily.
 	 * */
 
-	public LFUCache(int initialCapacity)
+	public LFUCacheLinkedHashMap(int initialCapacity)
 	{
-		this.initialCapacity = initialCapacity;
+		LFUCacheLinkedHashMap.initialCapacity = initialCapacity;
 	}
 
 	public void addCacheEntry(int key, String data)

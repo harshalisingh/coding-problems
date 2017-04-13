@@ -4,6 +4,9 @@ public class CycleDetection {
 	
 	public ListNode<Integer> hasCycle(ListNode<Integer> head){
 		ListNode<Integer> fast = head, slow = head;
+		
+		/* fast would become NULL when there are even elements 
+        in the list and not NULL for odd elements.*/
 		while(fast != null && fast.next != null){
 			slow = slow.next;
 			fast = fast.next.next;

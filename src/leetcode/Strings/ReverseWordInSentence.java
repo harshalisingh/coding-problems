@@ -4,7 +4,7 @@ package leetcode.Strings;
 public class ReverseWordInSentence {
 	public static void main(String[] args){
 
-		char[] input = "a  cat    and  dog".toCharArray();
+		char[] input = "Let's take LeetCode contest".toCharArray();
 		reverseWords(input);
 		System.out.println(input);
 	}
@@ -15,7 +15,6 @@ public class ReverseWordInSentence {
 		reverse(s, 0, s.length - 1);
 		// 2, reverse each word
 		int start = 0;
-		int end = -1;
 		for (int i = 0; i < s.length; i++) {
 			if (s[i] == ' ') {
 				reverse(s, start, i - 1);

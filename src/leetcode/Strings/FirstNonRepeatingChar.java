@@ -16,6 +16,16 @@ import java.util.Set;
  * @author Javarevisited
  */
 public class FirstNonRepeatingChar {
+	
+	public char firstUniqChar(String s) {
+        int freq [] = new int[26];
+        for(int i = 0; i < s.length(); i ++)
+            freq [s.charAt(i) - 'a'] ++;
+        for(int i = 0; i < s.length(); i ++)
+            if(freq [s.charAt(i) - 'a'] == 1)
+                return s.charAt(i);
+        throw new RuntimeException("didn't find any non repeated Character");
+    }
     
     /*
      * Using LinkedHashMap to find first non repeated character of String
@@ -97,6 +107,10 @@ public class FirstNonRepeatingChar {
             }
         }
         throw new RuntimeException("Undefined behaviour");
+    }
+    
+    public static void main(String[] args){
+    	
     }
 
 }
