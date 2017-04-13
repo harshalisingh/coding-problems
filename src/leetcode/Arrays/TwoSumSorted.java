@@ -1,6 +1,6 @@
 package leetcode.Arrays;
 
-public class TwoSumII {
+public class TwoSumSorted {
 	public static int[] twoSumII(int[] numbers, int target){
 		
 		if(numbers == null || numbers.length == 0){

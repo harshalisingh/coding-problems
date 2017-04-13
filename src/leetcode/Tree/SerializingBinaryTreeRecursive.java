@@ -6,13 +6,13 @@ import java.util.LinkedList;
 
 //Preorder Traversal
 public class SerializingBinaryTreeRecursive {
-	public String serializeTree(TreeNode root){
+	public static String serializeTree(TreeNode root){
 		StringBuilder sb = new StringBuilder();
 		serialize(root, sb);
 		return sb.toString();
 	}
 
-	private void serialize(TreeNode node, StringBuilder sb){
+	private static void serialize(TreeNode node, StringBuilder sb){
 		if (node == null) {
 			sb.append("# ");
 		} else {
@@ -24,6 +24,7 @@ public class SerializingBinaryTreeRecursive {
 
 	 // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
+    	//we use a Queue to store the pre-order traversal
         Deque<String> nodes = new LinkedList<>();
         nodes.addAll(Arrays.asList(data.split(",")));
         return buildTree(nodes);
@@ -38,5 +39,15 @@ public class SerializingBinaryTreeRecursive {
             node.right = buildTree(nodes);
             return node;
         }
+    }
+    
+    public static void main(String[] args){
+    	TreeNode root = new TreeNode(5);
+    	root.left = new TreeNode(4);
+    	root.right = new TreeNode(3);
+    	root.left.left = new TreeNode(1);
+    	root.left.right = new TreeNode(2);
+    	root.right.left = new TreeNode(7);
+    	System.out.println(serializeTree(root));
     }
 }

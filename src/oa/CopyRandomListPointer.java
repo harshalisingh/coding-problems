@@ -4,12 +4,13 @@ package oa;
  * O(1) space
  */
 
-class RandomListNode {
-	int label;
-	RandomListNode next, random;
-	RandomListNode(int x) { this.label = x; }
-};
+
 public class CopyRandomListPointer {
+	class RandomListNode {
+		int label;
+		RandomListNode next, random;
+		RandomListNode(int x) { this.label = x; }
+	}
 	public RandomListNode copyRandomList(RandomListNode head) {
 		if(head == null) return head;
 		RandomListNode dummy = new RandomListNode(0);

@@ -5,6 +5,8 @@ import java.util.Arrays;
 /*
  * Given some capacity (double capacity), there is an array (double[] weights), and int numOfContainers
  * Find sum of two selected weights less than capacity in the array but assigned to the closest capacity and return a Container object.
+ * 
+ * http://www.lifeincode.net/programming/leetcode-two-sum-3-sum-3-sum-closest-and-4-sum-java/
  */
 class Container {
     public double first;

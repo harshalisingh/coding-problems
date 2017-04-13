@@ -8,7 +8,15 @@ import java.util.Comparator;
 /*
  * K <= 0 return new Point [0] is a test case
  * K > size is to return to the original array, but inside the points to sort side, 
- * the nearest point is the first, the second is the second and so on
+ * the nearest point is the first, the second is the second and so on.
+ * make heap of size K and collect points by minimal distance O(NLogK) complexity.
+ */
+
+/**
+ * complexity would be O(n + k*log(n)) 
+ * (O(n) for building the heap and O(k*log(n)) for k extractions) 
+ * But if k < n/log(n) (which is the case here) the complexity will still be O(n).
+ *
  */
 public class KNearestPoints {
 	public List<Point> findKClosest(List<Point> points, Point center, int k) {

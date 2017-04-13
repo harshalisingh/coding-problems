@@ -4,6 +4,11 @@ import java.util.*;
 
 
 /**
+ * This problem is equivalent to finding the topological order in a directed graph. 
+ * If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses.
+ * if a node has incoming edges, it has prerequisites. Therefore, the first few in the order must be those with no prerequisites, 
+ * i.e. no incoming edges. If we visit these few and remove all edges attached to them, we are left with a smaller DAG, 
+ * which is the same problem. This will then give our BFS solution.
  * Topological Sorting using BFS
  * Time Complexity: O(V+E)
  * Space Complexity: O(V)
@@ -28,7 +33,7 @@ class OrderDependency{
 public class OrderDependencyTPS {
     public static List<Order> findOrder(List<OrderDependency> depenency)
     {
-        Map<String, Integer> inmap = new HashMap<>();
+        Map<String, Integer> indegree = new HashMap<>();
         Map<String, List<String>> outmap = new HashMap<>();
         List<Order> res = new ArrayList<>();
         
@@ -36,12 +41,12 @@ public class OrderDependencyTPS {
         for(OrderDependency i: depenency)
         {
         	// keep the start point
-            if(!inmap.containsKey(i.pre.orderName)) 
-            	inmap.put(i.pre.orderName, 0);
+            if(!indegree.containsKey(i.pre.orderName)) 
+            	indegree.put(i.pre.orderName, 0);
             
-            if(!inmap.containsKey(i.cur.orderName)) 
-            	inmap.put(i.cur.orderName, 0);          
-            inmap.put(i.cur.orderName, inmap.get(i.cur.orderName) + 1);
+            if(!indegree.containsKey(i.cur.orderName)) 
+            	indegree.put(i.cur.orderName, 0);          
+            indegree.put(i.cur.orderName, indegree.get(i.cur.orderName) + 1);
             
             if(!outmap.containsKey(i.pre.orderName)) 
             	outmap.put(i.pre.orderName, new ArrayList<String>());          
@@ -50,10 +55,10 @@ public class OrderDependencyTPS {
         
         // BFS, find the start point
         Queue<String> queue = new LinkedList<>();
-        for(String i: inmap.keySet())
+        for(String i: indegree.keySet())
         {
         	// Add to result list if no incoming edges
-            if(inmap.get(i) == 0) queue.offer(i);
+            if(indegree.get(i) == 0) queue.offer(i);
         }
         while(!queue.isEmpty())
         {
@@ -66,8 +71,8 @@ public class OrderDependencyTPS {
                 for(String o: outmap.get(s))
                 {
                 	// Remove this incoming edge
-                    inmap.put(o, inmap.get(o) - 1);
-                    if(inmap.get(o) == 0) 
+                	indegree.put(o, indegree.get(o) - 1);
+                    if(indegree.get(o) == 0) 
                     	// Add to queue if no incoming edges
                     	queue.offer(o);
                 }

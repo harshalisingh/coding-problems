@@ -10,7 +10,8 @@ import java.util.Map;
 import java.util.Set;
 
 /*
- * More than a dozen cities to supply, connect the different cost in different cities, so that it takes a minimum simultaneously connected to all sides. 
+ * More than a dozen cities to supply, connect the different cost in different cities, 
+ * so that it takes a minimum simultaneously connected to all sides. 
  * Given a series connection type, there is a cost between the name of the city across the edge and they find out you want to pick some edge, 
  * connect all the cities and the total cost to a minimum. Ring can not have, so the last city block to be connected to a communication. 
  * Not, then outputs an empty table and, finally, by city name sort output, according to node1 sort, if the same thing again ranked node2. 
@@ -28,7 +29,6 @@ import java.util.Set;
  * My idea is to use Kruskal + Union Find, will enter a group of connection class (in fact, is the edge) 
  * in accordance with the cost from small to large sort (Kruskal algorithm), and then traversal. 
  * Pick out a connection, look at the edge of the two cities belong to which group (Union Find). 
- * If the single to join, different groups on the merger, are off on the Baotuan. 
  * Finally, there are two requirements, 
  * 1. If MST does not exist, then output an empty table (should not be null). This can be used union find ideas, 
  * and finally check a few union, if we are their own people, then the normal output, if we are 1, there are sporadic 2, and that empty table. 
@@ -59,7 +59,6 @@ public class MinimumSpanningTree {
 			int rank;
 			Node parent;
 		}
-		int count;
 		private Map<String, Node> map = new HashMap<>();
 
 		/**
@@ -71,7 +70,6 @@ public class MinimumSpanningTree {
 			node.parent = node;
 			node.rank = 0;
 			map.put(data, node);
-			count++;
 		}
 
 		/**
@@ -100,8 +98,6 @@ public class MinimumSpanningTree {
 			} else {
 				parent1.parent = parent2;
 			}
-
-			count--;
 			return true;
 		}
 
@@ -159,6 +155,8 @@ public class MinimumSpanningTree {
 		{
 			ds.makeSet(c.node1);
 			ds.makeSet(c.node2);
+			set.add(c.node1);
+			set.add(c.node2);
 		}
 		for(Connection c: connections)
 		{
@@ -185,16 +183,16 @@ public class MinimumSpanningTree {
 		connections.add(new Connection("Acity","Bcity",1));
 		connections.add(new Connection("Acity","Ccity",2));
 		connections.add(new Connection("Bcity","Ccity",3));
-		//        connections.add(new Connection("A","B",6));
-		//        connections.add(new Connection("B","C",4));
-		//        connections.add(new Connection("C","D",5));
-		//        connections.add(new Connection("D","E",8));
-		//        connections.add(new Connection("E","F",1));
-		//        connections.add(new Connection("B","F",10));
-		//        connections.add(new Connection("E","C",9));
-		//        connections.add(new Connection("F","C",7));
-		//        connections.add(new Connection("B","E",3));
-		//        connections.add(new Connection("A","F",1));
+//		connections.add(new Connection("A","B",6));
+//		connections.add(new Connection("B","C",4));
+//		connections.add(new Connection("C","D",5));
+//		connections.add(new Connection("D","E",8));
+//		connections.add(new Connection("E","F",1));
+//		connections.add(new Connection("B","F",10));
+//		connections.add(new Connection("E","C",9));
+//		connections.add(new Connection("F","C",7));
+//		connections.add(new Connection("B","E",3));
+//		connections.add(new Connection("A","F",1));
 
 		List<Connection> res = getMST(connections);
 		for (Connection c : res){

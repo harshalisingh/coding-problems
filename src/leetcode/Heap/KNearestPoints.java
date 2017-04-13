@@ -5,6 +5,12 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Comparator;
 
+/**
+ * complexity would be O(n + k*log(n)) 
+ * (O(n) for building the heap and O(k*log(n)) for k extractions) 
+ * But if k < n/log(n) (which is the case here) the complexity will still be O(n).
+ *
+ */
 public class KNearestPoints {
 	public List<Point> findKClosest(List<Point> points, Point center, int k) {
 		if (k >= points.size()) {

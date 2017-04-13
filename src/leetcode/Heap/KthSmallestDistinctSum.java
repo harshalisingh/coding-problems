@@ -1,71 +1,70 @@
 package leetcode.Heap;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.PriorityQueue;
-import java.util.Set;
+import java.util.ArrayList;
 import java.util.Comparator;
 
 public class KthSmallestDistinctSum {
-	
-	class Pair {
-		int i;   // index of x[]
-		int j;   // index of y[]
-		int sum; // x[i] + y[j]
+	public static class Pair{
+        int x,y, sum;
+        public Pair(int x, int y, int val) {
+            this.x = x;
+            this.y = y;
+            this.sum = val;
+        }
+    }
+   
+    public static int kthSmallestDistinctSum(int[] A, int[] B, int k) {
+        if (A == null || B == null || A.length == 0 || B.length == 0 || k < 0) {
+            return -1;
+        }
+        PriorityQueue<Pair> queue = new PriorityQueue<Pair>(k, new Comparator<Pair>(){
+            public int compare(Pair p1, Pair p2) {
+                return p1.sum - p2.sum;
+            }
+        });
+        HashSet<Integer> set = new HashSet<Integer>();
+        List<Pair> list = new ArrayList<>();
+        Pair min = new Pair(0, 0, A[0] + B[0]);
+        queue.offer(min);
+        set.add(min.sum);
 
-		public Pair(int i, int j, int sum) {
-			this.i = i;
-			this.j = j;
-			this.sum = sum;
-		}
-	}
+        for (int i = 0; i < k; i++) {
+            min = queue.poll();
+            
+            list.add(min);
 
-	public int findKthDistinctSum(int[] x, int[] y, int k) {
-		if (x.length == 0 || y.length == 0) {
-			throw new IllegalArgumentException("Can't handle zero-length arrays.");
-		}
-
-		// use a min heap to poll the next state that has minimum sum
-		PriorityQueue<Pair> heap = new PriorityQueue<>(new Comparator<Pair>() {
-			public int compare(Pair a, Pair b) {
-				return a.sum - b.sum;
-			}
-		});
-
-		// use a hash set to avoid duplicate sum
-		Set<Integer> set = new HashSet<>();
-
-		// step 1. create initial pair
-		int sum = x[0] + y[0];
-		heap.offer(new Pair(0, 0, sum));
-		set.add(sum);
-
-		// step 2. generate new pairs based on current pair
-		// until we get the kth smallest sum
-		while (k-- > 1) {
-			Pair p = heap.poll();
-
-			// new pair 1: x[i], y[j + 1]
-			if (p.j < y.length - 1) {
-				sum = x[p.i] + y[p.j + 1];
-
-				if (!set.contains(sum)) {
-					heap.offer(new Pair(p.i, p.j + 1, sum));
-					set.add(sum);
-				}
-			}
-
-			// new pair 2: x[i + 1], y[j]
-			if (p.i < x.length - 1) {
-				sum = x[p.i + 1] + y[p.j];
-
-				if (!set.contains(sum)) {
-					heap.offer(new Pair(p.i + 1, p.j, sum));
-					set.add(sum);
-				}
-			}
-		}
-
-		return heap.poll().sum;
+            if (min.x + 1 < A.length) {
+                Pair newP = new Pair(min.x + 1, min.y, A[min.x + 1] + B[min.y]);
+                if (!set.contains(newP.sum)) {
+                    set.add(newP.sum);
+                    queue.offer(newP);
+                }
+            }
+            if (min.y + 1 < B.length) {
+                Pair newP = new Pair(min.x, min.y + 1, A[min.x] + B[min.y + 1]);
+                if (!set.contains(newP.sum)) {
+                    set.add(newP.sum);
+                    queue.offer(newP);
+                }
+            }
+        }
+ 
+        min = queue.poll();
+        list.add(min);
+        
+        for(Pair p : list){
+        	System.out.println(A[p.x] + ":" + B[p.y] + "=" + p.sum);
+        }
+        return min.sum;
+    }
+    
+    public static void main(String[] args){
+		int A[] = {1, 2, 4, 6};
+		int B[] = {2, 3, 6};
+		System.out.println(kthSmallestDistinctSum(A, B, 3));
 	}
 
 }

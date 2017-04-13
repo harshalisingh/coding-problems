@@ -1,6 +1,8 @@
 package leetcode.Heap;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
+import java.util.Comparator;
 
 /* https://www.youtube.com/watch?v=6bvnZzwiKzs
  * Time Complexity : O(nlogk)
@@ -9,44 +11,54 @@ import java.util.PriorityQueue;
 
 public class MergeKSortedArrays {
 
-	private class QueueNode implements Comparable<QueueNode> {
+	private static class ArrayNode {
 	    int array, index, value;
 		 
-	    public QueueNode(int array, int index, int value) {
+	    public ArrayNode(int array, int index, int value) {
 	        this.array = array;
 	        this.index = index;
 	        this.value = value;
 	    }
-	 
-	    public int compareTo(QueueNode n) {
-	        if (value > n.value) return 1;
-	        if (value < n.value) return -1;
-	        return 0;
-	    }
 	}
 	 
-	public int[] merge(int[][] arrays) {
-	    PriorityQueue<QueueNode> pq = new PriorityQueue<QueueNode>();
+	public static int[] merge(int[][] arrays) {
+	    PriorityQueue<ArrayNode> pq = new PriorityQueue<ArrayNode>(new Comparator<ArrayNode>(){
+	    	public int compare(ArrayNode a, ArrayNode b){
+	    		return a.value - b.value;
+	    	}
+	    });
 	 
 	    int size = 0;
 	    for (int i = 0; i < arrays.length; i++) {
 	        size += arrays[i].length;
 	        if (arrays[i].length > 0) {
-	            pq.add(new QueueNode(i, 0, arrays[i][0]));
+	            pq.add(new ArrayNode(i, 0, arrays[i][0]));
 	        }
 	    }
 	 
 	    int[] result = new int[size];
 	    for (int i = 0; !pq.isEmpty(); i++) {
-	        QueueNode n = pq.poll();
+	        ArrayNode n = pq.poll();
 	        result[i] = n.value;
 	        int newIndex = n.index + 1;
 	        if (newIndex < arrays[n.array].length) {
-	            pq.add(new QueueNode(n.array, newIndex, 
+	            pq.add(new ArrayNode(n.array, newIndex, 
 	            arrays[n.array][newIndex]));
 	        }
 	    }
 	 
 	    return result;
+	}
+	
+	public static void main(String[] args){
+		int[][] arrays = new int[][] {
+			{1, 3, 5},
+			{2, 6, 10},
+			{4, 5}
+		};
+		int[] output = merge(arrays);
+		for(int i : output){
+			System.out.print(i + ",");
+		}
 	}
 }
