@@ -36,7 +36,7 @@ public class QuickSort  {
 			// values.
 			// As we are done we can increase i and j
 			if (i <= j) {
-				exchange(i, j);
+				swap(i, j);
 				i++;
 				j--;
 			}
@@ -48,7 +48,7 @@ public class QuickSort  {
 			quicksort(i, high);
 	}
 
-	private void exchange(int i, int j) {
+	private void swap(int i, int j) {
 		int temp = numbers[i];
 		numbers[i] = numbers[j];
 		numbers[j] = temp;

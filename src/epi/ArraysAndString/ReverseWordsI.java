@@ -1,11 +1,11 @@
 package epi.ArraysAndString;
 
 //EPI Solution
-public class ReverseWordInSentence {
+public class ReverseWordsI {
 	
 	public static void main(String[] args){
 		
-		char[] input = "a  cat    and  dog".toCharArray();
+		char[] input = "the   sky is blue".toCharArray();
 		reverseWords(input);
 		System.out.println(input);
 	}

@@ -10,7 +10,7 @@ import java.util.Map;
  * Given an array of strings, return all groups of strings that are anagrams.
  */
 public class GroupAnagrams {
-	public List<List<String>> groupAnagrams(String[] strs) {
+	public static List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<>();
         for(String s : strs){
             char[] charArr = s.toCharArray();
@@ -29,4 +29,11 @@ public class GroupAnagrams {
         
         return groupAnagram;
     }
+	
+	public static void main(String[] args){
+		String[] input = {"cat", "tac", "pot", "top", "meow", "act"};
+		List<List<String>> output = groupAnagrams(input);
+		System.out.println(output.toString());
+		
+	}
 }

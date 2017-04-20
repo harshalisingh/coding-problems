@@ -10,6 +10,25 @@ public class ArrangeCoins {
 	/*public int arrangeCoins(int n) {
 		return (int) ((Math.sqrt(1 + 8.0 * n) - 1) / 2);
 	}*/
+	
+	
+	
+	/**
+	 * Complexity Analysis
+	 * Uniform cost model is used as Cost Model and `n` is the input number. `b` in this case would be `2`.
+
+	Time Complexity:
+	
+	Best Case `O(log_b(n))` : With respect to the input, the algorithm will always depend on the value of input.
+	Average Case `O(log_b(n))` : With respect to the input, the algorithm will always depend on the value of input.
+	Worst Case `O(log_b(n))` : With respect to the input, the algorithm will always depend on the value of input.
+	Auxiliary Space:
+	
+	Worst Case `O(1)` : Additional variables are of constant size.
+	Algorithm
+	
+	Approach: Binary Search
+	 */
 	public int arrangeCoins(int n) {
 		int start = 0;
 		int end = n;

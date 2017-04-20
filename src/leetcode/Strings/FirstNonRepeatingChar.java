@@ -40,7 +40,7 @@ public class FirstNonRepeatingChar {
         Map<Character,Integer> counts = new LinkedHashMap<>(str.length());
         
         for (char c : str.toCharArray()) {
-            counts.put(c, counts.containsKey(c) ? counts.get(c) + 1 : 1);
+            counts.put(c, counts.getOrDefault(c, 0) + 1);
         }
         
         for (Entry<Character,Integer> entry : counts.entrySet()) {
@@ -93,11 +93,7 @@ public class FirstNonRepeatingChar {
         // build table [char -> count]
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
-            if (scoreboard.containsKey(c)) {
-                scoreboard.put(c, scoreboard.get(c) + 1);
-            } else {
-                scoreboard.put(c, 1);
-            }
+            scoreboard.put(c, scoreboard.getOrDefault(c, 0) + 1);
         }
         // since HashMap doesn't maintain order, going through string again
         for (int i = 0; i < word.length(); i++) {

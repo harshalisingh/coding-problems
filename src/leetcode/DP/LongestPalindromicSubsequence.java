@@ -12,7 +12,7 @@ public class LongestPalindromicSubsequence {
 			T[i][i] = 1;
 		}
 		for(int l = 2; l <= str.length; l++){
-			for(int i = 0; i < str.length-l + 1; i++){
+			for(int i = 0; i < str.length - l + 1; i++){
 				int j = i + l - 1;
 				if(l == 2 && str[i] == str[j]){
 					T[i][j] = 2;

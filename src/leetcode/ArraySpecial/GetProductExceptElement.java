@@ -1,4 +1,4 @@
-package leetcode.Arrays;
+package leetcode.ArraySpecial;
 
 //https://www.interviewcake.com/question/java/product-of-other-numbers
 public class GetProductExceptElement {

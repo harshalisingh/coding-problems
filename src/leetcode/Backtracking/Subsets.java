@@ -7,11 +7,12 @@ import java.util.List;
 /*
  * Given a set of distinct integers, nums, return all possible subsets (no duplicates).
  * Subsets : https://leetcode.com/problems/subsets/
+ * https://discuss.leetcode.com/topic/46162/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partioning
  */
 public class Subsets {
 	public List<List<Integer>> subsets(int[] nums) {
 	    List<List<Integer>> list = new ArrayList<>();
-	    Arrays.sort(nums);
+	    //Arrays.sort(nums);
 	    backtrack(list, new ArrayList<>(), nums, 0);
 	    return list;
 	}

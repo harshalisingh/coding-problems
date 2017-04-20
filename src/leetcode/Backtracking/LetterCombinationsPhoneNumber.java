@@ -11,7 +11,7 @@ import java.util.List;
  * https://leetcode.com/problems/letter-combinations-of-a-phone-number/#/description
  *
  */
-public class LetterCombinations {
+public class LetterCombinationsPhoneNumber {
     static final String[] KEYS = new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 	
     public static List<String> letterCombinationsIterative(String digits) {
@@ -31,7 +31,7 @@ public class LetterCombinations {
 	public static void main(String[] args){
 		List<String> ans = letterCombinationsRecursive("23");
 		for(String s : ans){
-			//System.out.println(s);
+			System.out.println(s);
 		}
 	}
 	
@@ -49,10 +49,10 @@ public class LetterCombinations {
 	        return;
 	    }
 	    String letters = KEYS[digits.charAt(posn) - '0'];
-	    System.out.println(letters);
+	    //System.out.println(letters);
 	    for (int i = 0; i < letters.length(); i++) {
 	        int sbLen = sb.length();
-	        combine(res, digits, sb.append(letters.charAt(i)), posn+1);
+	        combine(res, digits, sb.append(letters.charAt(i)), posn + 1);
 	        sb.setLength(sbLen);
 	    }
 	}

@@ -53,7 +53,7 @@ public class LongestPalindromicSubstring {
 				// chars at i and j should match
 				// if window is less than or equal to 3, just end chars should match
 				// if window is > 3, substring (i+1, j-1) should be palindrome too
-				dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i + 1][j - 1]);
+				dp[i][j] = (s.charAt(i) == s.charAt(j) && j - i < 3) || dp[i + 1][j - 1];
 
 				if (dp[i][j] && (res == null || j - i + 1 > res.length())) {
 					res = s.substring(i, j + 1);

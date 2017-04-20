@@ -25,7 +25,7 @@ public class LargestNumber {
 			sb.append(s);
 		}
 
-		while(sb.charAt(0)=='0'&&sb.length()>1)
+		while(sb.charAt(0) == '0' && sb.length() > 1)
 			sb.deleteCharAt(0);
 
 		return sb.toString();

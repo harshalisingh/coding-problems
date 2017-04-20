@@ -12,7 +12,7 @@ public class CountSegmentsInString {
         for (int i = 1; i < s.length(); i++)
         {
             // count the number of word starts
-            count += s.charAt(i) != ' ' && s.charAt(i-1)== ' ' ? 1 : 0;  
+            count += s.charAt(i) != ' ' && s.charAt(i-1) == ' ' ? 1 : 0;  
         }
         return count;
     }

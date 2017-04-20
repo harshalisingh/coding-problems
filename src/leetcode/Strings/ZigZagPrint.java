@@ -17,7 +17,7 @@ public class ZigZagPrint {
 	        for (int idx = nRows-2; idx >= 1 && i < len; idx--) // obliquely up
 	            sb[idx].append(c[i++]);
 	    }
-	    for (int idx = 1; idx < nRows; idx++)
+	    for (int idx = 1; idx < nRows; idx++) //append rest of stringbuilders to 1st one
 	        sb[0].append(sb[idx]);
 	    return sb[0].toString();
 	}

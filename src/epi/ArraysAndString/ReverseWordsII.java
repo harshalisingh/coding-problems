@@ -1,10 +1,10 @@
-package leetcode.Strings;
+package epi.ArraysAndString;
 
 //LeetCode Solution
-public class ReverseWordInSentence {
+public class ReverseWordsII {
 	public static void main(String[] args){
 
-		char[] input = "Let's take LeetCode contest".toCharArray();
+		char[] input = "the    sky, is blue".toCharArray();
 		reverseWords(input);
 		System.out.println(input);
 	}
@@ -14,15 +14,15 @@ public class ReverseWordInSentence {
 		// 1, reverse the whole sentence
 		reverse(s, 0, s.length - 1);
 		// 2, reverse each word
-		int start = 0;
-		for (int i = 0; i < s.length; i++) {
-			if (s[i] == ' ') {
-				reverse(s, start, i - 1);
-				start = i + 1;
+		int i = 0;
+		for (int j = 0; j < s.length; j++) {
+			if (s[j] == ' ') {
+				reverse(s, i, j - 1);
+				i = j + 1;
 			}
 		}
 		// 3, reverse the last word, if there is only one word this will solve the corner case
-		reverse(s, start, s.length - 1);
+		reverse(s, i, s.length - 1);
 	}
 
 	public static void reverse(char[] s, int start, int end) {
