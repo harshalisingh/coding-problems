@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FindAllAnagrams {
 	public static void main(String[] args){
-		List<Integer> result = findAnagrams("abab", "ab");
+		List<Integer> result = findAnagrams("cbaebabacd", "abc");
 		for(Integer i : result){
 			System.out.println(i);
 		}
@@ -42,16 +42,12 @@ public class FindAllAnagrams {
 			//only increase the count if the character is in p
 			//the count >= 0 indicate it was original in the hash, cuz it won't go below 0
 			if (right - left == p.length() ) {
-
 				if (hash[s.charAt(left)] >= 0) {
 					count++;
 				}
 				hash[s.charAt(left)]++;
 				left++;
-
 			}
-
-
 		}
 		return list;
 	}

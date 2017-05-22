@@ -1,4 +1,4 @@
-package epi.LinkedList;
+package leetcode.LinkedList;
 
 /*
  * Space Complexity: O(1)
@@ -7,26 +7,38 @@ package epi.LinkedList;
 
 public class MergeSortedLinkedList {
 	
-	public static ListNode<Integer> mergeTwoSortedLists(ListNode<Integer> L1, ListNode<Integer> L2){
+	public static ListNode mergeTwoSortedLists(ListNode l1, ListNode l2){
 		
-		ListNode<Integer> dummyHead = new ListNode<Integer>(0, null);
-		ListNode<Integer> current = dummyHead;	
-		ListNode<Integer> p1 = L1, p2 = L2;
+		ListNode dummyHead = new ListNode(0), p = dummyHead;
 		
-		while(p1 != null && p2 != null){
-			if(p1.data <= p2.data){
-				current.next = p1;
-				p1 = p1.next;
+		while(l1 != null && l2 != null){
+			if(l1.val <= l2.val){
+				p.next = l1;
+				l1 = l1.next;
 			} else {
-				current.next = p2;
-				p2 = p2.next;
+				p.next = l2;
+				l2 = l2.next;
 			}			
-			current = current.next;
+			p = p.next;
 		}
 		
-		current.next = (p1 != null)? p1 : p2;
+		p.next = (l1 != null)? l1 : l2;
 		return dummyHead.next;
 		
+	}
+	
+	public ListNode mergeTwoListsRecursive(ListNode l1, ListNode l2) {
+	    if(l1 == null) return l2;
+	    if(l2 == null) return l1;
+	    
+	    if(l1.val < l2.val){
+	        l1.next = mergeTwoListsRecursive(l1.next, l2);
+	        return l1;
+	    }else{
+	        l2.next = mergeTwoListsRecursive(l1, l2.next);
+	        return l2;
+	    }
+	    
 	}
 
 }

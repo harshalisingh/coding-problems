@@ -62,6 +62,7 @@ public class LongestNonRepeatingSubstring {
         // try to extend the range [i, j]
         for (int j = 0, i = 0; j < n; j++) {
             if (map.containsKey(s.charAt(j))) {
+            	//reset i after encountering a repeated character
                 i = Math.max(map.get(s.charAt(j)) + 1, i);
             }
             ans = Math.max(ans, j - i + 1);

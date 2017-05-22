@@ -2,6 +2,11 @@ package leetcode.Math;
 
 import java.util.Arrays;
 
+/**
+ * Find the pair with minimum difference
+ * Time Complexity: O (nlogn)
+ * Space Complexity: O(n)
+ */
 public class ClosestNumberPair {
 	public static void closestNumber(int[] nums){
 		Arrays.sort(nums);

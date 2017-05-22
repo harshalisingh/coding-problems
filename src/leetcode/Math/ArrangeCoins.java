@@ -6,6 +6,7 @@ public class ArrangeCoins {
 		long[] coins = {2,5,8,3,6};
 		//arrangeCoinsPrinted(coins);
 		arrangeCoins(coins);
+		myArrangeCoins(coins);
 	}	
 	/*public int arrangeCoins(int n) {
 		return (int) ((Math.sqrt(1 + 8.0 * n) - 1) / 2);

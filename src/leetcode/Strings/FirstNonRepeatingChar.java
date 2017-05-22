@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -26,6 +27,37 @@ public class FirstNonRepeatingChar {
                 return s.charAt(i);
         throw new RuntimeException("didn't find any non repeated Character");
     }
+	
+	 /*
+     * Finds first non repeated character in a String in just one pass.
+     * It uses two storage to cut down one iteration, standard space vs time
+     * trade-off.Since we store repeated and non-repeated character separately,
+     * at the end of iteration, first element from List is our first non
+     * repeated character from String.
+     */
+    public static char firstNonRepeatingChar(String word) {
+        Set<Character> duplicate = new HashSet<>();
+        Set<Character> nonDuplicate = new LinkedHashSet<>();
+        for (int i = 0; i < word.length(); i++) {
+            char curChar = word.charAt(i);
+            if (duplicate.contains(curChar)) {
+                continue;
+            }
+            //O(1)
+            if (nonDuplicate.contains(curChar)) {
+            	nonDuplicate.remove(curChar);
+            	duplicate.add(curChar);
+            } else {
+            	nonDuplicate.add(curChar);
+            }
+        }
+        
+        if(nonDuplicate.isEmpty()){
+        	return '\0';
+        } else 
+        	return nonDuplicate.iterator().next();
+    }
+
     
     /*
      * Using LinkedHashMap to find first non repeated character of String
@@ -50,33 +82,6 @@ public class FirstNonRepeatingChar {
         }
         throw new RuntimeException("didn't find any non repeated Character");
     }
-
-
-    /*
-     * Finds first non repeated character in a String in just one pass.
-     * It uses two storage to cut down one iteration, standard space vs time
-     * trade-off.Since we store repeated and non-repeated character separately,
-     * at the end of iteration, first element from List is our first non
-     * repeated character from String.
-     */
-    public static char firstNonRepeatingChar(String word) {
-        Set<Character> repeating = new HashSet<>();
-        List<Character> nonRepeating = new ArrayList<>();
-        for (int i = 0; i < word.length(); i++) {
-            char letter = word.charAt(i);
-            if (repeating.contains(letter)) {
-                continue;
-            }
-            if (nonRepeating.contains(letter)) {
-                nonRepeating.remove((Character) letter);
-                repeating.add(letter);
-            } else {
-                nonRepeating.add(letter);
-            }
-        }
-        return nonRepeating.get(0);
-    }
-
 
     /*
      * Using HashMap to find first non-repeated character from String in Java.

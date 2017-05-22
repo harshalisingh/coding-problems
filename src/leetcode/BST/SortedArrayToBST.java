@@ -2,6 +2,13 @@ package leetcode.BST;
 
 import leetcode.Tree.TreeNode;
 
+/*
+ * Time Complexity: O(n)
+ * T(n) = 2T(n/2) + C
+   T(n) -->  Time taken for an array of size n
+   C   -->  Constant (Finding middle of array and linking root to left 
+                      and right subtrees take constant time) 
+ */
 public class SortedArrayToBST {
 	public TreeNode sortedArrayToBST(int[] num) {
 		if (num.length == 0)

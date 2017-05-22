@@ -16,8 +16,8 @@ public class ReverseLinkedList {
 	
 	/*
 	 * Divide the list in 2 parts - first node and rest of the list.
-	 * Recursively call reverse for the rest of the linked list.
-	 * Link rest to first.
+	 * Recursively call reverse for the rest (head.next) of the linked list.
+	 * Link rest (head.next).next to first.
 	 * Fix head pointer
 	 */
 	public static ListNode<Integer> reverseRecursion(ListNode<Integer> head){
@@ -26,6 +26,7 @@ public class ReverseLinkedList {
 		}
 
 		ListNode<Integer> newHead = reverseRecursion(head.next);
+		System.out.println(head.data);
 		head.next.next = head;
 		head.next = null;
 		return newHead;
@@ -40,6 +41,8 @@ public class ReverseLinkedList {
 		ListNode<Integer> L6 = new ListNode<>(3, L5);
 		L1.printList(L6);
 		ListNode<Integer> res = reverseIterative(L6);
-		L1.printList(res);
+		
+		ListNode<Integer> res2 = reverseRecursion(L6);
+		L1.printList(res2);
 	}
 }

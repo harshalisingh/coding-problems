@@ -1,5 +1,8 @@
 package leetcode.Tree;
 
+/*
+ * http://www.geeksforgeeks.org/find-sum-left-leaves-given-binary-tree/
+ */
 public class SumOfLeftLeavesBinaryTree {
 	public int sumOfLeftLeaves(TreeNode root) {
         if(root == null) return 0;

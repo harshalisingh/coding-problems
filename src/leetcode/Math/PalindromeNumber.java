@@ -8,6 +8,8 @@ public class PalindromeNumber {
 	}
 	public static boolean isPalindrome(int x) {
 		if (x < 0) return false;
+		
+		//get a 10s multiple with same digit as the number
 		int div = 1;
 		while (x / div >= 10) {
 			div *= 10;

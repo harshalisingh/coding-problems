@@ -4,7 +4,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FindKPairs {
+/**
+ * Given an array of integers and an integer k, you need to find the number of unique k-diff pairs in the array. 
+ * Here a k-diff pair is defined as an integer pair (i, j), where i and j are both numbers in the array and their absolute difference is k.
+ *
+ */
+public class FindKDiffPairs {
 
 	//Using HashMap
 	public int findPairsUsingHashMap(int[] nums, int k) {

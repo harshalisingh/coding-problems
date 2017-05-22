@@ -3,7 +3,7 @@ package leetcode.LinkedList;
 /*
  * https://leetcode.com/problems/intersection-of-two-linked-lists/#/description
  */
-public class IntersectionLinkedList {
+public class CommonNodeLinkedList {
 	
 	//Without using length : O(1) memory O(n) time
 	public ListNode getIntersectionNode1(ListNode headA, ListNode headB) {
@@ -11,7 +11,7 @@ public class IntersectionLinkedList {
 			return null;
 		
 		ListNode curA = headA, curB = headB;
-		while( curA!=curB){
+		while( curA != curB){
 			curA = curA==null?headB:curA.next;
 			curB = curB==null?headA:curB.next;
 		}

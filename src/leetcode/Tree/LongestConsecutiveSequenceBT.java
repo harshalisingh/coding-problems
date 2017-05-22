@@ -1,15 +1,20 @@
 package leetcode.Tree;
 
-public class LongestConsequenceSequenceBT {
+/**
+ * https://leetcode.com/problems/binary-tree-longest-consecutive-sequence/#/description
+ * Given a binary tree, find the length of the longest consecutive sequence path.
+ * DFS
+ */
+public class LongestConsecutiveSequenceBT {
 	public static int longestConsecutive(TreeNode root) {
         if (root == null) {
             return 0;
         }
          
-        return longestConsecutiveHelper(root, 0, root.val + 1);
+        return DFSHelper(root, 0, root.val + 1);
     }
      
-    private static int longestConsecutiveHelper(TreeNode root, int curLen, int target) {
+    private static int DFSHelper(TreeNode root, int curLen, int target) {
         if (root == null) {
             return curLen;
         }
@@ -20,8 +25,8 @@ public class LongestConsequenceSequenceBT {
             curLen = 1;
         }
          
-        int left = longestConsecutiveHelper(root.left, curLen, root.val + 1);
-        int right = longestConsecutiveHelper(root.right, curLen, root.val + 1);
+        int left = DFSHelper(root.left, curLen, root.val + 1);
+        int right = DFSHelper(root.right, curLen, root.val + 1);
          
         return Math.max(curLen, Math.max(left, right));
     }
@@ -30,8 +35,9 @@ public class LongestConsequenceSequenceBT {
 		TreeNode root = new TreeNode(10);
 	    root.left = new TreeNode(11);
 	    root.right = new TreeNode(9);
-	    root.left.left = new TreeNode(13);
+	    //root.left.left = new TreeNode(13);
 	    root.left.right = new TreeNode(12);
+	    root.left.right.right = new TreeNode(13);
 	    root.right.left = new TreeNode(13);
 	    root.right.right = new TreeNode(8);
 	    

@@ -12,6 +12,7 @@ public class ReverseWordsRemoveSpaces {
 		// step 2. reverse each word
 		reverseWords(a, n);
 		// step 3. clean up spaces
+		
 		return cleanSpaces(a, n);
 	}
 
@@ -51,7 +52,11 @@ public class ReverseWordsRemoveSpaces {
 	public static void main(String[] args){
 
 		String input = " Let's take,      LeetCode contest    ";
-		String output = reverseWords(input);
-		System.out.println(output);
+		
+		
+		String input1 = "the   sky is blue";
+		
+		System.out.println(reverseWords(input));
+		System.out.println(reverseWords(input1));
 	}
 }

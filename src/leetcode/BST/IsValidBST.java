@@ -15,6 +15,7 @@ import leetcode.Tree.TreeNode;
  * for right pass root.data and max.
  * 
  * Time complexity is O(n) since we are looking at all nodes.
+ * Due to the use of recursion, space complexity is O(log N) on a balanced tree.
  * 
  * Test cases:
  * Null tree
@@ -27,13 +28,15 @@ import leetcode.Tree.TreeNode;
 public class IsValidBST {
 
 	public boolean isValidBST(TreeNode root) {
-		return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+		return isValidBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
 
-	public boolean isValidBST(TreeNode root, long minVal, long maxVal) {
+	public boolean isValidBST(TreeNode root, int min, int max) {
 		if (root == null) return true;
-		if (root.val >= maxVal || root.val <= minVal) return false;
-		return isValidBST(root.left, minVal, root.val) && isValidBST(root.right, root.val, maxVal);
+		
+		if (root.val <= min || root.val > max) return false;
+		
+		return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);
 	}
 
 

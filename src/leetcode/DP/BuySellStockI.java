@@ -17,4 +17,19 @@ public class BuySellStockI {
         return maxProfit;
         
     }
+	
+	/*
+	 * If the interviewer gives array of difference of prices
+	 * Ex: for {1, 7, 4, 11}, if he gives {0, 6, -3, 7}
+	 * calculate the difference (maxCur += prices[i] - prices[i-1]) of the original array,
+	 * and find a contiguous subarray giving maximum profit. If the difference falls below 0, reset it to zero.
+	 */
+	public int maxProfitVariation(int[] prices) {
+        int maxCur = 0, maxSoFar = 0;
+        for(int i = 1; i < prices.length; i++) {
+            maxCur = Math.max(0, maxCur += prices[i] - prices[i-1]);
+            maxSoFar = Math.max(maxCur, maxSoFar);
+        }
+        return maxSoFar;
+    }
 }

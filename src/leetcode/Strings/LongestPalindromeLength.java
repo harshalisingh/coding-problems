@@ -23,7 +23,11 @@ public class LongestPalindromeLength {
 				hs.add(s.charAt(i));
 			}
 		}
+		
+		//odd number of palindrome characters
 		if(!hs.isEmpty()) return count*2+1;
+		
+		//even number of palindrome characters
 		return count*2;
 	}
 }

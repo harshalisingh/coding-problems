@@ -1,6 +1,5 @@
 package leetcode.Heap;
 
-import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Comparator;
 
@@ -8,26 +7,29 @@ import java.util.Comparator;
  * Time Complexity : O(nlogk)
  * Space Complexity: O(k) beyond the space needed to write the final result
  * */
-
-public class MergeKSortedArrays {
-
-	private static class ArrayNode {
-	    int array, index, value;
-		 
-	    public ArrayNode(int array, int index, int value) {
-	        this.array = array;
-	        this.index = index;
-	        this.value = value;
-	    }
-	}
+class ArrayNode {
+    int array, index, value;
 	 
+    public ArrayNode(int array, int index, int value) {
+        this.array = array;
+        this.index = index;
+        this.value = value;
+    }
+}
+public class MergeKSortedArrays {
+ 
 	public static int[] merge(int[][] arrays) {
+		
+		if(arrays.length == 0){
+			return new int[0];
+		}
 	    PriorityQueue<ArrayNode> pq = new PriorityQueue<ArrayNode>(new Comparator<ArrayNode>(){
 	    	public int compare(ArrayNode a, ArrayNode b){
 	    		return a.value - b.value;
 	    	}
 	    });
 	 
+	    //Adding first elements of each array
 	    int size = 0;
 	    for (int i = 0; i < arrays.length; i++) {
 	        size += arrays[i].length;

@@ -10,7 +10,11 @@ public class CycleDetection {
 		while(fast != null && fast.next != null){
 			slow = slow.next;
 			fast = fast.next.next;
-			if(slow == fast){ //There is a cycle
+			
+			//Finds if there is a cycle
+			if(slow == fast){ 
+				
+				//Find Length of cycle
 				int cycleLen = 0;
 				do{
 					++cycleLen;
@@ -24,6 +28,15 @@ public class CycleDetection {
 					fast = fast.next;
 				}
 				return slow;
+				
+				/* Remove loop
+				slow = head;
+				while(slow != fast.next){
+					slow = slow.next;
+					fast = fast.next;
+				}
+				fast.next = null;
+				*/
 			}
 		}
 		

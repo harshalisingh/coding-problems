@@ -1,7 +1,7 @@
 package leetcode.Design;
 
 import java.util.HashMap;
-
+//LRUcache using hashMap and Doubly Linked List
 class Node {
 	int key;
 	int value;
@@ -43,6 +43,7 @@ public class LRUCache {
 		head.next = node;
 	}
 
+	//get the value of the cache node for the given key
 	public int get(int key) {
 		if (map.get(key) != null) {
 			Node node = map.get(key);
@@ -63,10 +64,13 @@ public class LRUCache {
 		} else {
 			Node node = new Node(key, value);
 			map.put(key, node);
+			//if count is less than capacity, add new node to head
 			if (count < capacity) {
 				count++;
 				addToHead(node);
-			} else {
+			} 
+			//if capacity exceeds, remove node just before tail, add new node to head
+			else {
 				map.remove(tail.pre.key);
 				deleteNode(tail.pre);
 				addToHead(node);

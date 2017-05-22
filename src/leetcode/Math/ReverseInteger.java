@@ -3,7 +3,10 @@ package leetcode.Math;
 public class ReverseInteger {
 	public static void main(String[] args){
 		int x = -1000;
-		System.out.print(reverse(x));
+		System.out.println(reverse(x));
+		
+		
+		System.out.println(Integer.MAX_VALUE);
 	}
 	public static int reverse(int x){
 		int result = 0;

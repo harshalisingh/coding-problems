@@ -10,10 +10,11 @@ package leetcode.Tree;
  */
 public class DiameterBinaryTree {
 	public int getHeight(TreeNode root) {
-		if (root != null) {
-			return 1 + Math.max(getHeight(root.left), getHeight(root.right));
+		if (root == null)
+			return 0;
+		else{
+			return  (1+ Math.max(getHeight(root.left), getHeight(root.right)));
 		}
-		return 0;
 	}
 
 	public int Diameter(TreeNode root) {

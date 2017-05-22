@@ -1,5 +1,8 @@
 package leetcode.Math;
 
+/*
+ * Write a program to output power(m,n)
+ */
 public class MathPower {
 	public double power(long x, int n) {
 

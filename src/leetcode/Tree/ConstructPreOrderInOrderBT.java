@@ -2,7 +2,16 @@ package leetcode.Tree;
 
 import java.util.Stack;
 
-public class ConstructBinaryTree {
+/**
+ * Given preorder and inorder traversal of a tree, construct the binary tree.
+ * You may assume that duplicates do not exist in the tree.
+ * 
+ * Preorder traversing implies that PRE[0] is the root node.
+ * Then we can find this PRE[0] in IN, say it's IN[5].
+ * Now we know that IN[5] is root, so we know that IN[0] - IN[4] is on the left side, IN[6] to the end is on the right side.
+ * Recursively doing this on subarrays, we can build a tree out of it :)
+ */
+public class ConstructPreOrderInOrderBT {
 	public TreeNode buildTreePreorderInorder(int[] preorder, int[] inorder) {
 	    return helperPreorderInorder(0, 0, inorder.length - 1, preorder, inorder);
 	}
@@ -16,42 +25,13 @@ public class ConstructBinaryTree {
 	    for (int i = inStart; i <= inEnd; i++) {
 	        if (inorder[i] == root.val) {
 	            inIndex = i;
+	            break;
 	        }
 	    }
+	    int leftTreeLen = inIndex - inStart;
 	    root.left = helperPreorderInorder(preStart + 1, inStart, inIndex - 1, preorder, inorder);
-	    root.right = helperPreorderInorder(preStart + inIndex - inStart + 1, inIndex + 1, inEnd, preorder, inorder);
+	    root.right = helperPreorderInorder(preStart + leftTreeLen + 1, inIndex + 1, inEnd, preorder, inorder);
 	    return root;
 	}
 	
-	
-	public TreeNode buildTree(int[] inorder, int[] postorder) {
-	    if (inorder.length == 0 || postorder.length == 0) return null;
-	    int ip = inorder.length - 1;
-	    int pp = postorder.length - 1;
-	    
-	    Stack<TreeNode> stack = new Stack<TreeNode>();
-	    TreeNode prev = null;
-	    TreeNode root = new TreeNode(postorder[pp]);
-	    stack.push(root);
-	    pp--;
-	    
-	    while (pp >= 0) {
-	        while (!stack.isEmpty() && stack.peek().val == inorder[ip]) {
-	            prev = stack.pop();
-	            ip--;
-	        }
-	        TreeNode newNode = new TreeNode(postorder[pp]);
-	        if (prev != null) {
-	            prev.left = newNode;
-	        } else if (!stack.isEmpty()) {
-	            TreeNode currTop = stack.peek();
-	            currTop.right = newNode;
-	        }
-	        stack.push(newNode);
-	        prev = null;
-	        pp--;
-	    }
-	    
-	    return root;
-	}
 }

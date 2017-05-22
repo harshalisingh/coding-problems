@@ -12,11 +12,11 @@ public class ExcelNumberToColumnName {
 	    
 	    StringBuilder s = new StringBuilder();
 	    
-	    do{
+	    while(x != 0){
 	        char c = (char)((x-1) % 26 + 'A');
 	        s.append(c);
 	        x = (x-1)/ 26;
-	    } while(x != 0);
+	    } 
 	    
 	    return s.reverse().toString();
 	}

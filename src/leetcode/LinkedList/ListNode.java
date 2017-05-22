@@ -1,7 +1,17 @@
 package leetcode.LinkedList;
 
 public class ListNode {
-	int val;
-	ListNode next;
+	public int val;
+	public ListNode next;
 	ListNode(int x) { val = x; }
+	public void printList(ListNode L) {
+			while (L != null) {
+				System.out.print(L.val);
+				System.out.print("--->");
+				L = L.next;
+			}
+			System.out.print("null");
+			System.out.println();
+		
+	}
 }

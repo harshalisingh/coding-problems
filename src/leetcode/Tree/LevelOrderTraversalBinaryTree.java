@@ -61,7 +61,5 @@ public class LevelOrderTraversalBinaryTree {
 				//System.out.print(node + " ");
 			}
 		}
-		
-		
 	}
 }
