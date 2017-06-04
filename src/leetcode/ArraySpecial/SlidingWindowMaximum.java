@@ -7,16 +7,19 @@ import java.util.Comparator;
 import java.util.Deque;
 import java.util.PriorityQueue;
 
+/**
+ * Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right. 
+ * You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+ */
 public class SlidingWindowMaximum {
 	
-	//Using Arrays
+	//Using Arrays Time: O(N)
 	public static int[] slidingWindowMax(int[] nums, int k) {
 		if (nums == null || k <= 0) {
 			return new int[0];
 		}
 		int[] max_left = new int[nums.length];
 		int[] max_right = new int[nums.length];
-
 		max_left[0] = nums[0];
 		max_right[nums.length - 1] = nums[nums.length - 1];
 

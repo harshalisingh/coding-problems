@@ -1,56 +1,68 @@
 package leetcode.Sorting;
 
-public class QuickSort  {
-	private int[] numbers;
+import java.util.Arrays;
 
-	public void sort(int[] values) {
+//Average: O(n logn), Worst Case: O(n^2), Memory: O(1)
+public class QuickSort  {
+	public void quickSort(int[] nums) {
 		// check for empty or null array
-		if (values ==null || values.length==0){
+		if (nums ==null || nums.length==0){
 			return;
 		}
-		this.numbers = values;
-		quicksort(0, values.length - 1);
+		quickSort(nums, 0, nums.length - 1);
+	}
+	private void quickSort(int[] arr, int left, int right){
+		int index = partition(arr, left, right);
+		if(left < index - 1) { //Sort left half
+			quickSort(arr, left, index - 1);
+		}
+		if(index < right) { //Sort right half
+			quickSort(arr, index, right);
+		}
 	}
 
-	private void quicksort(int low, int high) {
-		int i = low, j = high;
+	private int partition(int[] arr, int left, int right) {
 		// Get the pivot element from the middle of the list
-		int pivot = numbers[low + (high-low)/2];
+		int pivot = arr[(left + right)/2];
 
 		// Divide into two lists
-		while (i <= j) {
+		while (left <= right) {
 			// If the current value from the left list is smaller then the pivot
 			// element then get the next element from the left list
-			while (numbers[i] < pivot) {
-				i++;
-			}
+			//Find element on left that should be on right
+			while (arr[left] < pivot) left++;
+
+
 			// If the current value from the right list is larger then the pivot
 			// element then get the next element from the right list
-			while (numbers[j] > pivot) {
-				j--;
-			}
+			//Find element on right that should be on left
+			while (arr[right] > pivot) right--;
+
 
 			// If we have found a values in the left list which is larger then
 			// the pivot element and if we have found a value in the right list
 			// which is smaller then the pivot element then we exchange the
 			// values.
-			// As we are done we can increase i and j
-			if (i <= j) {
-				swap(i, j);
-				i++;
-				j--;
+			// As we are done we can move left and right indices
+			if (left <= right) {
+				swap(arr, left, right);
+				left++;
+				right--;
 			}
 		}
-		// Recursion
-		if (low < j)
-			quicksort(low, j);
-		if (i < high)
-			quicksort(i, high);
+		return left;
 	}
 
-	private void swap(int i, int j) {
-		int temp = numbers[i];
-		numbers[i] = numbers[j];
-		numbers[j] = temp;
+	private void swap(int[]arr, int i, int j) {
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+	
+	public static void main(String[] args){
+		QuickSort qs = new QuickSort();
+		int[] nums = {3,6,4,9,8,1,2,6,7,0,3,5,7,3};
+		qs.quickSort(nums);
+		System.out.println(Arrays.toString(nums));
 	}
 }

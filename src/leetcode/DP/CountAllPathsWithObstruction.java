@@ -11,7 +11,7 @@ public class CountAllPathsWithObstruction {
 		if(row==arrA.length-1 && col==arrA.length-1){
 			return 1;
 		}
-		int left =0;
+		int left = 0;
 		int down = 0;
 		if(row!=arrA.length-1 && arrA[row+1][col]!=-1){
 			left = count(arrA, row+1, col);
@@ -25,8 +25,8 @@ public class CountAllPathsWithObstruction {
 	public int countDP(int [][] arrA){
 		int result [][] = arrA;
 
-		for (int i = 1; i <result.length ; i++) {
-			for (int j = 1; j <result.length ; j++) {
+		for (int i = 1; i < result.length ; i++) {
+			for (int j = 1; j < result.length ; j++) {
 				if(result[i][j]!=-1){
 					result[i][j]=0;
 					if(result[i-1][j]>0)
