@@ -2,7 +2,17 @@ package leetcode.Strings;
 
 /*
  * https://leetcode.com/problems/count-and-say/#/description
- * 1, 11, 21, 1211, 111221, ...
+ * n = 1 to 10
+   1.     1
+   2.     11
+   3.     21
+   4.     1211
+   5.     111221 
+   6.     312211
+   7.     13112221
+   8.     1113213211
+   9.     31131211131221
+   10.    13211311123113112211
  */
 public class CountAndSay {
 	public String countAndSay(int n) {
@@ -11,9 +21,8 @@ public class CountAndSay {
 		}
 
 		String s = "1";
-
 		for (int i = 0; i < n - 1; i++) {
-			StringBuilder sb = new StringBuilder();
+			StringBuilder sb = new StringBuilder();    //new stringbuilder must be created
 			int count = 1;
 
 			int j = 0;
@@ -27,10 +36,8 @@ public class CountAndSay {
 				count = 1;
 				j++;
 			}
-
 			s = sb.toString();
 		}
-
 		return s;
 	}
 	

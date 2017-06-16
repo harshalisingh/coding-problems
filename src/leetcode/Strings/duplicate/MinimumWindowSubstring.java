@@ -1,4 +1,4 @@
-package leetcode.Strings;
+package leetcode.Strings.duplicate;
 
 import java.util.HashMap;
 

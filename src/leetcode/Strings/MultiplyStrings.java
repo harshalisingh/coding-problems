@@ -2,6 +2,7 @@ package leetcode.Strings;
 
 /*
  * https://leetcode.com/problems/multiply-strings/#/description
+ * `num1[i] * num2[j]` will be placed at indices `[i + j`, `i + j + 1]` 
  */
 public class MultiplyStrings {
 	public String multiply(String num1, String num2) {
@@ -20,6 +21,8 @@ public class MultiplyStrings {
 	    }  
 	    
 	    StringBuilder sb = new StringBuilder();
+	    
+	    //if first pos is 0, then don't add
 	    for(int p : pos) if(!(sb.length() == 0 && p == 0)) sb.append(p);
 	    return sb.length() == 0 ? "0" : sb.toString();
 	}

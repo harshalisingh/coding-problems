@@ -1,9 +1,15 @@
 package leetcode.Tree;
 
+/**
+ * Given a Binary Tree, change the value in each node to sum of all the values in the nodes in the left subtree including its own.
+ * http://www.geeksforgeeks.org/change-a-binary-tree-so-that-every-node-stores-sum-of-all-nodes-in-left-subtree/
+ */
 public class StoreLeftSumBinaryTree {
-	// Function to modify a Binary Tree so that every node
-	// stores sum of values in its left child including its
-	// own value
+	/*Function to modify a Binary Tree so that every node
+	* stores sum of values in its left child including its
+	* own value.
+	* Time Complexity: O(n)
+	*/
 	public int updatetree(TreeNode root)
 	{
 	    // Base cases

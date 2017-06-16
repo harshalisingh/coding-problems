@@ -17,21 +17,20 @@ public class DiameterBinaryTree {
 		}
 	}
 
-	public int Diameter(TreeNode root) {
-		if (root != null) {
-			// get the left and right subtree height
-			int leftH = getHeight(root.left);
-			int rightH = getHeight(root.right);
+	public int diameter(TreeNode root) {
+		if(root == null)
+			return 0;
+		// get the left and right subtree height
+		int leftH = getHeight(root.left);
+		int rightH = getHeight(root.right);
 
-			// get the left diameter and right diameter recursively.
-			int leftDiameter = Diameter(root.left);
-			int rightDiameter = Diameter(root.right);
+		// get the left diameter and right diameter recursively.
+		int leftDiameter = diameter(root.left);
+		int rightDiameter = diameter(root.right);
 
-			// get the max leftsubtree, rightsubtree, longest path goes through
-			// root.
-			return getMax(leftH + rightH + 1, leftDiameter, rightDiameter);
-		}
-		return 0;
+		// get the max leftsubtree, rightsubtree, longest path goes through
+		// root.
+		return getMax(leftH + rightH + 1, leftDiameter, rightDiameter);
 	}
 	public int getMax(int a, int b, int c) {
 		return Math.max(a, Math.max(b, c));

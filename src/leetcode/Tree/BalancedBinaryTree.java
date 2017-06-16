@@ -1,4 +1,4 @@
-package epi.BinaryTree;
+package leetcode.Tree;
 
 public class BalancedBinaryTree {
 	  private static class BalanceStatusWithHeight {
@@ -11,11 +11,11 @@ public class BalancedBinaryTree {
 	    }
 	  }
 
-	  public static boolean isBalanced(BinaryTreeNode<Integer> tree) {
+	  public static boolean isBalanced(TreeNode tree) {
 	    return checkBalanced(tree).balanced;
 	  }
 	  
-	  private static BalanceStatusWithHeight checkBalanced(BinaryTreeNode<Integer> tree) {
+	  private static BalanceStatusWithHeight checkBalanced(TreeNode tree) {
 	    if (tree == null) {
 	      return new BalanceStatusWithHeight(true, -1); // Base case.
 	    }

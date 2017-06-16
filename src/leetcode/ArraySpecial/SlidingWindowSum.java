@@ -4,7 +4,7 @@ public class SlidingWindowSum {
 	public static void main(String args[]){
 		SlidingWindowSum s = new SlidingWindowSum();
 		int num[] = {1,2,4,6};
-		int sums[] = s.slidingWindowSum(num,7);
+		int sums[] = s.slidingWindowSum(num,3);
 		for(int i = 0;i < sums.length;i++)
 			System.out.print(sums[i] + " ");
 		System.out.println();
@@ -33,6 +33,8 @@ public class SlidingWindowSum {
 
 			// if not the start window, delete the first one from window
 			if(i >= k) cur_sum -= nums[i-k];
+			
+			//size equal to window, add sum to result
 			if(i >= k - 1) res[j++] = cur_sum;
 		}
 		return res;     

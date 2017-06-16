@@ -1,4 +1,4 @@
-package leetcode.DP;
+package leetcode.ArraySpecial;
 
 /*
  * Given [10, 9, 2, 5, 3, 7, 101, 18], The longest increasing subsequence is [2, 3, 7, 101], 
@@ -39,9 +39,10 @@ public class LongestIncreasingSubsequence {
 
 		// Find the maximum length from the array that we just generated 
 		int longest = 0;
-		for(int i=0; i < T.length; i++)
+		for(int i=0; i < T.length; i++) {
+			//System.out.print(T[i] + ",");
 			longest = Math.max(longest, T[i]);
-
+		}
 		return longest;
 	}
 	
@@ -58,4 +59,11 @@ public class LongestIncreasingSubsequence {
         }
         return false;
     }
+	
+	public static void main(String[] args){
+		int[] nums = {10, 9, 2, 5, 3, 7, 101, 18};
+		LongestIncreasingSubsequence lis = new LongestIncreasingSubsequence();
+		int length = lis.lengthOfLIS(nums);
+		//System.out.println(length);
+	}
 }

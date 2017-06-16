@@ -30,11 +30,15 @@ public class SlidingWindowMaximum {
 			max_right[j] = (j % k == 0) ? nums[j] : Math.max(max_right[j + 1], nums[j]);
 		}
 
-		final int[] sliding_max = new int[nums.length - k + 1];
-		for (int i = 0, j = 0; i + k <= nums.length; i++) {
+		final int[] sliding_max = new int[nums.length - k + 1]; //size of result array 
+//		for (int i = 0, j = 0; i + k <= nums.length; i++) {
+//			sliding_max[j++] = Math.max(max_right[i], max_left[i + k - 1]);
+//		}
+
+		for (int i = 0, j = 0; i <= nums.length - k; i++) {
 			sliding_max[j++] = Math.max(max_right[i], max_left[i + k - 1]);
 		}
-
+		
 		return sliding_max;
 	}
 

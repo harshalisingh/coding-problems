@@ -1,4 +1,4 @@
-package leetcode.Strings;
+package leetcode.Strings.duplicate;
 
 public class FindAnagramTough {
 	public static void findWord(String part, String full) {

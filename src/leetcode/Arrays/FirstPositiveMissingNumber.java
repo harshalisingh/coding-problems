@@ -1,6 +1,14 @@
 package leetcode.Arrays;
 
+/**
+ * Given an unsorted integer array, find the first missing positive integer.
+ * For example, Given [1,2,0] return 3, and [3,4,-1,1] return 2.
+ * Your algorithm should run in O(n) time and uses constant space.
+ * https://leetcode.com/problems/first-missing-positive/#/description
+ */
 public class FirstPositiveMissingNumber {
+	
+	//Time: O(n), Space: O(1)
 	public static int firstMissingPositiveNumber(int[] A){
 		
 		//Record which values are present by writing A[i] to index A[i] - 1

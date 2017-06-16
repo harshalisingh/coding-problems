@@ -18,7 +18,6 @@ public class IntegerToEnglishWords {
 
 		int i = 0;
 		String words = "";
-
 		while (num > 0) {
 			if (num % 1000 != 0)
 				words = helper(num % 1000) +THOUSANDS[i] + " " + words;
@@ -43,5 +42,6 @@ public class IntegerToEnglishWords {
 	public static void main(String[] args){
 		IntegerToEnglishWords it = new IntegerToEnglishWords();
 		System.out.println(it.numberToWords(1234567));
+		//One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven
 	}
 }

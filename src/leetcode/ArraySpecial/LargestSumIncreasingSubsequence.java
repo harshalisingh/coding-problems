@@ -1,4 +1,4 @@
-package leetcode.DP;
+package leetcode.ArraySpecial;
 
 /*
  * Given an array of n positive integers. Write a program to find the sum of maximum sum subsequence of the given array 

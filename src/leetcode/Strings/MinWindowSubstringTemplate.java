@@ -2,18 +2,19 @@ package leetcode.Strings;
 
 /**
  * Minimum Window Substring, S = "ADOBECODEBANC"  T = "ABC"   Minimum window is "BANC".
+ * Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
  * https://discuss.leetcode.com/topic/30941/here-is-a-10-line-template-that-can-solve-most-substring-problems/2
  * 1. Use two pointers: start and end to represent a window.
  * 2. Move end to find a valid window.
  * 3. When a valid window is found, move start to find a smaller window.
  * Time Complexity: O(n)
  */
-public class MinWindowSubstring {
+public class MinWindowSubstringTemplate {
 	public String minWindow(String s, String t) {
 		int map[] = new int[128];
 
 		int counter = t.length();      // check whether the substring is valid
-		int start = 0, end= 0;        //two pointers, one point to tail and one  head
+		int start = 0, end = 0;        //two pointers, one point to tail and one  head
 		int minLen = Integer.MAX_VALUE; //the length of substring
 		int minStart = 0; 
 
@@ -28,6 +29,7 @@ public class MinWindowSubstring {
 			if(map[c1] > 0) counter--;             
 			map[c1]--;
 			end++;
+	
 
 			while(counter == 0){ //Valid
 
@@ -41,6 +43,7 @@ public class MinWindowSubstring {
 				map[c2]++;
 				if(map[c2] > 0) counter++;  //make it invalid
 				start++;
+			
 			}
 		}
 		return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
@@ -131,11 +134,12 @@ public class MinWindowSubstring {
 
 	public static void main(String[] args){
 		String s = "ADOBECODEBANC";
+		String s1 = "ADEBGCABC";
 		String t = "ABC";
-		MinWindowSubstring mws = new MinWindowSubstring();
+		MinWindowSubstringTemplate mws = new MinWindowSubstringTemplate();
 		
 		//Minimum Window Substring
-		System.out.println(mws.minWindow(s, t));
+		System.out.println(mws.minWindow(s1, t));
 		
 		//Longest Substring - at most K distinct characters
 		System.out.println(mws.lengthOfLongestSubstringKDistinct("eceba", 3));

@@ -50,14 +50,13 @@ public class BinaryTreeTraversal {
 	        }
 	        root = stack.pop();
 	        System.out.println(root.val);
-	        root = root.right;
-	        
+	        root = root.right;	        
 	    }
 	}
     
     //Iterative Preorder Traversal
     public void preOrderItr(TreeNode root){
-        Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
         stack.push(root);
         while(!stack.isEmpty()){
             root = stack.pop();

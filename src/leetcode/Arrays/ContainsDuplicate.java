@@ -11,6 +11,19 @@ import java.util.Set;
  */
 public class ContainsDuplicate {
 	
+	/*
+	 * Time complexity : O(n^2), Space Complexity: O(1)
+	 */
+	public boolean containsDuplicateBruteForce(int[] nums) {
+	    for (int i = 0; i < nums.length; ++i) {
+	        for (int j = 0; j < i; ++j) {
+	            if (nums[j] == nums[i]) return true;  
+	        }
+	    }
+	    return false;
+	}
+	// Time Limit Exceeded
+	
 	//Time complexity: O(N lg N), memory: O(1) - not counting the memory used by sort
 	public boolean containsDuplicateUsingSort(int[] nums) {
 
@@ -28,9 +41,7 @@ public class ContainsDuplicate {
 
 	    final Set<Integer> distinct = new HashSet<Integer>();
 	    for(int num : nums) {
-	        if(distinct.contains(num)) {
-	            return true;
-	        }
+	        if(distinct.contains(num)) return true;
 	        distinct.add(num);
 	    }
 	    return false;

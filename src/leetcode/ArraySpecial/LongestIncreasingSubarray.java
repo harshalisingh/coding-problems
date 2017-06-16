@@ -14,9 +14,9 @@ public class LongestIncreasingSubarray {
 				start = end;
 			}
 			
-			end += 1;
+			end++;
 		}
-		System.out.println(start + "," + end);
+		//System.out.println(start + "," + end);
 		return maxLength;	
 	}
 	

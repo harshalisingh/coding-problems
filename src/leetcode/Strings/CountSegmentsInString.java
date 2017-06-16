@@ -5,8 +5,7 @@ package leetcode.Strings;
  * Increment at start of each character in word
  */
 public class CountSegmentsInString {
-	public int countSegments(String s) 
-    {
+	public int countSegments(String s) {
         if (s.length() == 0) return 0;
         int count = s.charAt(0) != ' ' ? 1 : 0;
         for (int i = 1; i < s.length(); i++)

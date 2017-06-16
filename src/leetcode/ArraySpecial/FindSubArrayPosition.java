@@ -29,7 +29,7 @@ public class FindSubArrayPosition {
 				startIndex = i;
 				while(j < a2.length && i < a1.length){
 					if(a2[j] != a1[i]){
-						//part of subArray is not mateched; re-initialize the startIndex,j to 0 and look further
+						//part of subArray is not matched; re-initialize the startIndex,j to 0 and look further
 						startIndex = 0;
 						j = startIndex;
 						break;
