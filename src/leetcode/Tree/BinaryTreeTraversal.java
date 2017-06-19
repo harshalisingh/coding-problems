@@ -96,7 +96,7 @@ public class BinaryTreeTraversal {
         Deque<TreeNode> stack = new ArrayDeque<>();
         while(current != null || !stack.isEmpty()){
             if(current != null){
-                stack.addFirst(current);
+                stack.push(current);
                 current = current.left;
             }else{
             	TreeNode temp = stack.peek().right;

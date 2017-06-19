@@ -1,5 +1,8 @@
 package leetcode.Tree;
 
+/**
+ * Check whether a binary tree is contained in another binary tree, child tree structure should be considered
+ */
 public class IsContainedBinaryTree {
 	public boolean isContained(TreeNode parent, TreeNode child) {
 	    // empty tree cannot contain any tree
