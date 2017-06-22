@@ -6,6 +6,7 @@ package leetcode.DP;
 public class MaximalSquare {
 	/* dp(i,j) represents the side length of the maximum square 
 	 * whose bottom right corner is the cell with index (i,j) in the original matrix.
+	 * dp(i,j) = Min( dp(i-1,j), dp(i-1, j-1), dp(i, j-1)) + 1;
 	 * Time complexity : O(mn). Single pass. Space complexity : O(mn). Another matrix of same size is used for dp.
 	 */
 	public int maximalSquareDP(char[][] matrix) {

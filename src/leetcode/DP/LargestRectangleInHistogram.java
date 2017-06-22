@@ -4,7 +4,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 //http://www.geeksforgeeks.org/largest-rectangle-under-histogram/
-public class MaximumHistogram {
+public class LargestRectangleInHistogram {
 
 	public int maxHistogram(int input[]){
 		Deque<Integer> stack = new LinkedList<Integer>();
@@ -53,6 +53,4 @@ public class MaximumHistogram {
 		}
 		return maxArea;
 	}
-
-
 }

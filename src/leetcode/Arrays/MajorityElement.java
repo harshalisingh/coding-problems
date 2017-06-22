@@ -16,6 +16,25 @@ public class MajorityElement {
 	    Arrays.sort(nums);
 	    return nums[nums.length/2];
 	}
+	
+	/* This can be solved by Moore's voting algorithm. Basic idea of the algorithm is if we cancel out each occurrence of an element e 
+	 * with all the other elements that are different from e then e will exist till end if it is a majority element. 
+	 * Below code loops through each element and maintains a count of the element that has the potential of being the majority element.
+	 *  If next element is same then increments the count, otherwise decrements the count. 
+	 *  If the count reaches 0 then update the potential index to the current element and sets count to 1.
+	 */
+	public int majorityElement3(int[] nums) {
+	    int count=0, ret = 0;
+	    for (int num: nums) {
+	        if (count==0)
+	            ret = num;
+	        if (num!=ret)
+	            count--;
+	        else
+	            count++;
+	    }
+	    return ret;
+	}
 
 	// Hashtable 
 	public int majorityElement2(int[] nums) {
@@ -31,20 +50,6 @@ public class MajorityElement {
 	            ret = num;
 	            break;
 	        }
-	    }
-	    return ret;
-	}
-	
-	// Moore voting algorithm
-	public int majorityElement3(int[] nums) {
-	    int count=0, ret = 0;
-	    for (int num: nums) {
-	        if (count==0)
-	            ret = num;
-	        if (num!=ret)
-	            count--;
-	        else
-	            count++;
 	    }
 	    return ret;
 	}

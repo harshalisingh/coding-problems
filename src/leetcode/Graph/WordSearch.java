@@ -4,8 +4,6 @@ package leetcode.Graph;
  * https://leetcode.com/problems/word-search/#/description
  */
 public class WordSearch {
-    private char[] w;
-    private char[][] board;
     /**
      * Given a 2D board and a word, find if the word exists in the grid.
      * For example, given board =
@@ -25,8 +23,7 @@ public class WordSearch {
      */
     public boolean exist(char[][] board, String word) {
         // Store instance variables
-        w = word.toCharArray();
-        this.board = board; // shallow copy
+        char[] w = word.toCharArray();
         
         /**
          * If we were performing multiple searches for a given board, we would
@@ -38,7 +35,7 @@ public class WordSearch {
          */
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                if (exist(i, j, 0)) return true;
+                if (exist(board, i, j, w, 0)) return true;
             }
         }
         return false;
@@ -58,25 +55,27 @@ public class WordSearch {
      *         false if the current cell is not a validly-indexed location
      *         true if the depth of recursion equals the length of the word
      */
-    private boolean exist(int i, int j, int d) {
+    private boolean exist(char[][] board, int i, int j, char[] word, int index) {
         
         // Our base cases
-        if (d == w.length) return true;
+        if (index == word.length) return true;
         if (i < 0 || j < 0 || i == board.length || j == board[0].length) return false;
-        if (board[i][j] != w[d]) return false;
+        if (board[i][j] != word[index]) return false;
         
         // Perform a bitwise OR assignment to mark the current cell as visited.
         // The bitwise OR of any character will not be the letter which is
         // currently being looked for.
-        board[i][j] ^= 256;
+        board[i][j] ^= 256;        //board[i][j] = '*'
         
         // Check all neighbors for existence of next letter.
-        boolean ex = exist(i, j+1, d+1) || exist(i, j-1, d+1)
-          || exist(i+1, j, d+1) || exist(i-1, j, d+1);
+        boolean ex = exist(board, i, j+1, word, index + 1) || 
+        		     exist(board, i, j-1, word, index + 1) || 
+        		     exist(board, i+1, j, word, index + 1) || 
+        		     exist(board, i-1, j, word, index + 1);
         
         // Perform a bitwise OR assignment to revert the visited cells to the
         // letter they held previously.  OR(OR(X)) = X
-        board[i][j] ^= 256;
+        board[i][j] ^= 256;       //board[i][j] = word[index];
         
         return ex;
     }
