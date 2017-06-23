@@ -8,7 +8,7 @@ import java.util.Set;
  * Given a string, determine if a permutation of the string could form a palindrome.
  * For example, "code" -> False, "aab" -> True, "carerac" -> True.
  */
-public class PalindromePermutation {
+public class CanStringBePalindromePermutation {
 	/*
 	 * Time complexity : O(n). Space complexity : O(n)
 	 */
