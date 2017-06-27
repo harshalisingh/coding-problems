@@ -4,22 +4,27 @@ public class LongestIncreasingSubarray {
 	public static int lengthLongestIncreasingSubArray(int[] A){
 		if(A == null) return 0;
 		if(A.length == 1) return 1;
-		
+
 		int start = 0, end = 1, maxLength = 1;
+		int[] ans = new int[2];
+		ans[0] = start;
+		ans[1] = end;
 		while(end < A.length){
 			if(A[end] > A[end - 1]){
-				if(end - start + 1 > maxLength)
+				if(end - start + 1 > maxLength){
 					maxLength = end - start + 1;
+					ans[0] = start;
+					ans[1] = end;
+				}
 			} else {
 				start = end;
 			}
-			
 			end++;
 		}
-		//System.out.println(start + "," + end);
 		return maxLength;	
 	}
-	
+
+	//EPI
 	private static class SubArray{
 		int start, end;
 		public SubArray(int start, int end){
@@ -27,7 +32,6 @@ public class LongestIncreasingSubarray {
 			this.end = end;
 		}
 	}
-	
 	public static SubArray longestIncreasingSubArray(int[] A){
 		int maxLength = 1;
 		SubArray ans = new SubArray(0,0);
@@ -41,7 +45,7 @@ public class LongestIncreasingSubarray {
 					break;
 				}
 			}
-			
+
 			if(!isSkippable){
 				i += maxLength;
 				while(i < A.length && A[i - 1] < A.length){
@@ -51,14 +55,13 @@ public class LongestIncreasingSubarray {
 				ans = new SubArray(i - maxLength, i - 1);
 			}
 		}
-		
 		return ans;
 	}
-	
+
 	public static void main(String[] args){
 		int[] nums = {-1, 1, 2, 3, 5, 8, 7, 9};
 		System.out.println(lengthLongestIncreasingSubArray(nums));
-		//SubArray ans = longestIncreasingSubArray(nums);
-		//System.out.println(ans.start + "," + ans.end);
+		SubArray ans = longestIncreasingSubArray(nums);
+		System.out.println(ans.start + "," + ans.end);
 	}
 }

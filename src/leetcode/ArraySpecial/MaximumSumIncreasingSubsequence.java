@@ -4,34 +4,29 @@ package leetcode.ArraySpecial;
  * Given an array of n positive integers. Write a program to find the sum of maximum sum subsequence of the given array 
  * such that the integers in the subsequence are sorted in increasing order. 
  * http://www.geeksforgeeks.org/dynamic-programming-set-14-maximum-sum-increasing-subsequence/
+ * 
+ * Variation of Longest Increasing Subsequence
  */
-public class LargestSumIncreasingSubsequence {
+public class MaximumSumIncreasingSubsequence {
 	public static int largestSumIncreasingSubseq(int[] nums){
-		int n = nums.length;
-		if(n <= 1)
-			return nums[0];
-
-		int[] T = new int[n];
-
-		for(int i = 0; i < n; i++){
-			T[i] = nums[i];
+		// Base case
+		if(nums.length <= 1) return nums[0];
+		
+		int[] dp = new int[nums.length];
+		for(int i = 0; i < nums.length; i++){
+			dp[i] = nums[i];
 		}
 
-		for(int i = 1; i < n; i++){
+		int maxSum = Integer.MIN_VALUE;
+		for(int i = 1; i < nums.length; i++){
 			for(int j = 0; j < i; j++){
 				if(nums[i] > nums[j]){
-					T[i] = Math.max(T[i], T[j] + nums[i]);
+					dp[i] = Math.max(dp[i], dp[j] + nums[i]);
+					maxSum = Math.max(maxSum, dp[i]);
 				}
 			}
 		}
-
-		// Find the maximum length from the array that we just generated 
-		int largest = 0;
-		for(int i=0; i < T.length; i++)
-			largest = Math.max(largest, T[i]);
-
-		return largest;
-
+		return maxSum;
 	}
 	
 	/* Driver program to test above function */

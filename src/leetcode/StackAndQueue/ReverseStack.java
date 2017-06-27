@@ -1,20 +1,20 @@
 package leetcode.StackAndQueue;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Deque;
 
 public class ReverseStack {
     public static void main(String[] args) {
-        Stack<Integer> stack = new Stack<Integer>();
+        Deque<Integer> stack = new ArrayDeque<Integer>();
         stack.push(5);
         stack.push(4);
         stack.push(3);
         stack.push(2);
         stack.push(1);
         reverseStack(stack);
-        for (int i = 0, n = stack.size(); i < n; i++) {
-            System.out.println(stack.elementAt(i));
-        }
+        printStack(stack);
     }
-    public static <T> void reverseStack(Stack<T> stack) {
+    public static <T> void reverseStack(Deque<T> stack) {
         if (stack.isEmpty()) {
             return;
         }
@@ -27,7 +27,7 @@ public class ReverseStack {
         // Add original bottom element to top of stack
         stack.push(bottom);
     }
-    private static <T> T popBottom(Stack<T> stack) {
+    private static <T> T popBottom(Deque<T> stack) {
         T top = stack.pop();
         if (stack.isEmpty()) {
             // If we removed the last element, return it
@@ -39,5 +39,9 @@ public class ReverseStack {
             stack.push(top);
             return bottom;
         }
+    }
+    
+    private static <T> void printStack(Deque<T> stack){
+    	System.out.println(Arrays.toString(stack.toArray()));
     }
 }

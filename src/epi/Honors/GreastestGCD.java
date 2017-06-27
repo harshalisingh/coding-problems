@@ -1,5 +1,10 @@
-package leetcode.Math;
+package epi.Honors;
 
+/**
+ * The greatest common divisor of positive integers x and y is the largest integer d such that x % d = 0 and y % d = 0 
+ * In every two calls, we reduce the combined bit length of the two numbers by at least one, meaning time complexity is proportional
+ * to the sum of number of bits in x and y, i.e. O(logx + logy).
+ */
 public class GreastestGCD {
 	public static int GCD(int x, int y){
 		if(x == y){

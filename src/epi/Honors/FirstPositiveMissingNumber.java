@@ -1,4 +1,4 @@
-package leetcode.Arrays;
+package epi.Honors;
 
 /**
  * Given an unsorted integer array, find the first missing positive integer.
@@ -23,10 +23,10 @@ public class FirstPositiveMissingNumber {
 			}
 		}
 		
-		for(i = 0; i < A.length; i++){
-			System.out.print(A[i] + " ");
-		}
-		
+//		for(i = 0; i < A.length; i++){
+//			System.out.print(A[i] + " ");
+//		}
+//		
 		//Second pass through A to search for the first index i such that A[i] != i + 1,
 		//indicating that i + 1 is absent. If all numbers between 1 and A.length are present, the
 		//smallest missing positive number is A.length + 1.
@@ -48,6 +48,7 @@ public class FirstPositiveMissingNumber {
 	//Basically for each number (if between 1 and A.length), put it in it's corresponding index.
 	public static void main(String[] args){
 		int[] nums = {6, 0, 4, 3, -1, -2, 5};
-		System.out.println(firstMissingPositiveNumber(nums));
+		int[] nums1 = {-1,1,2,8,9};
+		System.out.println(firstMissingPositiveNumber(nums1));
 	}
 }
