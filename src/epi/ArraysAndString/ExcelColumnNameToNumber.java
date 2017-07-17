@@ -17,7 +17,7 @@ public class ExcelColumnNameToNumber {
 		for(int i=0; i < s.length();i++){
 
 			int digit = s.charAt(i) - 'A' + 1;
-			result = result*26 + digit;
+			result = result * 26 + digit;
 		}
 		return result;
 	}

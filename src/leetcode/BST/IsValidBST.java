@@ -40,6 +40,7 @@ public class IsValidBST {
 	}
 
 
+	//Inorder BST Traversal
 	public boolean isValidBSTIterative(TreeNode root) {
 		if (root == null) return true;
 		Stack<TreeNode> stack = new Stack<>();

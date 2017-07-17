@@ -2,11 +2,12 @@ package leetcode.Design;
 
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class PhoneDirectory {
 	int max;
 	HashSet<Integer> used;
-	LinkedList<Integer> available;
+	Queue<Integer> available;
 
 	/** Initialize your data structure here
         @param maxNumbers - The maximum numbers that can be stored in the phone directory. */
@@ -40,7 +41,7 @@ public class PhoneDirectory {
 
 	/** Recycle or release a number. */
 	public void release(int number) {
-		if (used.remove(number)) {
+		if (used.remove(number)) {    //add to queue only if it was present in set before
             available.offer(number);
         }
 	}

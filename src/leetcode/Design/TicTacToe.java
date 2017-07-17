@@ -2,13 +2,17 @@ package leetcode.Design;
 
 public class TicTacToe {
 
-	public class TicTacToeNaive {
-
-		int[][] matrix;
+	//O(1)
+	class TicTacToeBest {
+		private int[] rows;
+		private int[] cols;
+		private int diagonal;
+		private int antiDiagonal;
 
 		/** Initialize your data structure here. */
-		public TicTacToeNaive(int n) {
-			matrix = new int[n][n];
+		public TicTacToeBest(int n) {
+			rows = new int[n];
+			cols = new int[n];
 		}
 
 		/** Player {player} makes a move at ({row}, {col}).
@@ -19,6 +23,94 @@ public class TicTacToe {
 	                0: No one wins.
 	                1: Player 1 wins.
 	                2: Player 2 wins. */
+		public int move(int row, int col, int player) {
+			int toAdd = player == 1 ? 1 : -1;
+
+			rows[row] += toAdd;
+			cols[col] += toAdd;
+			if (row == col)
+			{
+				diagonal += toAdd;
+			}
+
+			if (col == (cols.length - row - 1))
+			{
+				antiDiagonal += toAdd;
+			}
+
+			int size = rows.length;
+			if (Math.abs(rows[row]) == size ||
+					Math.abs(cols[col]) == size ||
+					Math.abs(diagonal) == size  ||
+					Math.abs(antiDiagonal) == size)
+			{
+				return player;
+			}
+
+			return 0;
+		}
+	}
+
+	//O(n)
+	class TicTacToeBetter {
+		int[][] board;
+		/** Initialize your data structure here. */
+		public TicTacToeBetter(int n) {
+			board = new int[n][n]; 
+		}
+
+		/** Player {player} makes a move at ({row}, {col}).
+	        @param row The row of the board.
+	        @param col The column of the board.
+	        @param player The player, can be either 1 or 2.
+	        @return The current winning condition, can be either:
+	                0: No one wins.
+	                1: Player 1 wins.
+	                2: Player 2 wins. */
+		public int move(int row, int col, int player) {
+			int rowCount = 0, columnCount = 0, diagonal = 0,antiDiagonal = 0;
+			board[row][col] = player;
+			for(int i=0;i < board.length;i++){
+				if(board[row][i] == player){
+					rowCount++;
+				}
+			}
+			for(int i =0;i < board.length;i++){
+				if(board[i][col] == player){
+					columnCount++;
+				}
+			}
+			for(int i =0 ;i < board.length;i++){
+				if(board[i][i] == player){
+					diagonal++;
+				}
+			}
+
+			int j = 0;
+			for(int i = board.length - 1;i>=0;i--){
+				if(board[j][i] == player ){
+					antiDiagonal++;
+				}
+				j++;
+			}
+
+			int size = board.length;
+			if(rowCount == size || columnCount == size || diagonal == size || antiDiagonal == size){
+				return player;
+			}else {
+				return 0;
+			}
+		}
+	}
+
+	//O(n^2)
+	class TicTacToeNaive {
+		int[][] matrix;
+
+		/** Initialize your data structure here. */
+		public TicTacToeNaive(int n) {
+			matrix = new int[n][n];
+		}
 		public int move(int row, int col, int player) {
 			matrix[row][col]=player;
 
@@ -30,7 +122,6 @@ public class TicTacToe {
 					break;
 				}
 			}
-
 			if(win) return player;
 
 			//check column
@@ -41,7 +132,6 @@ public class TicTacToe {
 					break;
 				}
 			}
-
 			if(win) return player;
 
 			//check back diagonal
@@ -52,7 +142,6 @@ public class TicTacToe {
 					break;
 				}
 			}
-
 			if(win) return player;
 
 			//check forward diagonal
@@ -63,56 +152,8 @@ public class TicTacToe {
 					break;
 				}
 			}
-
 			if(win) return player;
-
 			return 0;
 		}
 	}
-
-	class TicTacToeBetter {
-		int[] rows;
-		int[] cols;
-		int dc1;
-		int dc2;
-		int n;
-		/** Initialize your data structure here. */
-		public TicTacToeBetter(int n) {
-			this.n=n;
-			this.rows=new int[n];
-			this.cols=new int[n];
-		}
-
-		/** Player {player} makes a move at ({row}, {col}).
-	        @param row The row of the board.
-	        @param col The column of the board.
-	        @param player The player, can be either 1 or 2.
-	        @return The current winning condition, can be either:
-	                0: No one wins.
-	                1: Player 1 wins.
-	                2: Player 2 wins. */
-		public int move(int row, int col, int player) {
-			int val = (player==1?1:-1);
-
-			rows[row]+=val;
-			cols[col]+=val;
-
-			if(row==col){
-				dc1+=val;
-			}
-			if(col==n-row-1){
-				dc2+=val;
-			}
-
-			if(Math.abs(rows[row])==n 
-					|| Math.abs(cols[col])==n 
-					|| Math.abs(dc1)==n 
-					|| Math.abs(dc2)==n){
-				return player;
-			}
-
-			return 0;
-		}
-	}
-
 }

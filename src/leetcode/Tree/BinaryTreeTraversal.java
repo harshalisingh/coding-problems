@@ -20,14 +20,7 @@ public class BinaryTreeTraversal {
 		inOrder(root.right);
 	}
 
-	public void preOrder(TreeNode root){
-		if(root == null){
-			return;
-		}
-		System.out.print(root.val + " ");
-		preOrder(root.left);
-		preOrder(root.right);
-	}
+	
 
 	public void postOrder(TreeNode root){
 		if(root == null){
@@ -84,23 +77,7 @@ public class BinaryTreeTraversal {
 		}  
 	}  
 
-	/* Iterative Preorder Traversal
-	 * This runs in time O(n) and use O(h) spaces.
-	 */
-	public void preOrderItr(TreeNode root){
-		Stack<TreeNode> stack = new Stack<TreeNode>();
-		stack.push(root);
-		while(!stack.isEmpty()){
-			root = stack.pop();
-			System.out.print(root.val + " ");
-			if(root.right != null){
-				stack.push(root.right);
-			}
-			if(root.left!= null){
-				stack.push(root.left);
-			}
-		}
-	}
+	
 
 	//Iterative Postorder Traversal
 	public void postOrderItr(TreeNode root){

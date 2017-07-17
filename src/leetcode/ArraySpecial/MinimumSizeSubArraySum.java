@@ -37,7 +37,7 @@ public class MinimumSizeSubArraySum {
 		for (int i = 0; i < n; i++) {
 	        sum += a[i];
 	        while (sum >= s) {
-	            ans = Math.min(ans, i + 1 - left);
+	            ans = Math.min(ans, i - left + 1);
 	            sum -= a[left++];
 	        }
 	    }

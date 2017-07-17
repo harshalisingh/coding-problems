@@ -29,5 +29,15 @@ public class CombinationSum {
 			}
 		}
 	}
+	
+	public static void main(String[] args){
+		CombinationSum cs = new CombinationSum();
+		int[] nums = new int[] {1,5,10,20};
+		int target = 25;
+		List<List<Integer>> list = cs.combinationSum(nums, target);
+		for(List<Integer> comb : list){
+			System.out.println(comb.toString());
+		}
+	}
 
 }

@@ -25,8 +25,8 @@ public class SpiralMatrix {
 			rowBegin++;
 
 			// Traverse Down
-			for (int j = rowBegin; j <= rowEnd; j ++) {
-				res.add(matrix[j][colEnd]);
+			for (int i = rowBegin; i <= rowEnd; i ++) {
+				res.add(matrix[i][colEnd]);
 			}
 			colEnd--;
 
@@ -40,13 +40,12 @@ public class SpiralMatrix {
 
 			if (colBegin <= colEnd) {
 				// Traverse Up
-				for (int j = rowEnd; j >= rowBegin; j --) {
-					res.add(matrix[j][colBegin]);
+				for (int i = rowEnd; i >= rowBegin; i --) {
+					res.add(matrix[i][colBegin]);
 				}
 			}
 			colBegin ++;
 		}
-
 		return res;
 	}
 	

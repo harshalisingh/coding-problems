@@ -32,10 +32,8 @@ public class WordBreak {
      * Space complexity : O(n). Length of dp array is n+1
      */
 	public boolean wordBreak(String s, List<String> wordDict) {
-	    if (s == null && wordDict == null)
-	        return true;
-	    if (s == null || wordDict == null)
-	        return false;
+	    if (s == null && wordDict == null) return true;
+	    if (s == null || wordDict == null) return false;
 	    //dp[i] represents if s.substring(0, i) is wordbreakable.
 	    boolean[] dp = new boolean[s.length()+1];
 	    dp[0] = true;

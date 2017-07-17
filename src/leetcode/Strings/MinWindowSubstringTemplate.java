@@ -1,5 +1,7 @@
 package leetcode.Strings;
 
+import java.util.Arrays;
+
 /**
  * Minimum Window Substring, S = "ADOBECODEBANC"  T = "ABC"   Minimum window is "BANC".
  * Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
@@ -50,7 +52,7 @@ public class MinWindowSubstringTemplate {
 	}
 
 	/**
-	 * Longest Substring - at most K distinct characters
+	 * Longest Substring - at most K distinct characters (longest substring with at most 1 distinct character will be length 1)
 	 * Given a string, find the length of the longest substring T that contains at most k distinct characters.
 	 * For example, Given s = “eceba” and k = 2,
 	 * T is "ece" which its length is 3.
@@ -59,9 +61,10 @@ public class MinWindowSubstringTemplate {
 		int[] map = new int[128];
 		int start = 0, end = 0, counter = 0;
 		int maxLen = Integer.MIN_VALUE;
+		System.out.println(Arrays.toString(map));
 		while (end < s.length()) {
 			final char c1 = s.charAt(end);
-			if (map[c1] == 0) counter++;
+			if (map[c1] == 0) counter++;   //seen a distinct character, limit it to k
 			map[c1]++;
 			end++;
 			
@@ -87,14 +90,18 @@ public class MinWindowSubstringTemplate {
 		int maxLen = Integer.MIN_VALUE;
 		while (end < s.length()) {
 			final char c1 = s.charAt(end);
-			if (map[c1] == 0) counter++;
+			if (map[c1] == 0){
+				counter++;  
+			}
 			map[c1]++;
 			end++;
 
 			while (counter > 2) {
 				final char c2 = s.charAt(start);
 				map[c2]--;
-				if (map[c2] == 0) counter--;				
+				if (map[c2] == 0){
+					counter--;				
+				}
 				start++;
 			}
 			maxLen = Math.max(maxLen, end - start);
@@ -102,7 +109,7 @@ public class MinWindowSubstringTemplate {
 		return maxLen == Integer.MIN_VALUE ? 0 : maxLen;
 	}
 	
-	/**
+	/** Refer : LongestNonRepeatingSubstring.java
 	 * Longest Substring Without Repeating Characters
 	 * Given a string, find the length of the longest substring without repeating characters.
 	 * Given "abcabcbb", the answer is "abc", which the length is 3.
@@ -115,14 +122,18 @@ public class MinWindowSubstringTemplate {
 		int maxLen = Integer.MIN_VALUE;
 		while (end < s.length()) {
 			final char c1 = s.charAt(end);
-			if (map[c1] > 0) counter++;
+			if (map[c1] > 0){
+				counter++; //seen a character again, limit it to 
+			}
 			map[c1]++;
 			end++;
 
 			while (counter > 0) {
 				final char c2 = s.charAt(start);
 				map[c2]--;
-				if (map[c2] > 0) counter--;				
+				if (map[c2] > 0){
+					counter--;				
+				}
 				start++;
 			}
 
@@ -160,6 +171,26 @@ public class MinWindowSubstringTemplate {
             if (count[i] != 0) return false;
         }
         return true;
+    }
+    
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int max = 0, zero = 0, k = 1; // flip at most k zero
+        int start = 0, end = 0;
+        while(end < nums.length){
+        	 if (nums[end] == 0) {
+        		 zero++;
+        	 }
+        	 end++;
+        	 
+        	 while(zero > k){
+        		 if (nums[start] == 0){
+        			 zero--;
+        		 }
+        		 start++;                  
+        	 }
+        	 max = Math.max(max, end - start);
+        }                                                            
+        return max;             
     }
 
 	public static void main(String[] args){

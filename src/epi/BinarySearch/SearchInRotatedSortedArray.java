@@ -2,7 +2,7 @@ package epi.BinarySearch;
 
 public class SearchInRotatedSortedArray {
 	public static void main(String[] args){
-		int[] arr = {65, 66, 78, 1, 5, 23, 45, 56, 57};
+		int[] arr = {60, 65, 66, 78, 1, 5, 23, 45, 56, 57};
 		System.out.println(search(arr, 65));
 	}
 	public static int search(int[] A, int target) {
@@ -12,7 +12,7 @@ public class SearchInRotatedSortedArray {
 		if (target < A[lo] && target > A[hi]) return -1;
 
 		while (lo < hi) {
-	        int mid = (lo + hi) / 2;
+	        int mid = lo + (hi - lo) / 2;
 	        if (A[mid] == target) return mid;
 	        
 	        if (A[lo] <= A[mid]) {  //Left is normally ordered

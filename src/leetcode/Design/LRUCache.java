@@ -1,11 +1,11 @@
 package leetcode.Design;
 
 import java.util.HashMap;
-//LRUcache using hashMap and Doubly Linked List
+//LRUcache using HashMap and Doubly Linked List
 class Node {
 	int key;
 	int value;
-	Node pre;
+	Node prev;
 	Node next;
 
 	public Node(int key, int value) {
@@ -15,55 +15,59 @@ class Node {
 }
 
 public class LRUCache {
-	HashMap<Integer, Node> map;
+	HashMap<Integer, Node> cache;
 	int capacity, count;
 	Node head, tail;
 
 	public LRUCache(int capacity) {
 		this.capacity = capacity;
-		map = new HashMap<>();
+		cache = new HashMap<>();
 		head = new Node(0, 0);
 		tail = new Node(0, 0);
 		head.next = tail;
-		tail.pre = head;
-		head.pre = null;
+		tail.prev = head;
+		head.prev = null;
 		tail.next = null;
 		count = 0;
 	}
 
 	public void deleteNode(Node node) {
-		node.pre.next = node.next;
-		node.next.pre = node.pre;
+		node.prev.next = node.next;
+		node.next.prev = node.prev;
 	}
 
 	public void addToHead(Node node) {
 		node.next = head.next;
-		node.next.pre = node;
-		node.pre = head;
+		node.next.prev = node;
+		node.prev = head;
 		head.next = node;
 	}
 
-	//get the value of the cache node for the given key
+	/* get the value of the cache node for the given key */
 	public int get(int key) {
-		if (map.get(key) != null) {
-			Node node = map.get(key);
+		//cache entry exists
+		if (cache.get(key) != null) {
+			Node node = cache.get(key);
 			int result = node.value;
 			deleteNode(node);
 			addToHead(node);
 			return result;
 		}
-		return -1;
+		return -1; //cache miss
 	}
 
 	public void set(int key, int value) {
-		if (map.get(key) != null) {
-			Node node = map.get(key);
+		//cache entry already exists
+		if (cache.get(key) != null) {    
+			Node node = cache.get(key);
 			node.value = value;
 			deleteNode(node);
 			addToHead(node);
-		} else {
+		}
+		//new cache entry
+		else {                         
 			Node node = new Node(key, value);
-			map.put(key, node);
+			cache.put(key, node);
 			//if count is less than capacity, add new node to head
 			if (count < capacity) {
 				count++;
@@ -71,8 +75,8 @@ public class LRUCache {
 			} 
 			//if capacity exceeds, remove node just before tail, add new node to head
 			else {
-				map.remove(tail.pre.key);
-				deleteNode(tail.pre);
+				cache.remove(tail.prev.key);
+				deleteNode(tail.prev);
 				addToHead(node);
 			}
 		}

@@ -12,6 +12,8 @@ import java.util.HashMap;
 public class WordAbbreviationUnique {
 	public class ValidWordAbbr {
 		HashMap<String, String> map;
+		
+		//constructor
 		public ValidWordAbbr(String[] dictionary) {
 			map = new HashMap<String, String>();
 			for(String str:dictionary){
@@ -27,12 +29,12 @@ public class WordAbbreviationUnique {
 
 		public boolean isUnique(String word) {
 			String key = getKey(word);
-			return !map.containsKey(key)||map.get(key).equals(word);
+			return !map.containsKey(key) || map.get(key).equals(word);
 		}
 
 		private String getKey(String str){
-			if(str.length()<=2) return str;
-			return str.charAt(0)+Integer.toString(str.length()-2)+str.charAt(str.length()-1);
+			if(str.length() <= 2) return str;
+			return str.charAt(0) + Integer.toString(str.length()-2) + str.charAt(str.length()-1);
 		}
 	}
 }

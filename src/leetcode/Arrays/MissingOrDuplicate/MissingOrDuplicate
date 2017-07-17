@@ -1,0 +1,20 @@
+1. https://leetcode.com/problems/contains-duplicate/#/description (hashset)
+2. https://leetcode.com/problems/contains-duplicate-ii/#/description (Nearby duplicates - hashset of size k)
+3. https://leetcode.com/problems/contains-duplicate-iii/#/description (Almost Nearby Duplicates - bucket sort)
+
+1. https://leetcode.com/problems/first-missing-positive/#/description (swap number at i with number at index A[i] - 1)
+2. https://leetcode.com/problems/missing-number/#/description (Using cumulative sum or binary search)
+3. https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/#/description (mark number at index A[i] - 1 as negative)
+
+1. https://leetcode.com/problems/single-number/#/description
+2. https://leetcode.com/problems/single-number-ii/#/description
+3. https://leetcode.com/problems/single-number-iii/#/description
+
+1. https://leetcode.com/problems/find-the-duplicate-number/#/description (Cycle Detection)
+2. https://leetcode.com/problems/find-all-duplicates-in-an-array/#/description (mark number at index A[i] - 1 as negative)
+
+1. https://leetcode.com/problems/remove-duplicates-from-sorted-array/#/description
+2. https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/#/description
+3. https://leetcode.com/problems/remove-element/#/description
+4. https://leetcode.com/problems/move-zeroes/#/description
+	

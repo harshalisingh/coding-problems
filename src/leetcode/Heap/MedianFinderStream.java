@@ -22,10 +22,10 @@ import java.util.PriorityQueue;
  */
 public class MedianFinderStream {
 	
-	//Max Heap (stores the smallest half of numbers in descending order)
+	//Max Heap (stores the smaller half of numbers seen so far in descending order)
 	private PriorityQueue<Integer> small = new PriorityQueue<>(Collections.reverseOrder());
 	
-	//Min Heap (stores the large half of the numbers in ascending order)
+	//Min Heap (stores the larger half of numbers seen so far in ascending order)
 	private PriorityQueue<Integer> large = new PriorityQueue<>();
 	
 	private boolean even = true;

@@ -22,7 +22,7 @@ Then build the hashmap by comparing the adjacent words, the first character that
 
  "wrf",
  "er",
-    first different character is 1rd letter, so w comes before e
+    first different character is 1st letter, so w comes before e
 The characters in set come after the key. x->y means letter x comes before letter y. x -> set: y,z,t,w means x comes before all the letters in the set. The final HashMap "map" looks like.
 
 t -> set: f    
@@ -46,8 +46,8 @@ public class AlienDictionary {
 		Map<Character, Integer> degree=new HashMap<Character, Integer>();
 		String result="";
 		if(words==null || words.length==0) return result;
-		for(String s: words){
-			for(char c: s.toCharArray()){
+		for(String w: words){
+			for(char c: w.toCharArray()){
 				degree.put(c,0);
 			}
 		}

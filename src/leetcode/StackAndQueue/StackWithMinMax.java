@@ -2,8 +2,8 @@ package leetcode.StackAndQueue;
 import java.util.Stack;
 
 public class StackWithMinMax extends Stack<Integer> {
-
-    private Stack<Integer> minStack;
+	private static final long serialVersionUID = 3362754623450977904L;
+	private Stack<Integer> minStack;
     private Stack<Integer> maxStack;
 
     public StackWithMinMax () {

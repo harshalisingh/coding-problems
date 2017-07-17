@@ -27,5 +27,9 @@ public class CombinationSumII {
 	            tempList.remove(tempList.size() - 1); 
 	        }
 	    }
-	} 
+	}
+	
+	public static void main(String[] args){
+		
+	}
 }

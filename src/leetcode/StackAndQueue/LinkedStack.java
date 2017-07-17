@@ -4,15 +4,15 @@ import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedStack<E> {
+public class LinkedStack<T> {
 	// Each Node object stores a single element of data in the linked list and
 	// a link to another (possibly null) Node for the next piece of data.
 	private class Node {
-		private E data;
+		private T data;
 		private Node next;
 
 		// Constructs a new node to store the given data value.
-		public Node(E data) {
+		public Node(T data) {
 			this.data = data;
 		}
 	}
@@ -32,13 +32,13 @@ public class LinkedStack<E> {
 	}
 
 	// Returns an Iterator to traverse the elements of this stack.
-	public Iterator<E> iterator() {
+	public Iterator<T> iterator() {
 		return new LinkedStackIterator();
 	}
 
 	// Returns the top element of this stack without removing it.
 	// Throws an EmptyStackException if the stack is empty.
-	public E peek() {
+	public T peek() {
 		if (size == 0) {
 			throw new EmptyStackException();
 		}
@@ -47,18 +47,18 @@ public class LinkedStack<E> {
 
 	// Removes and returns the top element of this stack.
 	// Throws an EmptyStackException if the stack is empty.
-	public E pop() {
+	public T pop() {
 		if (size == 0) {
 			throw new EmptyStackException();
 		}
-		E item = top.data;
+		T item = top.data;
 		top = top.next;
 		size--;
 		return item;
 	}
 
 	// Adds the given value to the top of this stack.
-	public void push(E value) {
+	public void push(T value) {
 		Node newNode = new Node(value);
 		newNode.next = top;
 		top = newNode;
@@ -85,7 +85,7 @@ public class LinkedStack<E> {
 
 	// An iterator class to traverse the elements of this stack
 	// from top to bottom.
-	private class LinkedStackIterator implements Iterator<E> {
+	private class LinkedStackIterator implements Iterator<T> {
 		private Node position;   // current position in list
 
 		// Constructs an iterator at the beginning (top) of this stack.
@@ -99,11 +99,11 @@ public class LinkedStack<E> {
 		}
 
 		// Returns the next element from the stack and advances iterator by one slot.
-		public E next() {
+		public T next() {
 			if (!hasNext()) {
 				throw new NoSuchElementException();
 			}
-			E result = position.data;
+			T result = position.data;
 			position = position.next;
 			return result;
 		}

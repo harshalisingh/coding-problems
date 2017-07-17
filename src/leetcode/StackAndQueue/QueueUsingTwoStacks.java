@@ -32,7 +32,8 @@ public class QueueUsingTwoStacks {
 
 	// return the item least recently added to the queue.
 	public Integer peek() {
-		if (stack2.isEmpty()) moveStack1ToStack2();
+		if (stack2.isEmpty()) 
+			moveStack1ToStack2();
 		return stack2.peek();
 	}
 

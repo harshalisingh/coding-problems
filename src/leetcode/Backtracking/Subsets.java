@@ -17,9 +17,16 @@ public class Subsets {
 	    return list;
 	}
 
+	/* Values of i 
+	 * 0 -> recursion -> 1 -> recursion -> 2
+	 *                                     |-> (backtrack)1 -> recursion -> 2
+	 * 1 -> recursion -> 2
+	 * 2
+	 */
 	private void backtrack(List<List<Integer>> list , List<Integer> tempList, int[] nums, int start){
 		list.add(new ArrayList<>(tempList));
 	    for(int i = start; i < nums.length; i++){
+	    	System.out.println(i);
 	        tempList.add(nums[i]);
 	        backtrack(list, tempList, nums, i + 1);
 	        tempList.remove(tempList.size() - 1);

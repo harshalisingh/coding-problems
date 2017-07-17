@@ -8,6 +8,29 @@ import leetcode.Tree.TreeNode;
  * (meaning their values are both smaller or both larger than root's).
  */
 public class LowestCommonAncestorBST {
+	
+	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root.val > Math.max(p.val, q.val)){
+            return lowestCommonAncestor(root.left, p, q);
+        }else if(root.val < Math.min(p.val, q.val)){
+            return lowestCommonAncestor(root.right, p, q);
+        }else{
+            return root;
+        }
+    }
+	
+	public TreeNode lowestCommonAncestorIterative(TreeNode root, TreeNode p, TreeNode q) {
+        while (true) {
+        	if(root.val > Math.max(p.val, q.val)){
+                root = root.left;
+            }else if(root.val < Math.min(p.val, q.val)){
+                root= root.right;
+            }else{
+                return root;
+            }
+        }
+    }
+	
 	/* Function to find LCA of n1 and n2. The function does not assume that both
     n1 and n2 are present in BST */
 	TreeNode lca(TreeNode node, int n1, int n2) 
@@ -36,17 +59,6 @@ public class LowestCommonAncestorBST {
 			return find(node.right, val);
 	}
 	
-	
-	public TreeNode lcaSimple(TreeNode root, int p, int q) {
-		if (root.val > Math.max(p, q)) {
-			return lca(root.left, p, q);
-		} else if (root.val < Math.min(p, q)) {
-			return lca(root.right, p, q);
-		} else {
-			return root;
-		}
-	}
-	
 	public static void main(String[] args){
 		TreeNode root = new TreeNode(8);
 		root.left = new TreeNode(4);
@@ -55,10 +67,7 @@ public class LowestCommonAncestorBST {
 		root.left.right = new TreeNode(6);
 		root.right.left = new TreeNode(9);
 		root.right.right = new TreeNode(12);
-		
-		LowestCommonAncestorBST o = new LowestCommonAncestorBST();
-		TreeNode ans = o.lcaSimple(root, 2, 6);
-		System.out.println(ans.val);
+
 	}
 
 }

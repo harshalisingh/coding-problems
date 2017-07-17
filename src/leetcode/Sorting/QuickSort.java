@@ -10,15 +10,34 @@ public class QuickSort  {
 			return;
 		}
 		quickSort(nums, 0, nums.length - 1);
+		int kthLargest = quickSelect(nums, 0, nums.length - 1, 7);
+		System.out.println(kthLargest);
 	}
 	private void quickSort(int[] arr, int left, int right){
-		int index = partition(arr, left, right);
-		if(left < index - 1) { //Sort left half
-			quickSort(arr, left, index - 1);
+		int pivot = partition(arr, left, right);
+		if(left < pivot - 1) { //Sort left half
+			quickSort(arr, left, pivot - 1);
 		}
-		if(index < right) { //Sort right half
-			quickSort(arr, index, right);
+		if(pivot < right) { //Sort right half
+			quickSort(arr, pivot, right);
 		}
+	}
+
+	private int quickSelect(int[] arr, int left, int right, int k){
+		if (left == right) {
+            return arr[left];
+        }
+
+        while (true) {
+            int pivot = partition(arr, left, right);
+            if (pivot == k) {
+                return arr[pivot];
+            } else if (k < pivot) {
+            	right = pivot - 1;
+            } else {
+            	left = pivot + 1;
+            }
+        }
 	}
 
 	private int partition(int[] arr, int left, int right) {
@@ -58,7 +77,7 @@ public class QuickSort  {
 		arr[i] = arr[j];
 		arr[j] = temp;
 	}
-	
+
 	public static void main(String[] args){
 		QuickSort qs = new QuickSort();
 		int[] nums = {3,6,4,9,8,1,2,6,7,0,3,5,7,3};

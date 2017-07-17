@@ -51,7 +51,7 @@ public class CountSetBits {
 	//O(n)   n = no. of bits
 		public static short parity(int x){
 			short result = 0;
-			while(x!=0){
+			while(x!=0) {
 				result ^= (x & 1);
 				x >>>= 1;
 			} return result;

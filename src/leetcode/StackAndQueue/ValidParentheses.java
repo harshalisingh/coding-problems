@@ -25,4 +25,29 @@ public class ValidParentheses {
 		}
 		return stack.isEmpty();
 	}
+
+	/*
+	public boolean isValid(String s) {
+		Deque<Character> stack = new ArrayDeque<>();
+		for (char cha : s.toCharArray()){
+			switch (cha){
+			case '(':
+				stack.push(')');
+				break;
+			case '[':
+				stack.push(']');
+				break;
+			case '{':
+				stack.push('}');
+				break;
+			default:
+				if (stack.isEmpty() || stack.pop() != cha){
+					return false;
+				}
+				break;
+			}
+		}
+		return stack.isEmpty();
+	}
+	*/
 }
