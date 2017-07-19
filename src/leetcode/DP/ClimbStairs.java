@@ -34,23 +34,37 @@ public class ClimbStairs {
 		}
 	}
 	
-	public static int climbStairs(int n) {
-		if(n < 0) return 0;
-		else if (n == 0) return 1;
-		else if (n < 3) return n;
-	    int[] memo = new int[n+1];
-	    memo[0] = 1;
-	    memo[1] = 1;
-	    memo[2] = 2;
-	    for(int i = 3; i <= n; i++) {
-	    	memo[i] = memo[i-1] + memo[i-2] + memo[i-3];
-	    }
-	    return memo[n-1] + memo[n-2] + memo[n-3];
-	}
+	public static int climbStairs1D(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 2;
+        for (int i = 3; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
+    }
+	
+	public static int climbStairsNoSpace(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        int first = 1;
+        int second = 2;
+        for (int i = 3; i <= n; i++) {
+            int third = first + second;
+            first = second;
+            second = third;
+        }
+        return second;
+    }
 
 	public static void main(String[] args){
 		System.out.println(countWaysRecursive(3));
 		System.out.println(countWaysDP(3));
-		System.out.println(climbStairs(3));
+		System.out.println(climbStairs1D(3));
+		System.out.println(climbStairsNoSpace(3));
 	}
 }

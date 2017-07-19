@@ -8,8 +8,7 @@ public class DeleteAlternateNodes {
 		ListNode prev = head;
 		ListNode now = head.next;
 
-		while (prev != null && now != null) 
-		{           
+		while (prev != null && now != null) {           
 			/* Change next link of previous node */
 			prev.next = now.next;
 

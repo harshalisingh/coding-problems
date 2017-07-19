@@ -108,11 +108,11 @@ public class BinaryTreeTraversal {
 				stack.push(current);
 				current = current.left;
 			}else{
-				TreeNode temp = stack.peek().right;
-				if (temp == null) {
+				TreeNode temp = stack.peek().right; //check for right subtree
+				if (temp == null) {   //right subtree does not exist, okay to pop the element which is our root
 					temp = stack.poll();
 					System.out.print(temp.val + " ");
-					while (!stack.isEmpty() && temp == stack.peek().right) {
+					while (!stack.isEmpty() && temp == stack.peek().right) { //current popped element is a right child of some node
 						temp = stack.poll();
 						System.out.print(temp.val + " ");
 					}

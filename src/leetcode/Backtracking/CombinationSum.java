@@ -9,6 +9,8 @@ import java.util.List;
  * find all unique combinations in C where the candidate numbers sums to T.
  * The same repeated number may be chosen from C unlimited number of times.
  * https://leetcode.com/problems/combination-sum/
+ * 
+ * Same as Print all coin combinations that sum to a denomination
  */
 public class CombinationSum {
 	public List<List<Integer>> combinationSum(int[] nums, int target) {
@@ -32,8 +34,8 @@ public class CombinationSum {
 	
 	public static void main(String[] args){
 		CombinationSum cs = new CombinationSum();
-		int[] nums = new int[] {1,5,10,20};
-		int target = 25;
+		int[] nums = new int[] {1,2,3};
+		int target = 4;
 		List<List<Integer>> list = cs.combinationSum(nums, target);
 		for(List<Integer> comb : list){
 			System.out.println(comb.toString());

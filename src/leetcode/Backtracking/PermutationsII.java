@@ -20,6 +20,8 @@ public class PermutationsII {
 	        list.add(new ArrayList<>(tempList));
 	    } else{
 	        for(int i = 0; i < nums.length; i++){
+	        	
+	        	//when a number has the same value with its previous, we can use this number only if the previous is used
 	            if(used[i] || i > 0 && nums[i] == nums[i-1] && !used[i - 1]) continue;
 	            used[i] = true; 
 	            tempList.add(nums[i]);

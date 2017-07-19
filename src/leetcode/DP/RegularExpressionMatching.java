@@ -9,7 +9,32 @@ public class RegularExpressionMatching {
 		System.out.println("regexMatch(\"aa\", \".*\") -> " + regexMatch("aa", ".*"));
 		System.out.println("regexMatch(\"ab\", \".*\") -> " + regexMatch("ab", ".*"));
 		System.out.println("regexMatch(\"aab\", \"c*a*b\") -> " + regexMatch("aab", "c*a*b"));
+		System.out.println("regexMatchRecursive(\"aab\", \"c*a*b\") -> " + regexMatchRecursive("aab", "c*a*b"));
 		System.out.println("regexMatch(\"ccca\", \"c*a\") -> " + regexMatch("ccca", "c*a"));
+	}
+	
+	public static boolean regexMatchRecursive(String s, String p) {
+	    if (p.isEmpty()) {
+	        return s.isEmpty();
+	    }
+
+	    if (p.length() == 1 || p.charAt(1) != '*') {
+	        if (s.isEmpty() || (p.charAt(0) != '.' && p.charAt(0) != s.charAt(0))) {
+	            return false;
+	        } else {
+	            return regexMatchRecursive(s.substring(1), p.substring(1));
+	        }
+	    }
+	    
+	    //P.length() >=2
+	    while (!s.isEmpty() && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.')) {  
+	        if (regexMatchRecursive(s, p.substring(2))) { 
+	            return true;                     
+	        }                                    
+	        s = s.substring(1);
+	    }
+
+	    return regexMatchRecursive(s, p.substring(2));
 	}
 
 	public static boolean regexMatch(final String s, final String p){

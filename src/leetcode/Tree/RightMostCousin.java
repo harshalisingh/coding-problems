@@ -32,7 +32,7 @@ public class RightMostCousin {
 			if(node.left != null) queue.offer(node.left);
 			if(node.right != null) queue.offer(node.right);		
 
-			if(count == 0){			
+			if(count == 0){			//new level
 				count = queue.size();
 				if(targetLevel){
 					TreeNode cousin = null;

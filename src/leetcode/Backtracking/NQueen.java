@@ -46,12 +46,11 @@ public class NQueen {
 			//move to next row
 			backtracking(result, board, row+1, cols, d1, d2, n);
 			
-			//remove this placement
-			board.remove(board.size()-1);
 			cols[col] = false;
 			d1[id1] = false;
 			d2[id2] = false;
-
+			//remove this placement
+			board.remove(board.size()-1);
 		}
 	}
 	public static void main(String[] args){
