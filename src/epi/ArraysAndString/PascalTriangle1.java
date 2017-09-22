@@ -3,6 +3,10 @@ package epi.ArraysAndString;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Given numRows, generate the first numRows of Pascal's triangle.
+ * https://leetcode.com/problems/pascals-triangle/description/
+ */
 public class PascalTriangle1 {
 	
 	public List<List<Integer>> generate(int numRows) {

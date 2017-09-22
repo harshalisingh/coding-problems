@@ -9,6 +9,7 @@ public class CompressedStringIterator {
 
 		System.out.println(iterator.next()); // return 'L'
 		System.out.println(iterator.next());  // return 'e'
+		System.out.println(iterator.hasNext());  // return true
 		System.out.println(iterator.next());  // return 'e'
 		System.out.println(iterator.next());  // return 't'
 		System.out.println(iterator.next());  // return 'C'

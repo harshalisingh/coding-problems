@@ -1,16 +1,16 @@
-package leetcode.Strings;
+package leetcode.HashTable;
 
 public class ValidAnagram {
 	public boolean isAnagram(String s, String t) {
         if(s.length() != t.length()){
             return false;
         }
-        int[] count = new int[26];
+        int[] countMap = new int[26];
         for(int i = 0; i < s.length(); i++){
-            count[s.charAt(i)-'a']++;
-            count[t.charAt(i)-'a']--;
+        	countMap[s.charAt(i)-'a']++;
+        	countMap[t.charAt(i)-'a']--;
         }
-        for(int i:count){
+        for(int i:countMap){
             if(i != 0){
                 return false;
             }

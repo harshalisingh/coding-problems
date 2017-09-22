@@ -1,7 +1,7 @@
 package leetcode.Design;
 
 import java.util.HashMap;
-//LRUcache using HashMap and Doubly Linked List
+//LRUCache using HashMap and Doubly Linked List
 class Node {
 	int key;
 	int value;

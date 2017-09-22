@@ -7,7 +7,7 @@ import java.util.Map;
  * Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn't one, return 0 instead.
  * Given nums = [1, -1, 5, -2, 3], k = 3, return 4. (because the subarray [1, -1, 5, -2] sums to 3 and is the longest)
  */
-public class MaximumSizeSubArraySum {
+public class MaximumSizeSubArraySumK {
 	
 	/*
 	 * The HashMap stores the sum of all elements 0 to index i (inclusive) as key, and i as value. 

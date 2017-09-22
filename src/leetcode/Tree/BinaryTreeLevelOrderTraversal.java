@@ -20,10 +20,10 @@ public class BinaryTreeLevelOrderTraversal {
 	}
 
 	public static List<List<Integer>> levelOrder(TreeNode root) {
-		List<List<Integer>> nodes = new ArrayList<List<Integer>>();
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
 
 		Deque<TreeNode> queue = new ArrayDeque<TreeNode>();
-		if(root == null) return nodes;
+		if(root == null) return result;
 
 		queue.offer(root);
 		while(!queue.isEmpty()){
@@ -32,14 +32,12 @@ public class BinaryTreeLevelOrderTraversal {
 			for(int i=0; i < size; i++) {
 				root = queue.poll();
 				layer.add(root.val);
-				//System.out.print(root.val + " ");
 				if(root.left != null) queue.offer(root.left);
 				if(root.right != null) queue.offer(root.right);
 			}
-			nodes.add(layer);
-			System.out.println();
+			result.add(layer);
 		}
-		return nodes;
+		return result;
 	}
 
 	public static void main(String[] args){
@@ -47,17 +45,17 @@ public class BinaryTreeLevelOrderTraversal {
 		root.left = new TreeNode(2);
 		root.right = new TreeNode(3);
 		root.left.left = new TreeNode(4);
+		root.left.left.left = new TreeNode(9);
 		root.left.right = new TreeNode(5);
 		root.right.left = new TreeNode(6);
 		root.right.right = new TreeNode(7);
+		root.right.right.right = new TreeNode(10);
 
 		levelOrderPrint(root);
 
 		List<List<Integer>> res = levelOrder(root);
 		for(List<Integer> layer : res){
-			for(Integer node : layer){
-				//System.out.print(node + " ");
-			}
+			System.out.println(layer.toString());
 		}
 	}
 }

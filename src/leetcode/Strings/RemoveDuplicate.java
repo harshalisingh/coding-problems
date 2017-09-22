@@ -5,7 +5,7 @@ import java.util.LinkedHashSet;
 
 public class RemoveDuplicate {
 	public static void main(String[] args){
-		String input = "abracadabra";
+		String input = "abzracadabra";
 		System.out.println(removeDuplicates(input) + " : " + removeDuplicatesUsingSet(input));
 	}
 	//Remove duplicates and maintain order
@@ -15,7 +15,7 @@ public class RemoveDuplicate {
 
 		for (int i = 0; i < str.length(); i++) {
 			char ch = str.charAt(i);
-			int idx = ch - 'a' + 1;    //getting character's alphabet rank
+			int idx = ch - 'a';    //getting character's index (a = 0, b = 1, ...so on)
 			if (!seen[idx]) {
 				seen[idx] = true;
 				sb.append(ch);

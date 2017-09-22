@@ -9,7 +9,7 @@ public class ReverseLinkedList {
 			prev = curr;
 			curr = temp;
 		}
-		return prev;
+		return prev;  //prev becomes first node of reversed list and head is last node of reversed list
 	}
 	
 	/*

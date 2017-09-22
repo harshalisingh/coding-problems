@@ -13,9 +13,9 @@ public class LargestRectangleInHistogram {
 		int i;
 		for(i=0; i < input.length;){
 			if(stack.isEmpty() || input[stack.peekFirst()] <= input[i]){
-				stack.offerFirst(i++);
+				stack.push(i++);
 			}else{
-				int top = stack.pollFirst();
+				int top = stack.pop();
 				//if stack is empty means everything till i has to be
 				//greater or equal to input[top] so get area by
 				//input[top] * i;

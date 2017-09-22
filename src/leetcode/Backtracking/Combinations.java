@@ -8,22 +8,29 @@ import java.util.List;
  * https://leetcode.com/problems/combinations/#/description
  */
 public class Combinations {
-	public static List<List<Integer>> combine(int n, int k) {
+	public List<List<Integer>> combine(int n, int k) {
 		List<List<Integer>> combs = new ArrayList<List<Integer>>();
 		combine(combs, new ArrayList<Integer>(), 1, n, k);
 		return combs;
 	}
-	public static void combine(List<List<Integer>> combs, List<Integer> comb, int start, int n, int k) {
-		if(k==0) {
-			combs.add(new ArrayList<Integer>(comb));
+	public void combine(List<List<Integer>> result, List<Integer> tempList, int start, int n, int k) {
+		if(tempList.size() == k) {
+			result.add(new ArrayList<Integer>(tempList));
 			return;
 		} else {
 			for(int i=start; i<=n; i++) {
-				comb.add(i);
-				combine(combs, comb, i+1, n, k-1);
-				comb.remove(comb.size()-1);
+				tempList.add(i);
+				combine(result, tempList, i+1, n, k); //i+1 because we can't reuse the same element in single combination
+				tempList.remove(tempList.size()-1);
 			}
 		}
-
 	}
+	
+	public static void main(String[] args) {
+		Combinations obj = new Combinations();
+    	
+    	for(List<Integer> list : obj.combine(5, 2)){
+    		System.out.println(list.toString());
+    	}
+    }
 }

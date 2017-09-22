@@ -59,19 +59,19 @@ public class LargestRectangleHistogram {
 		Stack<Integer> left = new Stack<Integer>();  
 		int cur = 0, area = 0;  
 		while (cur < height.length) {  
-			if (left.isEmpty() || height[cur] >= height[left.peek()]) {  
+			if (left.isEmpty() || height[left.peek()] <= height[cur]) {  
 				// push to stack if we hit a greater or equal height  
 				left.push(cur++);  
 			} else {  
 				int top = left.pop();  
 				// the height at left.peek() must be smaller than the current one  
 				// so, the width of the rectangle is [left.peek()+1, cur)  
-				area = Math.max(area, height[top]*(left.isEmpty() ? cur : (cur-left.peek()-1)));  
+				area = Math.max(area, height[top] * (left.isEmpty() ? cur : (cur - left.peek() - 1)));  
 			}  
 		}  
 		while (!left.isEmpty()) {  
 			int top = left.pop();  
-			area = Math.max(area, height[top]*(left.isEmpty() ? cur : (cur-left.peek()-1)));  
+			area = Math.max(area, height[top] * (left.isEmpty() ? cur : (cur - left.peek() - 1)));  
 		}  
 		return area;  
 	}  

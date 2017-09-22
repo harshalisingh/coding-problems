@@ -13,8 +13,11 @@ public class NextPermutation {
         while (i >= 0 && nums[i + 1] <= nums[i]) {
             i--;
         }
+        
+        //only if we find such a pair
         if (i >= 0) {
             int j = nums.length - 1;
+            //find the first number a[j], from right, which is greater than a[i]
             while (j >= 0 && nums[j] <= nums[i]) {
                 j--;
             }
@@ -40,7 +43,7 @@ public class NextPermutation {
     
     public static void main(String[] args) {
     	NextPermutation caller = new NextPermutation();
-    	int[] nums = {9,8,7,6,5};
+    	int[] nums = {1,9,8,7,6,5};
     	caller.nextPermutation(nums);
     	System.out.println(Arrays.toString(nums));
     }

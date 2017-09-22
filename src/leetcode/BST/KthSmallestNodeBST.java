@@ -4,7 +4,9 @@ import java.util.Stack;
 
 import leetcode.Tree.TreeNode;
 
-public class KthSmallestBST {
+public class KthSmallestNodeBST {
+	
+	//BST InOrder Traversal
 	public int kthSmallest(TreeNode root, int k) {
 		Stack<TreeNode> stack = new Stack<>();
 		while(root != null || !stack.isEmpty()) {

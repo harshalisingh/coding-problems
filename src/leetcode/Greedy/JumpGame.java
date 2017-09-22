@@ -1,4 +1,4 @@
-package leetcode.DP;
+package leetcode.Greedy;
 
 /*
  * https://leetcode.com/problems/jump-game/#/description

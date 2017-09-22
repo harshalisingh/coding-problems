@@ -37,7 +37,7 @@ public class WebsiteHitCounter {
 		return hits;
 	}
 }
-class Second{
+class Second {
 	int sec, count;
 	public Second(int sec){
 		this.sec = sec;

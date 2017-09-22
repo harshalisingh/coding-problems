@@ -22,7 +22,7 @@ public class FloodFill {
 		// Replace the color at (x, y)
 		screen[x][y] = newC;
 
-		// Recur for north, east, south and west
+		// Recur for up, down, left, right
 		floodFillUtil(screen, x+1, y, prevC, newC);
 		floodFillUtil(screen, x-1, y, prevC, newC);
 		floodFillUtil(screen, x, y+1, prevC, newC);
@@ -30,7 +30,8 @@ public class FloodFill {
 	}
 
 	public static void main(String[] args) {
-		int[][] screen = {{1, 1, 1, 1, 1, 1, 1, 1},
+		int[][] screen = {
+				{1, 1, 1, 1, 1, 1, 1, 1},
 				{1, 1, 1, 1, 1, 1, 0, 0},
 				{1, 0, 0, 1, 1, 0, 1, 1},
 				{1, 2, 2, 2, 2, 0, 1, 0},

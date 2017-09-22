@@ -34,15 +34,14 @@ public class LengthLongestPalindromeSubstring {
 	 * Time Complexity : O(n^2), Space Complexity: O(n^2)
 	 */
 	public String longestPalindromeDP(String s) {
-		int n = s.length();
 		String res = null;
 
 		// dp[i][j] indicates whether substring s starting at index i and ending at j is palindrome
-		boolean[][] dp = new boolean[n][n];
+		boolean[][] dp = new boolean[s.length()][s.length()];
 		int maxLen = 1;
-		for (int i = n - 1; i >= 0; i--) {
-			for (int j = i; j < n; j++) {
-				System.out.println(i + "," + j);
+		for (int i = s.length() - 1; i >= 0; i--) {
+			for (int j = i; j < s.length(); j++) {
+				//System.out.println(s.substring(i, j));
 				//check if substring between (i,j) is palindrome
 				// chars at i and j should match
 				// if window is less than or equal to 3, just end chars should match
@@ -55,6 +54,7 @@ public class LengthLongestPalindromeSubstring {
 				}
 			}
 		}
+		System.out.println(maxLen);
 		return res;
 	}
 	
@@ -69,8 +69,7 @@ public class LengthLongestPalindromeSubstring {
 		// One by one consider every character as center point of 
 		// even and length palindromes
 		for (int i = 1; i < len; ++i) {
-			// Find the longest even length palindrome with center points
-			// as i-1 and i.  
+			// Find the longest even length palindrome with center points as i-1 and i.  
 			low = i - 1;
 			high = i;
 			while (low >= 0 && high < len && s.charAt(low) == s.charAt(high)) {
@@ -82,8 +81,7 @@ public class LengthLongestPalindromeSubstring {
 				++high;
 			}
 
-			// Find the longest odd length palindrome with center 
-			// point as i
+			// Find the longest odd length palindrome with center point as i
 			low = i - 1;
 			high = i + 1;
 			while (low >= 0 && high < len && s.charAt(low) == s.charAt(high)) {
@@ -100,8 +98,9 @@ public class LengthLongestPalindromeSubstring {
 
 	public static void main(String[] args){
 		LengthLongestPalindromeSubstring o = new LengthLongestPalindromeSubstring();
-		int len = o.lengthLongestPalindromeSubstringBruteForce("jsdkjbfcjebdvbvdbejjsgdhcbfbchesbdv");
-		System.out.println(len);
+		System.out.println(o.lengthLongestPalindromeSubstringBruteForce("abbcbbadgh"));
+		System.out.println(o.longestPalindromeDP("abbcbbadgh"));
+		System.out.println(o.longestPalindromeDPOptimized("abbcbbadgh"));
 	}
 
 

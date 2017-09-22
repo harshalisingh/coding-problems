@@ -3,6 +3,9 @@ package epi.ArraysAndString;
 import java.util.Map;
 import java.util.HashMap;
 
+/*
+ * Given a roman numeral, convert it to an integer.
+ */
 public class RomanToInteger {
 	public int romanToInt(String s) {
 		Map<Character, Integer> map = new HashMap<Character, Integer>(){
@@ -27,4 +30,5 @@ public class RomanToInteger {
 		}
 		return sum;
 	}
+	
 }

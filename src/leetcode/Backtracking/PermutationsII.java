@@ -31,4 +31,12 @@ public class PermutationsII {
 	        }
 	    }
 	}
+	
+	public static void main(String[] args) {
+		PermutationsII obj = new PermutationsII();
+		int[] nums = new int[] {1,2,2};
+    	for(List<Integer> list : obj.permuteUnique(nums)){
+    		System.out.println(list.toString());
+    	}
+    }
 }

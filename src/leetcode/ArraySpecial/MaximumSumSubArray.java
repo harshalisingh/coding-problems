@@ -1,6 +1,6 @@
 package leetcode.ArraySpecial;
 
-/** 
+/** Maximum Contiguous Subsequence Sum Problem
  * Largest Sum Contiguous subarray (Kadane's algorithm)
  * https://leetcode.com/problems/maximum-subarray/#/description
  * Find the contiguous subarray within an array (containing at least one number) which has the largest sum.
@@ -8,6 +8,19 @@ package leetcode.ArraySpecial;
  * DP: O(N) Time, O(1) Space
  */
 public class MaximumSumSubArray {
+
+	public int maxSubArray(int[] A) {
+		int n = A.length;
+		int[] dp = new int[n];//dp[i] means the maximum subarray ending with A[i];
+		dp[0] = A[0];
+		int max = dp[0];
+
+		for(int i = 1; i < n; i++){
+			dp[i] = A[i] + (dp[i - 1] > 0 ? dp[i - 1] : 0);
+			max = Math.max(max, dp[i]);
+		}
+		return max;
+	}
 
 	public int maxSumSubArray(int[] A) {
 		int maxSumEndingHere=A[0], maxSumSoFar=A[0];
@@ -17,7 +30,7 @@ public class MaximumSumSubArray {
 		}
 		return maxSumSoFar;
 	}
-	
+
 	public static void main(String[] args){
 		MaximumSumSubArray mss = new MaximumSumSubArray();
 		int[] input = {1, 101, 2, 3, 100, 4, 5};

@@ -1,101 +1,78 @@
 package leetcode.Arrays;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 public class DescendingOddAscendingEven {
+	// To do two way sort. First sort even numbers in ascending order, then odd numbers in descending order.
+	void twoWaySort(Integer[] arr, int n) {
+		// Current indexes from left and right
+		int l = 0, r = n-1;
 
-	public static int[] arrA;
+		// Count of odd numbers
+		int k = 0;
+		while (l < r) {
+			// Find first even number from left side.
+			while (arr[l]%2 != 0) {
+				l++;
+				k++;
+			}
 
-	public void solve() {
-		separateOddEven(0, arrA.length - 1);
-		int i =0;
-		while(arrA[i]%2!=0){
-			i++;
-			if(i==arrA.length-1)break;
+			// Find first odd number from right side.
+			while (arr[r]%2 == 0  && l<r){
+				r--;
+			}
+
+			// Swap even number present on left and odd number right.
+			if (l < r) {
+				//  swap arr[l] arr[r]
+				int temp = arr[l];
+				arr[l] = arr[r];
+				arr[r] = temp;
+
+			}
+
 		}
-		if(i!=arrA.length-1){
-			customizedSort(0, i-1);
-		}else{
-			customizedSort(0, i);
-		}
-		customizedSort(i, arrA.length-1);
+
+		// Sort odd number in descending order
+		Arrays.sort(arr, 0, k, Collections.reverseOrder());
+
+		// Sort even number in ascending order
+		Arrays.sort(arr, k, n);
 	}
 
-	public void separateOddEven(int low, int high) {
-		int i = low;
-		int j = high;
-		while (i < j) {
-			while (i<high && arrA[i] % 2 != 0) {
-				i++;
-			}
-			while (j>low && arrA[j] % 2 == 0) {
-				j--;
-			}
-			if (i <= j) {
-				swap(i, j);
-				i++;
-				j--;
-			}
-		}
+	// To do two way sort. First sort even numbers in
+	// ascending order, then odd numbers in descending
+	// order.
+	static void twoWaySort(int arr[], int n){
+		// Make all odd numbers negative
+		for (int i=0 ; i<n ; i++)
+			if ((arr[i] & 1) != 0) // Check for odd
+				arr[i] *= -1;
+
+		// Sort all numbers
+		Arrays.sort(arr);
+
+		// Retaining original array
+		for (int i=0 ; i<n ; i++)
+			if ((arr[i] & 1) != 0)
+				arr[i] *= -1;
 	}
 
-	public void customizedSort(int low, int high) {
-		int mid = (low + high) / 2;
-		int i = low;
-		int j = high;
-		int pivot = arrA[mid]; // select middle element as pivot
-		while (i <= j) {
-			if (arrA[i] % 2 == 0) {
-				
-				while (arrA[i] > pivot)
-					i++;// find element which is greater than pivot
-				while (arrA[j] < pivot)
-					j--;
-				
-			} else if (arrA[i] % 2 != 0) {
-				
-				while (arrA[i] < pivot)
-					i++;// find element which is greater than pivot
-				while (arrA[j] > pivot)
-					j--;
-			}
 
-			if (i <= j) {
-				int temp = arrA[i];
-				arrA[i] = arrA[j];
-				arrA[j] = temp;
-				i++;
-				j--;
-			}
-		}
-		// Recursion on left and right of the pivot
-		if (low < j)
-			customizedSort(low, j);
-		if (i < high)
-			customizedSort(i, high);
-	}
-
-	public void swap(int i, int j) {
-
-		if (i < j) {
-			int temp = arrA[i];
-			arrA[i] = arrA[j];
-			arrA[j] = temp;
-		}
-
-	}
-
-	public void printArray(int[] arrA) {
+	public void printArray(Integer[] arrA) {
 		for (int i = 0; i < arrA.length; i++) {
 			System.out.print(" " + arrA[i]);
 		}
 	}
 
 	public static void main(String args[]) {
-		arrA = new int[] {1,2,3,4,5,6,7,8,9,10};
+		Integer[] arrA = new Integer[] {1,2,3,4,5,6,7,8,8,10};
 		DescendingOddAscendingEven d = new DescendingOddAscendingEven();
 		System.out.println("Original Array : ");
 		d.printArray(arrA);
 		System.out.println("\nOutput Array : ");
-		d.solve();
+		d.twoWaySort(arrA, 10);
 		d.printArray(arrA);
 
 	}

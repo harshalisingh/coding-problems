@@ -3,41 +3,35 @@ package leetcode.Arrays;
 import java.util.Arrays;
 
 public class SeparatePositiveNegative {
-	public static void separateArray(int[] numbers) {
-	    int i = 0;
-	    int j = numbers.length-1;
-	    while(i<j){
 
-	        if(numbers[i] >= 0 && numbers[j] < 0){
-	            int temp;
-	            temp = numbers[j];
-	            numbers[j] = numbers[i];
-	            numbers[i] = temp;
-	        }
+	public void RearrangePosNeg(int arr[]){
+		int key, j;
+		for(int i = 1; i < arr.length; i++)
+		{
+			key = arr[i];
 
-	        if(numbers[i] < 0){
-	            i++;
-	        }
+			if (key > 0)
+				continue;
 
-	        if(numbers[j] >= 0){
-	            j--;
-	        }
-	    }
+
+			j = i - 1;
+			while (j >= 0 && arr[j] > 0)
+			{
+				arr[j + 1] = arr[j];
+				j = j - 1;
+			}
+
+			arr[j + 1] = key;
+		}
 	}
 
-	private void swap(int[] arr, int i, int j) {
-		// TODO Auto-generated method stub
-		int temp = arr[i];
-		arr[i] = arr[j];
-		arr[j] = temp;
-	}
-	
 	public static void main(String[] args){
-		SeparatePositiveNegative spn = new SeparatePositiveNegative();
+		SeparatePositiveNegative obj = new SeparatePositiveNegative();
 		int[] arr = new int[] {-3,4,3,-2,-8,6,13,-15};
-		int[] arr1 = new int[] {1, -5, 6, -4, 8, 9, 4, -2};
-		spn.separateArray(arr1);
-		
+		int[] arr1 = new int[] {1,-5,4,-3};
+		//obj.RearrangePosNeg(arr);
+		obj.RearrangePosNeg(arr1);
+		//System.out.println(Arrays.toString(arr));
 		System.out.println(Arrays.toString(arr1));
 	}
 }

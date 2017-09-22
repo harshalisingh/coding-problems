@@ -4,19 +4,19 @@ public class PlusOneLinkedList {
 	public ListNode plusOne(ListNode head) {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
-        ListNode lastNotNine = dummy, node = head;
+        ListNode lastNotNine = dummy, cur = head;
         
-        while (node != null) {
-            if (node.val != 9) {
-                lastNotNine = node;
+        while (cur != null) {
+            if (cur.val != 9) {
+                lastNotNine = cur;
             }
-            node = node.next;
+            cur = cur.next;
         }
         lastNotNine.val++;
-        node = lastNotNine.next;
-        while (node != null) {
-            node.val = 0;
-            node = node.next;
+        cur = lastNotNine.next;
+        while (cur != null) {
+        	cur.val = 0;
+        	cur = cur.next;
         }
         return dummy.val == 1 ? dummy : dummy.next;
     }

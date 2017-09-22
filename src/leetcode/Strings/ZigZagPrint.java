@@ -1,5 +1,8 @@
 package leetcode.Strings;
 
+/**
+ * https://leetcode.com/problems/zigzag-conversion/
+ */
 public class ZigZagPrint {
 	public static void main(String[] args){
 		System.out.println(convert("PAYPALISHIRING", 4));
@@ -14,7 +17,7 @@ public class ZigZagPrint {
 	    while (i < len) {
 	        for (int idx = 0; idx < nRows && i < len; idx++) // vertically down
 	            sb[idx].append(c[i++]);
-	        for (int idx = nRows-2; idx >= 1 && i < len; idx--) // obliquely up
+	        for (int idx = nRows-2; idx > 0 && i < len; idx--) // obliquely up
 	            sb[idx].append(c[i++]);
 	    }
 	    for (int idx = 1; idx < nRows; idx++) //append rest of stringbuilders to 1st one

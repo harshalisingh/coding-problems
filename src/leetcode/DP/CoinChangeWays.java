@@ -28,8 +28,10 @@ public class CoinChangeWays {
 	//Space efficient DP Time Complexity: O(mn)
 	public int totalWaysDPSpace(int total, int[] coins){
 		int dp[] = new int[total+1];
-		dp[0] = 1;     //if we take 2 as a coin and subtract it from the sum it becomes 0 and the 
-		               //number of ways we can get zero from denomination of 2 is only one
+
+		//If the amount given is 0 then the total number of ways to make change is 1
+		//using 0 coins of every given denomination.
+		dp[0] = 1; 
 		for(int i=0; i < coins.length; i++){
 			for(int j=1; j <= total ; j++){
 				if(j >= coins[i]){
@@ -38,21 +40,6 @@ public class CoinChangeWays {
 			}
 		}
 		return dp[total];
-	}
-
-	//Minimum number of coins that you need to make up that amount
-	public int totalCoinsMinimum(int total, int[] coins){
-		int dp[] = new int[total+1];
-		Arrays.fill(dp, Integer.MAX_VALUE);
-		dp[0] = 0;  // 0 coins are required to make the change for 0
-		for(int i=0; i < coins.length; i++){
-			for(int j=1; j <= total ; j++){
-				if(j >= coins[i]){
-					dp[j] = Math.min(dp[j], dp[j - coins[i]] + 1);
-				}
-			}
-		}
-		return dp[total] == Integer.MAX_VALUE ? -1 : dp[total];
 	}
 
 	/*
@@ -69,12 +56,13 @@ public class CoinChangeWays {
 				System.out.print(r + " ");
 			}
 			System.out.print("\n");
-		}
-		for(int i=pos; i < coins.length; i++){
-			if(total >= coins[i]){
-				result.add(coins[i]);
-				printActualSolution(result,total-coins[i],coins,i);
-				result.remove(result.size()-1);
+		} else {
+			for(int i=pos; i < coins.length; i++){
+				if(total >= coins[i]){
+					result.add(coins[i]);
+					printActualSolution(result,total-coins[i],coins,i);
+					result.remove(result.size()-1);
+				}
 			}
 		}
 	}   
@@ -86,7 +74,6 @@ public class CoinChangeWays {
 		//System.out.println(cc.totalWaysRecursive(total, coins, 0));
 		//System.out.println(cc.totalWaysDP(total, coins));
 		System.out.println(cc.totalWaysDPSpace(total, coins));
-		System.out.println(cc.totalCoinsMinimum(total, coins));
 		//cc.printCoinChangingSolution(total, coins);
 	}
 }

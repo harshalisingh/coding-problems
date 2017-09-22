@@ -6,19 +6,19 @@ public class DeleteAlternateNodes {
 			return;
 
 		ListNode prev = head;
-		ListNode now = head.next;
+		ListNode cur = head.next;
 
-		while (prev != null && now != null) {           
+		while (prev != null && cur != null) {           
 			/* Change next link of previous node */
-			prev.next = now.next;
+			prev.next = cur.next;
 
 			/* Free node */
-			now = null;
+			cur = null;
 
 			/*Update prev and now */
 			prev = prev.next;
 			if (prev != null) 
-				now = prev.next;
+				cur = prev.next;
 		}
 	}
 }

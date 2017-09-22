@@ -1,8 +1,11 @@
 package leetcode.Graph;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
+import java.util.Set;
 
 /*
  * https://leetcode.com/problems/course-schedule/#/description
@@ -14,73 +17,71 @@ import java.util.Queue;
  */
 public class CourseSchedule {
 	public boolean canFinishBFS(int numCourses, int[][] prerequisites) {
-        ArrayList[] graph = new ArrayList[numCourses];
-        int[] degree = new int[numCourses];
-        Queue queue = new LinkedList();
-        int count=0;
-        
-        for(int i=0;i<numCourses;i++)
-            graph[i] = new ArrayList();
-            
-        for(int i=0; i<prerequisites.length;i++){
-            degree[prerequisites[i][1]]++;
-            //dependent(i,0) -> prerequisite(i,1)
-            graph[prerequisites[i][0]].add(prerequisites[i][1]);
-        }
-        for(int i=0; i<degree.length;i++){
-            if(degree[i] == 0){
-                queue.add(i);
-                count++;
-            }
-        }
-        
-        while(queue.size() != 0){
-            int course = (int)queue.poll();
-            for(int i=0; i<graph[course].size();i++){
-                int pointer = (int)graph[course].get(i);
-                degree[pointer]--;
-                if(degree[pointer] == 0){
-                    queue.add(pointer);
-                    count++;
-                }
-            }
-        }
-        if(count == numCourses)
-            return true;
-        else    
-            return false;
-    }
-	
-	
+		Map<Integer, Integer> indegree = new HashMap<>();
+
+		//Only add dependents in the indegree map
+		for (int i = 0; i < prerequisites.length; i++) {// Indegree - how many prerequisites are needed.
+			if(indegree.containsKey(prerequisites[i][0])){
+				indegree.put(prerequisites[i][0], indegree.get(prerequisites[i][0]) + 1);
+			} else {
+				indegree.put(prerequisites[i][0], 1);
+			}
+		}
+
+		Queue<Integer> queue = new LinkedList<Integer>();
+		for (int i = 0; i < numCourses; i++) {
+			if (!indegree.containsKey(i)) {
+				queue.offer(i);
+			}
+		}
+
+		int count = 0;
+		while(!queue.isEmpty()) {
+			int prerequisite = queue.poll(); // Already finished this prerequisite course.
+			count++;
+			for (int i = 0; i < prerequisites.length; i++)  { //find all it's dependents and reduce the indegree
+				if (prerequisites[i][1] == prerequisite) {				
+					indegree.put(prerequisites[i][0], indegree.get(prerequisites[i][0]) - 1);
+
+					if (indegree.get(prerequisites[i][0]) == 0) {
+						queue.offer(prerequisites[i][0]); 
+					}
+				} 
+			}
+		}
+
+		return count == numCourses;
+	}
+
 	public boolean canFinishDFS(int numCourses, int[][] prerequisites) {
-        ArrayList[] graph = new ArrayList[numCourses];
-        for(int i=0;i<numCourses;i++)
-            graph[i] = new ArrayList();
-            
-        boolean[] visited = new boolean[numCourses];
-        for(int i=0; i<prerequisites.length;i++){
-        	//prerequisite(i,1) -> dependent(i,0)
-            graph[prerequisites[i][1]].add(prerequisites[i][0]);
-        }
+		ArrayList[] graph = new ArrayList[numCourses];
+		for(int i=0;i<numCourses;i++)
+			graph[i] = new ArrayList();
 
-        for(int i=0; i<numCourses; i++){
-            if(!dfs(graph,visited,i))
-                return false;
-        }
-        return true;
-    }
+		boolean[] visited = new boolean[numCourses];
+		for(int i=0; i<prerequisites.length;i++){
+			//prerequisite(i,1) -> dependent(i,0)
+			graph[prerequisites[i][1]].add(prerequisites[i][0]);
+		}
 
-    private boolean dfs(ArrayList[] graph, boolean[] visited, int course){
-        if(visited[course])
-            return false;
-        else
-            visited[course] = true;;
+		for(int i=0; i<numCourses; i++){
+			if(!dfs(graph,visited,i))
+				return false;
+		}
+		return true;
+	}
 
-        for(int i=0; i<graph[course].size();i++){
-            if(!dfs(graph,visited,(int)graph[course].get(i)))
-                return false;
-        }
-        visited[course] = false;
-        return true;
-    }
+	private boolean dfs(ArrayList[] graph, boolean[] visited, int course){
+		if(visited[course])
+			return false;
+		else
+			visited[course] = true;;
+
+			for(int i=0; i<graph[course].size();i++){
+				if(!dfs(graph,visited,(int)graph[course].get(i)))
+					return false;
+			}
+			visited[course] = false;
+			return true;
+	}
 }

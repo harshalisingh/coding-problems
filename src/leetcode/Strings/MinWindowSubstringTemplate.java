@@ -16,7 +16,7 @@ public class MinWindowSubstringTemplate {
 		int map[] = new int[128];
 
 		int counter = t.length();      // check whether the substring is valid
-		int start = 0, end = 0;        //two pointers, one point to tail and one  head
+		int start = 0, end = 0;        //two pointers, one point to tail and one head
 		int minLen = Integer.MAX_VALUE; //the length of substring
 		int minStart = 0; 
 
@@ -24,14 +24,14 @@ public class MinWindowSubstringTemplate {
 		for(char c : t.toCharArray())
 			map[c]++;
 
-		while(end < s.length()){
+		while(end < s.length()) {
 
 			/* modify counter here */
 			final char c1 = s.charAt(end);
 			if(map[c1] > 0) counter--;             
 			map[c1]--;
 			end++;
-	
+
 
 			while(counter == 0){ //Valid
 
@@ -45,7 +45,7 @@ public class MinWindowSubstringTemplate {
 				map[c2]++;
 				if(map[c2] > 0) counter++;  //make it invalid
 				start++;
-			
+
 			}
 		}
 		return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
@@ -67,7 +67,7 @@ public class MinWindowSubstringTemplate {
 			if (map[c1] == 0) counter++;   //seen a distinct character, limit it to k
 			map[c1]++;
 			end++;
-			
+
 			while (counter > k) {
 				final char c2 = s.charAt(start);
 				map[c2]--;
@@ -108,7 +108,7 @@ public class MinWindowSubstringTemplate {
 		}
 		return maxLen == Integer.MIN_VALUE ? 0 : maxLen;
 	}
-	
+
 	/** Refer : LongestNonRepeatingSubstring.java
 	 * Longest Substring Without Repeating Characters
 	 * Given a string, find the length of the longest substring without repeating characters.
@@ -123,7 +123,7 @@ public class MinWindowSubstringTemplate {
 		while (end < s.length()) {
 			final char c1 = s.charAt(end);
 			if (map[c1] > 0){
-				counter++; //seen a character again, limit it to 
+				counter++; //seen a character again, limit it to 0
 			}
 			map[c1]++;
 			end++;
@@ -142,76 +142,81 @@ public class MinWindowSubstringTemplate {
 
 		return maxLen == Integer.MIN_VALUE ? 0 : maxLen;
 	}
-	
+
 	/** Permutation in String (Using Sliding Window)
 	 *  Given two strings s1 and s2, write a function to return true if s2 contains the permutation of s1. In other words, 
 	 *  one of the first string's permutations is the substring of the second string.
 	 */
 	public boolean checkInclusion(String s1, String s2) {
-        int len1 = s1.length(), len2 = s2.length();
-        if (len1 > len2) return false;
-        
-        int[] count = new int[26];
-        for (int i = 0; i < len1; i++) {
-            count[s1.charAt(i) - 'a']++;
-            count[s2.charAt(i) - 'a']--;
-        }
-        if (allZero(count)) return true;
-        
-        for (int i = len1; i < len2; i++) {
-            count[s2.charAt(i) - 'a']--;
-            count[s2.charAt(i - len1) - 'a']++;
-            if (allZero(count)) return true;
-        }        
-        return false;
-    }
-    
-    private boolean allZero(int[] count) {
-        for (int i = 0; i < 26; i++) {
-            if (count[i] != 0) return false;
-        }
-        return true;
-    }
-    
-    public int findMaxConsecutiveOnes(int[] nums) {
-        int max = 0, zero = 0, k = 1; // flip at most k zero
-        int start = 0, end = 0;
-        while(end < nums.length){
-        	 if (nums[end] == 0) {
-        		 zero++;
-        	 }
-        	 end++;
-        	 
-        	 while(zero > k){
-        		 if (nums[start] == 0){
-        			 zero--;
-        		 }
-        		 start++;                  
-        	 }
-        	 max = Math.max(max, end - start);
-        }                                                            
-        return max;             
-    }
+		int len1 = s1.length(), len2 = s2.length();
+		if (len1 > len2) return false;
+
+		int[] count = new int[26];
+		for (int i = 0; i < len1; i++) {
+			count[s1.charAt(i) - 'a']++;
+			count[s2.charAt(i) - 'a']--;
+		}
+		if (allZero(count)) return true;
+
+		for (int i = len1; i < len2; i++) {
+			count[s2.charAt(i) - 'a']--;
+			count[s2.charAt(i - len1) - 'a']++;
+			if (allZero(count)) return true;
+		}        
+		return false;
+	}
+
+	private boolean allZero(int[] count) {
+		for (int i = 0; i < 26; i++) {
+			if (count[i] != 0) return false;
+		}
+		return true;
+	}
+
+	public int findMaxConsecutiveOnes(int[] nums) {
+		int max = 0, zero = 0, k = 1; // flip at most k zero
+		int start = 0, end = 0;
+		while(end < nums.length){
+			if (nums[end] == 0) {
+				zero++;
+			}
+			end++;
+
+			while(zero > k){
+				if (nums[start] == 0){
+					zero--;
+				}
+				start++;                  
+			}
+			max = Math.max(max, end - start);
+		}                                                            
+		return max;             
+	}
 
 	public static void main(String[] args){
 		String s = "ADOBECODEBANC";
 		String s1 = "ADEBGCABC";
 		String t = "ABC";
-		MinWindowSubstringTemplate mws = new MinWindowSubstringTemplate();
 		
+		MinWindowSubstringTemplate mws = new MinWindowSubstringTemplate();
+
 		//Minimum Window Substring
 		System.out.println(mws.minWindow(s1, t));
-		
+
 		//Longest Substring - at most K distinct characters
 		System.out.println(mws.lengthOfLongestSubstringKDistinct("eceba", 3));
-		
+
 		//Longest Substring - at most K distinct characters
 		System.out.println(mws.lengthOfLongestSubstringTwoDistinct("eceba"));
-		
+
 		//Longest Substring Without Repeating Characters
 		System.out.println(mws.lengthOfLongestSubstringWithoutRepeatingChars("abcdabcbb"));
-		
+
 		//s2 contains one permutation of s1 ("ba").
 		System.out.println(mws.checkInclusion("ab", "eidbaooo"));
+		
+		
+		int[] nums = {0,0,0,1,1,1,1,1,1,1,0,0,1,1};
+		System.out.println(mws.findMaxConsecutiveOnes(nums));
 	}
 }

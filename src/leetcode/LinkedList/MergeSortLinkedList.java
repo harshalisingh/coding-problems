@@ -1,8 +1,7 @@
 package leetcode.LinkedList;
 
-/*
- * Merge Sort Linked List
- * O(nlogn)
+/** Merge Sort Linked List,  O(nlogn)
+ *  Step1: Cut the list to two halves, Step2: Sort each half, Step3: Merge Two Halves
  */
 public class MergeSortLinkedList {
 	public ListNode sortList(ListNode head) {

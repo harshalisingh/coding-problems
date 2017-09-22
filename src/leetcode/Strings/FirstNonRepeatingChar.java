@@ -19,11 +19,11 @@ import java.util.Set;
 public class FirstNonRepeatingChar {
 	
 	public char firstUniqChar(String s) {
-        int freq [] = new int[26];
+        int freq [] = new int[128];
         for(int i = 0; i < s.length(); i ++)
-            freq [s.charAt(i) - 'a'] ++;
+            freq [s.charAt(i)] ++;
         for(int i = 0; i < s.length(); i ++)
-            if(freq [s.charAt(i) - 'a'] == 1)
+            if(freq [s.charAt(i)] == 1)
                 return s.charAt(i);
         throw new RuntimeException("didn't find any non repeated Character");
     }
@@ -111,7 +111,9 @@ public class FirstNonRepeatingChar {
     }
     
     public static void main(String[] args){
-    	
+    	String s = "abbcAd";
+    	FirstNonRepeatingChar caller = new FirstNonRepeatingChar();
+    	System.out.println(caller.firstUniqChar(s));
     }
 
 }

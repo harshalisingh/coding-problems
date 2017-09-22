@@ -12,8 +12,6 @@ import java.util.LinkedList;
 For example,
 path = "/home/", => "/home"
 path = "/a/./b/../../c/", => "/c"
-click to show corner cases.
-
 Corner Cases:
 Did you consider the case where path = "/../"?
 In this case, you should return "/".
@@ -21,7 +19,7 @@ Another corner case is the path might contain multiple slashes '/' together, suc
 In this case, you should ignore redundant slashes and return "/home/foo".
  * 
  * The main idea is to push to the stack every valid file name (not in {"",".",".."}), 
- * popping only if there's smth to pop and we met "..". I don't feel like the code below needs any additional comments.
+ * popping only if there's something to pop and we met "..". 
  */
 public class SimplifyPath {
 	public String simplifyPath(String path) {

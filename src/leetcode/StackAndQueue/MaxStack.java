@@ -1,46 +1,50 @@
 package leetcode.StackAndQueue;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class MaxStack {
 
-		private int[] item;
-		private int N = 0;
-		private int[] max;
+	int max = Integer.MIN_VALUE;
+	Deque<Integer> stack = new ArrayDeque<Integer>();
 
-		public MaxStack(int capacity){
-		    item = new int[capacity];//generic array creation not allowed
-		    max = new int[capacity];
+	public void push(int x){
+		// only push the old maximum value when the current 
+		// maximum value changes after pushing the new value x
+		if(x >= max){          
+			stack.push(max);
+			max = x;
 		}
+		stack.push(x);
+	}
 
-		public void push(int item){
-		    this.item[N++] = item;
-		    if(max[N-1] > item) {
-		        max[N] = max[N-1];
-		    } else {
-		        max[N] = item;
-		    }
-		}
+	public void pop() {
+		// if pop operation could result in the changing of the current maximum value, 
+		// pop twice and change the current maximum value to the last maximum value.
+		int top = stack.pop();
+		if (top == max)
+			max = stack.pop();
+	}
 
-		public void pop() {
-		    this.item[N] = 0;
-		    this.max[N] = 0;
-		    N--;
-		}
+	public int top() {
+		return stack.peek();
+	}
 
-		public int findMax(){
-		    return this.max[N];
-		}
-		public static void main(String[] args) {
-			MaxStack max = new MaxStack(3);
-		    max.push(1);
-		    System.out.println(max.findMax());
-		    max.push(10);
-		    System.out.println(max.findMax());
-		    max.push(9);
-		    System.out.println(max.findMax());
-		    max.push(19);
-		    System.out.println(max.findMax());
-		    //max.pop();
-		    //System.out.println(max.findMax());
+	public int getMax() {
+		return max;
+	}
+	public static void main(String[] args) {
+		MaxStack max = new MaxStack();
+		max.push(1);
+		System.out.println(max.getMax());
+		max.push(10);
+		System.out.println(max.getMax());
+		max.push(9);
+		System.out.println(max.getMax());
+		max.push(19);
+		System.out.println(max.getMax());
+		max.pop();
+		System.out.println(max.getMax());
 
-		}
+	}
 }

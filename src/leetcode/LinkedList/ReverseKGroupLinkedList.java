@@ -9,7 +9,10 @@ import leetcode.LinkedList.ListNode;
  */
 public class ReverseKGroupLinkedList {
 	/* LeetCode - Recursive */
-	public ListNode reverseKGroup2(ListNode head, int k) {
+	public static ListNode reverseKGroup(ListNode head, int k) {
+		if(head == null || head.next == null || k == 0){
+			return head;
+		}
 		ListNode curr = head;
 		int count = 0;
 		while (curr != null && count != k) { // find the k+1 node
@@ -19,7 +22,7 @@ public class ReverseKGroupLinkedList {
 		if (count == k) { // if k+1 node is found
 			
 			//imagine rest of the list has been reversed and cur is the head of rverse part of list
-			curr = reverseKGroup2(curr, k); // reverse list with k+1 node as head
+			curr = reverseKGroup(curr, k); // reverse list with k+1 node as head
 			// head - head-pointer to direct part, 
 			// curr - head-pointer to reversed part;
 			while (count-- > 0) { // reverse current k-group: 
@@ -32,44 +35,9 @@ public class ReverseKGroupLinkedList {
 		}
 		return head;
 	}
-	
-	/* EPI */
-	public static ListNode reverseKGroup1(ListNode head, int k) {
-		if (head == null || k == 0) return null;
-		if (k==1)                   return head;
-		ListNode dummy = new ListNode(0), start = dummy, end = head;
-		dummy.next = head;
-		while (true) {
-			try {end = move(end, k);}
-			catch (Exception e) {break;}
-			start = reverse(start, end);
-		}
-		return dummy.next;
-	}
-	private static ListNode move(ListNode end, int k) {
-		for (int i = 0; i < k; i++) {
-			if (end == null) throw new IllegalArgumentException();
-			end = end.next;
-		}
-		return end;
-	}
-	private static ListNode reverse(ListNode start, ListNode end) {
-		ListNode pre = end, cur = start.next, nextStart = cur;
-		while (cur != end) {
-			ListNode temp = cur.next;
-			cur.next = pre;
-			pre = cur;
-			cur = temp;
-		}
-		start.next = pre;
-		return nextStart;
-	}
-
-
-
 
 	/* GeeksForGeeks - Reverses the left over as well */
-	ListNode reverseKGroup3(ListNode head, int k) {
+	ListNode reverseKGroup2(ListNode head, int k) {
 		ListNode curr = head;
 		ListNode tmp = null;
 		ListNode prev = null;
@@ -77,7 +45,7 @@ public class ReverseKGroupLinkedList {
 		int count = 0;
 
 		/* Reverse first k nodes of linked list */
-		while (count < k && curr != null) {
+		while (curr != null && count != k) { // find the k+1 node
 			tmp = curr.next;
 			curr.next = prev;
 			prev = curr;
@@ -89,7 +57,7 @@ public class ReverseKGroupLinkedList {
           Recursively call for the list starting from current.
           And make rest of the list as next of first node */
 		if (tmp != null) 
-			head.next = reverseKGroup3(tmp, k);
+			head.next = reverseKGroup2(tmp, k); //head becomes last node of reversed list
 
 		// prev is now head of input list
 		return prev;
@@ -103,5 +71,20 @@ public class ReverseKGroupLinkedList {
 		}
 		System.out.print("null");
 		System.out.println();
+	}
+	
+	public static void main(String[] args){
+		ListNode L1 = new ListNode(1);
+		L1.next = new ListNode(2);
+		L1.next.next = new ListNode(3);
+		L1.next.next.next = new ListNode(4);
+		L1.next.next.next.next = new ListNode(5);
+
+		System.out.println("Actual List");
+		ListNode.printList(L1);
+		
+		System.out.println("Reverse List Iteratively");
+		ListNode resItr = reverseKGroup(L1, 3);	
+		ListNode.printList(resItr);
 	}
 }

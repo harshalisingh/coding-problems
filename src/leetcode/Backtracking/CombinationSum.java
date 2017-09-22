@@ -15,7 +15,7 @@ import java.util.List;
 public class CombinationSum {
 	public List<List<Integer>> combinationSum(int[] nums, int target) {
 		List<List<Integer>> list = new ArrayList<>();
-		Arrays.sort(nums);
+		//Arrays.sort(nums);     sorting is not necessary
 		backtrack(list, new ArrayList<>(), nums, target, 0);
 		return list;
 	}
@@ -34,7 +34,7 @@ public class CombinationSum {
 	
 	public static void main(String[] args){
 		CombinationSum cs = new CombinationSum();
-		int[] nums = new int[] {1,2,3};
+		int[] nums = new int[] {2, 1, 3};
 		int target = 4;
 		List<List<Integer>> list = cs.combinationSum(nums, target);
 		for(List<Integer> comb : list){

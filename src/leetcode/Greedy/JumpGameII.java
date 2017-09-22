@@ -1,4 +1,4 @@
-package leetcode.DP;
+package leetcode.Greedy;
 
 /*
  * https://leetcode.com/problems/jump-game-ii/#/description
@@ -8,6 +8,7 @@ package leetcode.DP;
  * Greedy O(n)
  */
 public class JumpGameII {
+	// Greedy O(n)
 	public int jump(int[] nums) {
 		int curEnd = 0, curFarthest = 0, steps = 0;
 		for (int i = 0; i < nums.length - 1; i++) {

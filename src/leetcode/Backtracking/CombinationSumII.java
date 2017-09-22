@@ -30,8 +30,10 @@ public class CombinationSumII {
 	}
 	
 	public static void main(String[] args){
-		CombinationSumII caller = new CombinationSumII();
-		int[] nums = {1,1,1};
-		caller.combinationSum2(nums, 3);
+		CombinationSumII obj = new CombinationSumII();
+		int[] nums = {1,2,2};
+		for(List<Integer> list : obj.combinationSum2(nums, 4)){
+			System.out.println(list.toString());
+		}
 	}
 }

@@ -1,26 +1,7 @@
-package leetcode.contest;
+package leetcode.DP.Minimax;
 
-public class GuessNumberHigherOrLower {
-	//https://leetcode.com/problems/guess-number-higher-or-lower/#/description
-	public int guessNumber(int n) {
-		int low = 1, high = n;
-		while(low < high){
-			int mid = low + (high - low) / 2;
-			if(guess(mid) == 0){
-				return mid;
-			} else if(guess(mid) == 1){
-				low = mid + 1;
-			} else {
-				high = mid;
-			}
-		}
-		return low;
-	}
-	private int guess(int mid) {
-		return 0;
-	}
-
-	/* Min of Max Cost https://leetcode.com/problems/guess-number-higher-or-lower-ii/
+public class GuessNumberHigherOrLowerII {
+	/** Min of Max Cost https://leetcode.com/problems/guess-number-higher-or-lower-ii/
 	 * Big Idea: Given any n, we make a guess k. Then we break the interval [1,n] into [1,k - 1] and [k + 1,n]. 
 	 * The min of worst case cost can be calculated recursively as
 	 * cost[1,n] = k + max{cost[1,k - 1] , cost[k+1,n]}

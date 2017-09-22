@@ -5,7 +5,7 @@ package leetcode.LinkedList;
  * Time Complexity: O(n + m)
  */
 
-public class MergeSortedLinkedList {
+public class MergeTwoSortedLinkedList {
 	
 	public static ListNode mergeTwoSortedLists(ListNode l1, ListNode l2){
 		

@@ -45,7 +45,8 @@ public class UnionIntersectionSortedArray {
 				j++;
 			else {
 				/* if arr1[i] == arr2[j] */
-				System.out.print(arr2[j++]);
+				System.out.print(arr2[j]);
+				j++;
 				i++;
 			}
 		}

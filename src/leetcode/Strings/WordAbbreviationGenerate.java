@@ -26,17 +26,19 @@ import java.util.List;
 public class WordAbbreviationGenerate {
 	public List<String> generateAbbreviations1(String word){
         List<String> res = new ArrayList<String>();
-        backtrack(res, word, 0, "", 0);
+        backtrack(res, word, "", 0, 0);
         return res;
     }
-    private void backtrack(List<String> res, String word, int pos, String cur, int count){
-        if(pos==word.length()){
-            if(count > 0) cur += count;
-            res.add(cur);
+    private void backtrack(List<String> res, String word, String tempWord, int pos, int count){
+        if(pos == word.length()){
+            if(count > 0) {
+            	tempWord += count;
+            }
+            res.add(tempWord);
         }
         else{
-            backtrack(res, word, pos + 1, cur, count + 1);
-            backtrack(res, word, pos+1, cur + (count > 0 ? count : "") + word.charAt(pos), 0);
+            backtrack(res, word, tempWord, pos + 1, count + 1); // abbreviate this character at pos
+            backtrack(res, word, tempWord + (count > 0 ? count : "") + word.charAt(pos), pos + 1, 0); //do not abbreviate the character at pos
         }
     }
 	
@@ -45,7 +47,7 @@ public class WordAbbreviationGenerate {
 		DFS(res, word, 0, new StringBuilder(), 0);
 		return res;
 	}
-	public void DFS(List<String> res, String word, int pos, StringBuilder cur, int count) {
+	private void DFS(List<String> res, String word, int pos, StringBuilder cur, int count) {
 		int len = cur.length();  
 		if(pos == word.length()) {
 			if(count > 0) cur.append(count);
@@ -57,5 +59,13 @@ public class WordAbbreviationGenerate {
 			DFS(res, word, pos + 1, cur.append(word.charAt(pos)), 0);        
 		}
 		cur.setLength(len); 
+	}
+	
+	public static void main(String[] args){
+		WordAbbreviationGenerate obj = new WordAbbreviationGenerate();
+		String word = "leetcode";
+		for(String abrreviation: obj.generateAbbreviations1(word)){
+			System.out.println(abrreviation);
+		}
 	}
 }
